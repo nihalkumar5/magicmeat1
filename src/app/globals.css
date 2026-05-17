@@ -1029,6 +1029,99 @@ button {
   line-height: 1.7;
 }
 
+/* ═══ 8. Order on Call & WhatsApp CTA ═══ */
+.order-cta-section {
+  background: linear-gradient(135deg, #1A1816 0%, #2A2520 100%);
+  padding: 6rem 0;
+  text-align: center;
+}
+
+.order-cta-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.order-cta-tagline {
+  color: var(--accent-gold);
+  font-size: 0.7rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+}
+
+.order-cta-title {
+  font-family: var(--font-serif);
+  font-size: 2.8rem;
+  font-weight: 400;
+  color: #FFFFFF;
+  letter-spacing: -1.5px;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+.order-cta-desc {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.92rem;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+  max-width: 460px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.order-cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.order-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 2rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+
+.order-cta-call {
+  background: transparent;
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.order-cta-call:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.order-cta-whatsapp {
+  background: #25D366;
+  color: #FFFFFF;
+  border: none;
+}
+
+.order-cta-whatsapp:hover {
+  background: #1EBE57;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+}
+
+.order-cta-number {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  color: rgba(255, 255, 255, 0.2);
+  letter-spacing: 4px;
+  font-weight: 400;
+}
+
 .footer {
   padding: 6rem 0 3rem 0;
   background-color: #1A1816;

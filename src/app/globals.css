@@ -191,7 +191,7 @@ button {
   transition: var(--transition-spring);
 }
 
-/* ═══ 2. Hero — Full Viewport Typographic ═══ */
+/* ═══ 2. Hero — Cinematic Image Background ═══ */
 .hero-wrapper {
   position: relative;
   height: 100vh;
@@ -200,12 +200,25 @@ button {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background-color: var(--background);
-  background-image: none;
+  background-image: url('/hero-premium.png');
+  background-size: cover;
+  background-position: center;
+  background-color: #0A0908;
 }
 
 .hero-overlay {
-  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 9, 8, 0.35) 0%,
+    rgba(10, 9, 8, 0.5) 40%,
+    rgba(10, 9, 8, 0.85) 100%
+  );
+  z-index: 1;
 }
 
 .hero-content {
@@ -214,7 +227,7 @@ button {
   text-align: center;
   max-width: 900px;
   padding: 0 2rem;
-  color: var(--foreground);
+  color: #FFFFFF;
 }
 
 .hero-tagline {
@@ -234,11 +247,11 @@ button {
   line-height: 1.05;
   margin-bottom: 2rem;
   letter-spacing: -3px;
-  color: var(--foreground);
+  color: #FFFFFF;
 }
 
 .hero-subtitle {
-  color: var(--foreground-muted);
+  color: rgba(255, 255, 255, 0.7);
   font-size: 1.05rem;
   margin-bottom: 3.5rem;
   font-weight: 400;
@@ -252,22 +265,22 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  background-color: transparent;
-  color: var(--foreground);
+  background-color: var(--accent-gold);
+  color: #FFFFFF;
   padding: 0.85rem 2.2rem;
   border-radius: 50px;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 0.9rem;
-  border: 1px solid rgba(30, 27, 21, 0.2);
+  border: none;
   transition: var(--transition-smooth);
   letter-spacing: 0;
 }
 
 .hero-cta:hover {
-  background-color: var(--foreground);
-  color: var(--background);
-  border-color: var(--foreground);
-  transform: translateY(-1px);
+  background-color: var(--accent-gold-hover);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(200, 150, 62, 0.3);
 }
 
 /* Scroll indicator */
@@ -278,8 +291,9 @@ button {
   left: 50%;
   width: 1px;
   height: 48px;
-  background: linear-gradient(to bottom, var(--foreground-muted), transparent);
+  background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
   animation: scrollPulse 2s ease-in-out infinite;
+  z-index: 2;
 }
 
 @keyframes scrollPulse {

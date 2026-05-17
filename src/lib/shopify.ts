@@ -395,7 +395,7 @@ export async function getProductByHandle(handle: string): Promise<Product | null
 // 3. Create Shopify Checkout and return its secure URL
 export async function createCheckout(
   lineItems: { variantId: string; quantity: number }[]
-): Promise<string | null> {
+): Promise<{ url: string | null; error?: string }> {
   // Check if checkout items belong to local fallback simulation
   const hasMockItems = lineItems.some(item => {
     const isMockId = item.variantId.includes('/ProductVariant/101') ||
@@ -415,7 +415,7 @@ export async function createCheckout(
   if (hasMockItems) {
     // Simulated checkout helper - redirects customer straight to their main myshopify domain home page cleanly
     console.log('Simulating checkout for local CSV items. Redirecting to official store home.');
-    return `https://${domain}`;
+    return { url: `https://${domain}` };
   }
 
   const mutation = `
@@ -450,13 +450,15 @@ export async function createCheckout(
     const errors = response.body?.data?.checkoutCreate?.checkoutUserErrors;
     if (errors && errors.length > 0) {
       console.error('Checkout Create user errors:', errors);
-      return null;
+      const errMsg = errors.map((e: any) => e.message).join(', ');
+      return { url: null, error: `Shopify Error: ${errMsg}` };
     }
 
-    return response.body?.data?.checkoutCreate?.checkout?.webUrl || null;
-  } catch (error) {
+    const webUrl = response.body?.data?.checkoutCreate?.checkout?.webUrl || null;
+    return { url: webUrl, error: webUrl ? undefined : 'Shopify did not return a checkout URL.' };
+  } catch (error: any) {
     console.error('Checkout generation failed, falling back to homepage redirect.', error);
-    return `https://${domain}`;
+    return { url: `https://${domain}`, error: `Network/API Error: ${error.message || error}` };
   }
 }
 

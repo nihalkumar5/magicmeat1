@@ -109,18 +109,18 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       }));
 
       // Call server checkout generator
-      const checkoutUrl = await createCheckout(lineItems);
+      const checkoutResult = await createCheckout(lineItems);
       
-      if (checkoutUrl) {
+      if (checkoutResult.url) {
         // Safe redirect to official Shopify secure checkout domain
-        window.location.href = checkoutUrl;
+        window.location.href = checkoutResult.url;
       } else {
-        alert('Could not initialize checkout. Please try again.');
+        alert(`Could not initialize checkout.\n\n${checkoutResult.error || 'Please try again.'}`);
         setCheckoutLoading(false);
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('Checkout error:', error);
-      alert('An error occurred during checkout setup. Please try again.');
+      alert(`An error occurred during checkout setup: ${error.message || error}`);
       setCheckoutLoading(false);
     }
   };

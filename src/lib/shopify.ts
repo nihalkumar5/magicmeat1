@@ -447,15 +447,23 @@ export async function createCheckout(
       variables: { input }
     });
 
+    // Capture exact response payload for absolute clarity
+    const rawDataStr = JSON.stringify(response.body?.data || response.body || {});
+    console.log('Shopify Checkout raw payload:', rawDataStr);
+
+    if (!response.body?.data?.checkoutCreate) {
+      return { url: null, error: `GraphQL Error (checkoutCreate is null). Response: ${rawDataStr}` };
+    }
+
     const errors = response.body?.data?.checkoutCreate?.checkoutUserErrors;
     if (errors && errors.length > 0) {
       console.error('Checkout Create user errors:', errors);
       const errMsg = errors.map((e: any) => e.message).join(', ');
-      return { url: null, error: `Shopify Error: ${errMsg}` };
+      return { url: null, error: `Shopify Error: ${errMsg}. Response: ${rawDataStr}` };
     }
 
     const webUrl = response.body?.data?.checkoutCreate?.checkout?.webUrl || null;
-    return { url: webUrl, error: webUrl ? undefined : 'Shopify did not return a checkout URL.' };
+    return { url: webUrl, error: webUrl ? undefined : `Shopify did not return a checkout URL. Raw payload: ${rawDataStr}` };
   } catch (error: any) {
     console.error('Checkout generation failed, falling back to homepage redirect.', error);
     return { url: `https://${domain}`, error: `Network/API Error: ${error.message || error}` };

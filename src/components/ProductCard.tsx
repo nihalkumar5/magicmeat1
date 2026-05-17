@@ -16,18 +16,35 @@ export default function ProductCard({ product }: ProductCardProps) {
   const defaultVariant = product.variants.find((v) => v.availableForSale) || product.variants[0];
   const isAvailable = defaultVariant?.availableForSale;
 
-  // Extract a friendly display tag/category
-  let displayCategory = 'Essential';
-  if (product.tags.includes('chicken') || product.tags.includes('Chicken')) {
-    displayCategory = 'Fresh Chicken';
-  } else if (product.tags.includes('mutton') || product.tags.includes('Mutton')) {
-    displayCategory = 'Tender Mutton';
-  } else if (product.tags.includes('fish') || product.tags.includes('seafood')) {
-    displayCategory = 'Fresh Seafood';
-  } else if (product.tags.includes('eggs')) {
+  // Smart badge detection — checks tags + title + productType
+  const tagsLower = product.tags.map(t => t.toLowerCase());
+  const titleLower = product.title.toLowerCase();
+  const pType = (product.productType || '').toLowerCase();
+  
+  let displayCategory = 'Premium';
+  
+  if (tagsLower.includes('chicken') || titleLower.includes('chicken')) {
+    displayCategory = 'Chicken';
+  } else if (tagsLower.includes('mutton') || titleLower.includes('mutton') || titleLower.includes('goat')) {
+    displayCategory = 'Mutton';
+  } else if (tagsLower.includes('fish') || tagsLower.includes('seafood') || titleLower.includes('fish') || titleLower.includes('prawn') || titleLower.includes('rohu')) {
+    displayCategory = 'Seafood';
+  } else if (tagsLower.includes('eggs') || titleLower.includes('egg')) {
     displayCategory = 'Farm Eggs';
-  } else if (product.tags.includes('grocery') || product.tags.includes('atta') || product.tags.includes('rice')) {
-    displayCategory = 'Daily Staple';
+  } else if (tagsLower.includes('frozen') || titleLower.includes('frozen')) {
+    displayCategory = 'Frozen';
+  } else if (tagsLower.includes('fruit') || titleLower.includes('banana') || titleLower.includes('apple') || titleLower.includes('mango') || titleLower.includes('orange') || titleLower.includes('fruit')) {
+    displayCategory = 'Fruits';
+  } else if (tagsLower.includes('vegetable') || titleLower.includes('vegetable') || titleLower.includes('onion') || titleLower.includes('potato') || titleLower.includes('tomato')) {
+    displayCategory = 'Vegetables';
+  } else if (tagsLower.includes('dairy') || titleLower.includes('milk') || titleLower.includes('ghee') || titleLower.includes('paneer') || titleLower.includes('curd')) {
+    displayCategory = 'Dairy';
+  } else if (tagsLower.includes('combo') || titleLower.includes('combo') || titleLower.includes('pack')) {
+    displayCategory = 'Combo Pack';
+  } else if (tagsLower.includes('spices') || titleLower.includes('spice') || titleLower.includes('masala') || titleLower.includes('biryani')) {
+    displayCategory = 'Spices';
+  } else if (tagsLower.includes('grocery') || tagsLower.includes('atta') || tagsLower.includes('rice') || titleLower.includes('atta') || titleLower.includes('rice') || titleLower.includes('flour') || titleLower.includes('sugar') || titleLower.includes('oil')) {
+    displayCategory = 'Grocery';
   }
 
   const imageUrl = product.images[0]?.url || '/placeholder.png';

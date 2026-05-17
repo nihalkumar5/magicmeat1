@@ -3,6 +3,7 @@ import './globals.css';
 import { CartProvider } from '@/context/CartContext';
 import Header from '@/components/Header';
 import CartDrawer from '@/components/CartDrawer';
+import MobileNav from '@/components/MobileNav';
 
 export const metadata: Metadata = {
   title: 'Magicmeat | Premium Headless Storefront',
@@ -28,6 +29,9 @@ export default function RootLayout({
           
           {/* Global Sliding Cart Drawer */}
           <CartDrawer />
+
+          {/* Mobile Bottom Navigation */}
+          <MobileNav />
         </CartProvider>
       </body>
     </html>

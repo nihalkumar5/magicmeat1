@@ -1,6 +1,7 @@
 import React from 'react';
 import { getProducts } from '@/lib/shopify';
 import ProductCatalog from '@/components/ProductCatalog';
+import FeaturedProducts from '@/components/FeaturedProducts';
 
 // Next.js App Router Server Component
 export default async function HomePage() {
@@ -28,6 +29,9 @@ export default async function HomePage() {
           </a>
         </div>
       </section>
+
+      {/* 2. Featured Products — Horizontal Scroll */}
+      <FeaturedProducts products={products} />
 
       {/* Anchor scroll point for the catalog */}
       <div id="catalog" style={{ scrollMarginTop: '52px' }}>

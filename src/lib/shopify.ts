@@ -418,15 +418,15 @@ export async function createCheckout(
     return { url: `https://${domain}` };
   }
 
+  // Modern Shopify Cart API checkout generator (Cart-based checkout)
   const mutation = `
-    mutation checkoutCreate($input: CheckoutCreateInput!) {
-      checkoutCreate(input: $input) {
-        checkout {
+    mutation cartCreate($input: CartInput!) {
+      cartCreate(input: $input) {
+        cart {
           id
-          webUrl
+          checkoutUrl
         }
-        checkoutUserErrors {
-          code
+        userErrors {
           field
           message
         }
@@ -434,9 +434,10 @@ export async function createCheckout(
     }
   `;
 
+  // Standard merchandise input mapping
   const input = {
-    lineItems: lineItems.map((item) => ({
-      variantId: item.variantId,
+    lines: lineItems.map((item) => ({
+      merchandiseId: item.variantId,
       quantity: item.quantity
     }))
   };
@@ -449,23 +450,23 @@ export async function createCheckout(
 
     // Capture exact response payload for absolute clarity
     const rawDataStr = JSON.stringify(response.body?.data || response.body || {});
-    console.log('Shopify Checkout raw payload:', rawDataStr);
+    console.log('Shopify Cart raw payload:', rawDataStr);
 
-    if (!response.body?.data?.checkoutCreate) {
-      return { url: null, error: `GraphQL Error (checkoutCreate is null). Response: ${rawDataStr}` };
+    if (!response.body?.data?.cartCreate) {
+      return { url: null, error: `GraphQL Cart Error. Response: ${rawDataStr}` };
     }
 
-    const errors = response.body?.data?.checkoutCreate?.checkoutUserErrors;
+    const errors = response.body?.data?.cartCreate?.userErrors;
     if (errors && errors.length > 0) {
-      console.error('Checkout Create user errors:', errors);
+      console.error('Cart Create user errors:', errors);
       const errMsg = errors.map((e: any) => e.message).join(', ');
-      return { url: null, error: `Shopify Error: ${errMsg}. Response: ${rawDataStr}` };
+      return { url: null, error: `Shopify Cart Error: ${errMsg}. Response: ${rawDataStr}` };
     }
 
-    const webUrl = response.body?.data?.checkoutCreate?.checkout?.webUrl || null;
-    return { url: webUrl, error: webUrl ? undefined : `Shopify did not return a checkout URL. Raw payload: ${rawDataStr}` };
+    const checkoutUrl = response.body?.data?.cartCreate?.cart?.checkoutUrl || null;
+    return { url: checkoutUrl, error: checkoutUrl ? undefined : `Shopify did not return a checkout link. Raw payload: ${rawDataStr}` };
   } catch (error: any) {
-    console.error('Checkout generation failed, falling back to homepage redirect.', error);
+    console.error('Cart checkout generation failed, falling back to homepage redirect.', error);
     return { url: `https://${domain}`, error: `Network/API Error: ${error.message || error}` };
   }
 }

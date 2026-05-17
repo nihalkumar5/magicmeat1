@@ -287,7 +287,7 @@ button {
   50% { opacity: 0.8; transform: translateX(-50%) scaleY(1); }
 }
 
-/* ═══ 3. Category Tabs — Text-Only ═══ */
+/* ═══ 3. Category Circles — Visual Image Tabs ═══ */
 .categories-section {
   padding: 8rem 0 3rem 0;
   text-align: center;
@@ -314,33 +314,62 @@ button {
   margin-right: auto;
 }
 
-.category-pills {
+.category-circles {
   display: flex;
   justify-content: center;
-  gap: 2.5rem;
+  gap: 2rem;
   flex-wrap: wrap;
+  padding: 0 2rem;
 }
 
-.category-pill {
-  background-color: transparent;
+.category-circle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  background: none;
   border: none;
-  border-bottom: 1.5px solid transparent;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.category-circle:hover {
+  transform: translateY(-4px);
+}
+
+.category-circle-img {
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid transparent;
+  box-shadow: 0 4px 15px rgba(30, 27, 21, 0.08);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  background: #F5F2EC;
+}
+
+.category-circle:hover .category-circle-img {
+  box-shadow: 0 8px 25px rgba(30, 27, 21, 0.12);
+  border-color: rgba(200, 150, 62, 0.3);
+}
+
+.category-circle.active .category-circle-img {
+  border-color: var(--accent-gold);
+  box-shadow: 0 4px 20px rgba(200, 150, 62, 0.25);
+}
+
+.category-circle-label {
+  font-size: 0.72rem;
+  font-weight: 600;
   color: var(--foreground-muted);
-  padding: 0.5rem 0;
-  border-radius: 0;
-  font-size: 0.85rem;
-  font-weight: 500;
   transition: var(--transition-smooth);
   letter-spacing: 0;
+  white-space: nowrap;
 }
 
-.category-pill:hover {
+.category-circle:hover .category-circle-label,
+.category-circle.active .category-circle-label {
   color: var(--foreground);
-}
-
-.category-pill.active {
-  color: var(--foreground);
-  border-bottom-color: var(--foreground);
 }
 
 /* ═══ 4. Product Grid & Cards — Modern Premium ═══ */
@@ -1126,7 +1155,7 @@ button {
     margin-bottom: 1.5rem;
   }
 
-  /* Mobile Categories — Scrollable Tabs */
+  /* Mobile Categories — Scrollable Circles */
   .categories-section {
     padding: 4rem 0 2rem 0;
   }
@@ -1142,8 +1171,8 @@ button {
     max-width: 300px;
   }
 
-  .category-pills {
-    gap: 1.5rem;
+  .category-circles {
+    gap: 1.2rem;
     flex-wrap: nowrap;
     overflow-x: auto;
     justify-content: flex-start;
@@ -1152,14 +1181,23 @@ button {
     scrollbar-width: none;
   }
   
-  .category-pills::-webkit-scrollbar {
+  .category-circles::-webkit-scrollbar {
     display: none;
   }
 
-  .category-pill {
-    white-space: nowrap;
+  .category-circle {
     flex-shrink: 0;
-    font-size: 0.82rem;
+    gap: 0.5rem;
+  }
+
+  .category-circle-img {
+    width: 65px;
+    height: 65px;
+    border-width: 2.5px;
+  }
+
+  .category-circle-label {
+    font-size: 0.62rem;
   }
 
   /* Mobile Product Grid — 2 Columns */

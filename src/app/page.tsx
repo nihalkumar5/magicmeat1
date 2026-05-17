@@ -1,8 +1,6 @@
 import React from 'react';
 import { getProducts } from '@/lib/shopify';
 import ProductCatalog from '@/components/ProductCatalog';
-import ChefConcierge from '@/components/ChefConcierge';
-import SterileTrust from '@/components/SterileTrust';
 
 // Next.js App Router Server Component
 export default async function HomePage() {
@@ -16,23 +14,14 @@ export default async function HomePage() {
         <div className="hero-overlay"></div>
         <div className="hero-content">
           <p className="hero-tagline">Magicmeat Premium</p>
-          <h1 className="hero-title">Savor the Standard of Luxury Meats & Staples</h1>
+          <h1 className="hero-title">The finest cuts,<br/>delivered fresh.</h1>
           <p className="hero-subtitle">
-            Clinically sterile trimmings, 100% antibiotic residue-free, freshly packed in 
-            insulated boxes, and delivered express to your doorstep.
+            Clinically sterile, 100% antibiotic-free meats — freshly packed 
+            and delivered express to your doorstep.
           </p>
           <a href="#catalog" className="hero-cta">
-            Explore Selections
-            <svg 
-              width="18" 
-              height="18" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              stroke="currentColor" 
-              strokeWidth="2.5" 
-              strokeLinecap="round" 
-              strokeLinejoin="round"
-            >
+            Shop Now
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <line x1="12" y1="5" x2="12" y2="19"></line>
               <polyline points="19 12 12 19 5 12"></polyline>
             </svg>
@@ -40,15 +29,9 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* 2. Interactive Chef's Gastronomy Concierge & Portion Planner */}
-      <ChefConcierge products={products} />
-
-      {/* 3. Pure Purity Protocol & Sterile Cold-Chain Audit Log */}
-      <SterileTrust />
-
       {/* Anchor scroll point for the catalog */}
-      <div id="catalog" style={{ scrollMarginTop: '80px' }}>
-        {/* 4. Interactive Product Catalog (Server Data -> Client Interactivity) */}
+      <div id="catalog" style={{ scrollMarginTop: '52px' }}>
+        {/* Product Catalog */}
         <ProductCatalog initialProducts={products} />
       </div>
 

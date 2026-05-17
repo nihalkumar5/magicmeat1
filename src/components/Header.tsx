@@ -12,37 +12,34 @@ export default function Header() {
     <div className="header-wrapper">
       <div className="container">
         <header className="header">
-          {/* Elegant Logo */}
+          {/* Premium Logo — Serif Wordmark */}
           <div className="logo" onClick={() => window.location.href = '/'}>
             Magicmeat
-            <span className="logo-badge">PREMIUM</span>
           </div>
 
-          {/* Navigation Links */}
+          {/* Centered Navigation */}
           <nav className="nav-links">
-            <a href="/" className="nav-item active">Home</a>
-            <a href="#meats" className="nav-item">Fresh Meats</a>
-            <a href="#seafood" className="nav-item">Seafood</a>
-            <a href="#essentials" className="nav-item">Essentials</a>
+            <a href="/" className="nav-item active">Shop</a>
+            <a href="#catalog" className="nav-item">Collections</a>
+            <a href="#trust" className="nav-item">Our Promise</a>
           </nav>
 
-          {/* Shopping Cart Button */}
+          {/* Minimal Cart Icon */}
           <button className="cart-trigger" onClick={openCart}>
             <svg 
-              width="20" 
-              height="20" 
+              width="18" 
+              height="18" 
               viewBox="0 0 24 24" 
               fill="none" 
               stroke="currentColor" 
-              strokeWidth="2" 
+              strokeWidth="1.5" 
               strokeLinecap="round" 
               strokeLinejoin="round"
             >
-              <circle cx="9" cy="21" r="1"></circle>
-              <circle cx="20" cy="21" r="1"></circle>
-              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <path d="M16 10a4 4 0 0 1-8 0"></path>
             </svg>
-            <span>Cart</span>
             {totalItems > 0 && (
               <span className="cart-badge">{totalItems}</span>
             )}

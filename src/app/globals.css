@@ -1064,31 +1064,183 @@ button {
   }
   
   .hero-title {
-    font-size: 3rem;
+    font-size: 3.5rem;
+    letter-spacing: -2px;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
   }
 }
 
 @media (max-width: 768px) {
   .container {
-    padding: 0 1.5rem;
+    padding: 0 1.25rem;
   }
   
+  /* Mobile Header — Compact & Clean */
   .header {
-    height: 70px;
+    height: 52px;
   }
   
   .logo {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
   
   .nav-links {
-    display: none; /* Hide standard links on mobile */
+    display: none;
+  }
+
+  /* Mobile Hero — Impactful */
+  .hero-wrapper {
+    height: 85vh;
+    min-height: 500px;
+  }
+
+  .hero-wrapper::after {
+    bottom: 2rem;
+    height: 32px;
   }
   
   .hero-title {
-    font-size: 2.3rem;
+    font-size: 2.8rem;
+    letter-spacing: -1.5px;
+    line-height: 1.08;
+  }
+
+  .hero-subtitle {
+    font-size: 0.92rem;
+    margin-bottom: 2.5rem;
+    max-width: 340px;
+  }
+
+  .hero-cta {
+    padding: 0.75rem 2rem;
+    font-size: 0.85rem;
+  }
+
+  .hero-tagline {
+    font-size: 0.6rem;
+    letter-spacing: 4px;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Mobile Categories — Scrollable Tabs */
+  .categories-section {
+    padding: 4rem 0 2rem 0;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    letter-spacing: -1px;
+  }
+
+  .section-subtitle {
+    font-size: 0.85rem;
+    margin-bottom: 2rem;
+    max-width: 300px;
+  }
+
+  .category-pills {
+    gap: 1.5rem;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding: 0 1.25rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
   
+  .category-pills::-webkit-scrollbar {
+    display: none;
+  }
+
+  .category-pill {
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-size: 0.82rem;
+  }
+
+  /* Mobile Product Grid — 2 Columns */
+  .products-section {
+    padding: 2rem 0 5rem 0;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem;
+  }
+
+  .product-card {
+    border-radius: 14px;
+  }
+
+  .product-card-image-container {
+    padding-top: 115%;
+  }
+
+  .product-badge {
+    top: 0.6rem;
+    left: 0.6rem;
+    font-size: 0.5rem;
+    padding: 0.2rem 0.45rem;
+    border-radius: 4px;
+  }
+
+  .product-card-content {
+    padding: 0.8rem 0.85rem 1rem;
+  }
+
+  .product-card-title {
+    font-size: 0.8rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 0.1rem;
+  }
+
+  .product-card-price {
+    font-size: 0.85rem;
+  }
+
+  .product-card-price::before {
+    font-size: 0.75rem;
+  }
+
+  .product-card-btn {
+    padding: 0.45rem 0.9rem;
+    font-size: 0.68rem;
+    border-radius: 50px;
+  }
+
+  .product-card-meta {
+    padding-top: 0.6rem;
+  }
+
+  /* Mobile Trust Badges */
+  .trust-badges-wrapper {
+    padding: 4rem 0;
+  }
+
+  .trust-badges {
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .trust-icon {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .trust-title {
+    font-size: 1.2rem;
+  }
+
+  /* Mobile Footer */
+  .footer {
+    padding: 4rem 0 2.5rem 0;
+  }
+
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
@@ -1096,8 +1248,29 @@ button {
   
   .footer-bottom {
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.8rem;
     text-align: center;
+  }
+
+  /* Mobile Cart Drawer */
+  .cart-drawer {
+    width: 100vw;
+  }
+
+  .cart-drawer-header {
+    padding: 1.2rem 1.25rem;
+  }
+
+  .cart-drawer-title {
+    font-size: 1.3rem;
+  }
+
+  .cart-drawer-items {
+    padding: 1.25rem;
+  }
+
+  .cart-drawer-footer {
+    padding: 1.5rem 1.25rem;
   }
 }
 

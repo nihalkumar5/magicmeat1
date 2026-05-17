@@ -13,22 +13,33 @@ type CategoryType = 'all' | 'meats' | 'seafood' | 'essentials';
 export default function ProductCatalog({ initialProducts }: ProductCatalogProps) {
   const [activeCategory, setActiveCategory] = useState<CategoryType>('all');
 
-  // Category Filter Rules based on tags and metadata
+  // Robust category filter — matches tags, title, and productType
   const filteredProducts = initialProducts.filter((product) => {
     if (activeCategory === 'all') return true;
     
     const tags = product.tags.map(t => t.toLowerCase());
+    const title = product.title.toLowerCase();
+    const pType = (product.productType || '').toLowerCase();
     
     if (activeCategory === 'meats') {
-      return tags.includes('chicken') || tags.includes('mutton');
+      return tags.some(t => ['chicken', 'mutton', 'meat', 'combo'].includes(t)) ||
+             title.includes('chicken') || title.includes('mutton') || title.includes('meat') ||
+             title.includes('boneless') || title.includes('leg') || title.includes('biryani cut') ||
+             pType.includes('meat') || pType.includes('chicken') || pType.includes('mutton');
     }
     
     if (activeCategory === 'seafood') {
-      return tags.includes('fish') || tags.includes('seafood');
+      return tags.some(t => ['fish', 'seafood', 'prawn', 'shrimp'].includes(t)) ||
+             title.includes('fish') || title.includes('prawn') || title.includes('rohu') ||
+             pType.includes('fish') || pType.includes('seafood');
     }
     
     if (activeCategory === 'essentials') {
-      return tags.includes('grocery') || tags.includes('atta') || tags.includes('rice') || tags.includes('eggs') || tags.includes('milk');
+      return tags.some(t => ['grocery', 'atta', 'rice', 'eggs', 'milk', 'essentials', 'dairy', 'ghee', 'spices'].includes(t)) ||
+             title.includes('egg') || title.includes('atta') || title.includes('rice') ||
+             title.includes('milk') || title.includes('ghee') || title.includes('banana') ||
+             title.includes('spice') || title.includes('masala') ||
+             pType.includes('grocery') || pType.includes('essential');
     }
     
     return true;
@@ -36,7 +47,7 @@ export default function ProductCatalog({ initialProducts }: ProductCatalogProps)
 
   return (
     <div>
-      {/* Category Selection Filter Pills */}
+      {/* Category Selection Filter Tabs */}
       <section className="categories-section">
         <h2 className="section-title">Explore Our Collections</h2>
         <p className="section-subtitle">Premium cut meats, clean seafood, and high-quality daily essentials.</p>

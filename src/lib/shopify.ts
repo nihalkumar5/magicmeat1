@@ -71,6 +71,7 @@ export interface Product {
   };
   variants: ShopifyVariant[];
   tags: string[];
+  productType?: string;
 }
 
 // 10 Premium Products mapped exactly from the magicmeat-products.csv
@@ -261,7 +262,8 @@ function transformProduct(node: any): Product {
       availableForSale: edge.node.availableForSale,
       selectedOptions: edge.node.selectedOptions
     })),
-    tags: node.tags || []
+    tags: node.tags || [],
+    productType: node.productType || ''
   };
 }
 
@@ -310,6 +312,7 @@ export async function getProducts(): Promise<Product[]> {
               }
             }
             tags
+            productType
           }
         }
       }
@@ -371,6 +374,7 @@ export async function getProductByHandle(handle: string): Promise<Product | null
           }
         }
         tags
+        productType
       }
     }
   `;

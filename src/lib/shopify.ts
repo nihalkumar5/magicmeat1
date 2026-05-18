@@ -421,13 +421,7 @@ export async function getProducts(): Promise<Product[]> {
     const response = await shopifyFetch<any>({ query });
     if (response.body?.data?.products?.edges && response.body.data.products.edges.length > 0) {
       const shopifyProducts = response.body.data.products.edges.map((edge: any) => transformProduct(edge.node));
-      const allProducts = [...shopifyProducts];
-      mockProducts.forEach(mockProd => {
-        if (!allProducts.some(p => p.handle === mockProd.handle)) {
-          allProducts.push(mockProd);
-        }
-      });
-      return allProducts;
+      return shopifyProducts;
     }
   } catch (error) {
     console.warn('Shopify Storefront API connection failed or empty database. Serving local CSV fallback.', error);

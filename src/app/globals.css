@@ -191,6 +191,54 @@ button {
   transition: var(--transition-spring);
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.call-trigger-top {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--dark-olive);
+  border: 1px solid rgba(184, 142, 65, 0.4);
+  color: var(--accent-gold);
+  padding: 0.4rem 0.8rem;
+  border-radius: 30px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  transition: var(--transition-smooth);
+  text-decoration: none;
+}
+
+.call-trigger-top:hover {
+  background: var(--accent-gold);
+  color: var(--background);
+  border-color: var(--accent-gold);
+  box-shadow: 0 4px 15px rgba(184, 142, 65, 0.2);
+}
+
+.call-trigger-top svg {
+  stroke: currentColor;
+}
+
+@media (max-width: 480px) {
+  .call-trigger-text {
+    display: none;
+  }
+  .call-trigger-top {
+    padding: 0.4rem;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
 /* ═══ 2. Hero — Cinematic Image Background ═══ */
 .hero-wrapper {
   position: relative;

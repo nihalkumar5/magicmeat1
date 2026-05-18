@@ -422,7 +422,19 @@ export async function getProducts(): Promise<Product[]> {
     const response = await shopifyFetch<any>({ query });
     if (response.body?.data?.products?.edges && response.body.data.products.edges.length > 0) {
       const shopifyProducts = response.body.data.products.edges.map((edge: any) => transformProduct(edge.node));
-      return shopifyProducts;
+      
+      // Deduplicate products by normalized title to prevent admin duplicates
+      const seenTitles = new Set<string>();
+      const uniqueProducts = shopifyProducts.filter((product: Product) => {
+        const normalized = product.title.toLowerCase().trim();
+        if (seenTitles.has(normalized)) {
+          return false;
+        }
+        seenTitles.add(normalized);
+        return true;
+      });
+      
+      return uniqueProducts;
     }
   } catch (error) {
     console.warn('Shopify Storefront API connection failed or empty database. Serving local CSV fallback.', error);

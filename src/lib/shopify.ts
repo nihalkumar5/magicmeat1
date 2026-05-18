@@ -208,20 +208,6 @@ export const mockProducts: Product[] = [
     tags: ["milk", "dairy", "grocery"]
   },
   {
-    id: "gid://shopify/Product/10",
-    title: "Chicken + Eggs Combo Pack",
-    handle: "chicken-eggs-combo-pack",
-    descriptionHtml: "<p>Value-rich meal pack including our signature Fresh Chicken Curry Cut (500g) paired with 6 Farm Fresh Eggs. Perfect family pack.</p>",
-    images: [
-      { url: "https://images.unsplash.com/photo-1606787366850-de6330128bfc?auto=format&fit=crop&q=80&w=600", altText: "Chicken + Eggs Combo Pack", width: 600, height: 600 }
-    ],
-    priceRange: { minVariantPrice: { amount: "299", currencyCode: "INR" } },
-    variants: [
-      { id: "gid://shopify/ProductVariant/1001", title: "1 Combo Pack", price: { amount: "299", currencyCode: "INR" }, availableForSale: true, selectedOptions: [] }
-    ],
-    tags: ["combo", "chicken", "eggs", "value pack"]
-  },
-  {
     id: "gid://shopify/Product/11",
     title: "Chef's Secret Biryani Masala",
     handle: "chefs-secret-biryani-masala",

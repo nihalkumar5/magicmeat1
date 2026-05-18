@@ -97,9 +97,6 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
             <span className="pdp-badge">
               {isAvailable ? 'In Stock' : 'Out of Stock'}
             </span>
-            <span style={{ fontSize: '0.9rem', color: 'var(--foreground-muted)' }}>
-              SKU: MM-{product.handle.slice(0, 8).toUpperCase()}
-            </span>
           </div>
 
           <h1 className="pdp-title">{product.title}</h1>

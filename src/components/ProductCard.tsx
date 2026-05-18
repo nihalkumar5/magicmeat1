@@ -22,20 +22,24 @@ export default function ProductCard({ product }: ProductCardProps) {
   const pType = (product.productType || '').toLowerCase();
   
   let displayCategory = 'Premium';
+
+  const fruitKeywords = ['banana', 'apple', 'mango', 'orange', 'guava', 'grape', 'papaya', 'pomegranate', 'strawberry', 'watermelon', 'melon', 'pear', 'peach', 'plum', 'kiwi', 'pineapple', 'coconut'];
+  const vegKeywords = ['onion', 'potato', 'tomato', 'garlic', 'ginger', 'dhaniya', 'aloo', 'capsicum', 'chilli', 'coriander', 'lemon', 'carrot', 'radish', 'cabbage', 'cauliflower', 'spinach', 'mint', 'pudina', 'sabzi', 'vegetables', 'vegetable', 'bhindi', 'okra', 'brinjal', 'eggplant', 'lauki', 'karela', 'kaddu'];
+  const seafoodKeywords = ['fish', 'seafood', 'prawn', 'shrimp', 'rohu', 'katla', 'crab', 'lobster'];
   
   if (tagsLower.includes('chicken') || titleLower.includes('chicken')) {
     displayCategory = 'Chicken';
-  } else if (tagsLower.includes('mutton') || titleLower.includes('mutton') || titleLower.includes('goat')) {
+  } else if (tagsLower.includes('mutton') || titleLower.includes('mutton') || titleLower.includes('goat') || titleLower.includes('lamb')) {
     displayCategory = 'Mutton';
-  } else if (tagsLower.includes('fish') || tagsLower.includes('seafood') || titleLower.includes('fish') || titleLower.includes('prawn') || titleLower.includes('rohu')) {
+  } else if (tagsLower.some(t => seafoodKeywords.includes(t)) || seafoodKeywords.some(kw => titleLower.includes(kw)) || pType.includes('seafood') || pType.includes('fish')) {
     displayCategory = 'Seafood';
   } else if (tagsLower.includes('eggs') || titleLower.includes('egg')) {
     displayCategory = 'Farm Eggs';
   } else if (tagsLower.includes('frozen') || titleLower.includes('frozen')) {
     displayCategory = 'Frozen';
-  } else if (tagsLower.includes('fruit') || titleLower.includes('banana') || titleLower.includes('apple') || titleLower.includes('mango') || titleLower.includes('orange') || titleLower.includes('fruit')) {
+  } else if (tagsLower.some(t => fruitKeywords.includes(t)) || fruitKeywords.some(kw => titleLower.includes(kw)) || pType.includes('fruit')) {
     displayCategory = 'Fruits';
-  } else if (tagsLower.includes('vegetable') || titleLower.includes('vegetable') || titleLower.includes('onion') || titleLower.includes('potato') || titleLower.includes('tomato')) {
+  } else if (tagsLower.some(t => ['vegetable', 'vegetables', 'sabzi', ...vegKeywords].includes(t)) || vegKeywords.some(kw => titleLower.includes(kw)) || pType.includes('vegetable') || pType.includes('fruits & vegetable') || pType.includes('fruits & vegetables')) {
     displayCategory = 'Vegetables';
   } else if (tagsLower.includes('dairy') || titleLower.includes('milk') || titleLower.includes('ghee') || titleLower.includes('paneer') || titleLower.includes('curd')) {
     displayCategory = 'Dairy';

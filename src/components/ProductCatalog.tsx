@@ -43,8 +43,8 @@ export default function ProductCatalog({ initialProducts }: ProductCatalogProps)
              pType.includes('mutton');
     }
     if (activeCategory === 'seafood') {
-      return tags.some(t => ['fish', 'seafood', 'prawn', 'shrimp', 'rohu'].includes(t)) ||
-             title.includes('fish') || title.includes('prawn') || title.includes('rohu') ||
+      return tags.some(t => ['fish', 'seafood', 'prawn', 'shrimp', 'rohu', 'katla'].includes(t)) ||
+             title.includes('fish') || title.includes('prawn') || title.includes('rohu') || title.includes('katla') || title.includes('seafood') ||
              pType.includes('fish') || pType.includes('seafood');
     }
     if (activeCategory === 'grocery') {
@@ -54,16 +54,23 @@ export default function ProductCatalog({ initialProducts }: ProductCatalogProps)
              title.includes('spice') || title.includes('oil') || title.includes('sugar') ||
              pType.includes('grocery') || pType.includes('essential');
     }
+    
+    const fruitKeywords = ['banana', 'apple', 'mango', 'orange', 'guava', 'grape', 'papaya', 'pomegranate', 'strawberry', 'watermelon', 'melon', 'pear', 'peach', 'plum', 'kiwi', 'pineapple', 'coconut'];
+    const vegKeywords = ['onion', 'potato', 'tomato', 'garlic', 'ginger', 'dhaniya', 'aloo', 'capsicum', 'chilli', 'coriander', 'lemon', 'carrot', 'radish', 'cabbage', 'cauliflower', 'spinach', 'mint', 'pudina', 'sabzi', 'bhindi', 'okra', 'brinjal', 'eggplant', 'lauki', 'karela', 'kaddu'];
+
     if (activeCategory === 'vegetables') {
-      return tags.some(t => ['vegetable', 'vegetables', 'sabzi', 'onion', 'potato', 'tomato'].includes(t)) ||
-             title.includes('vegetable') || title.includes('onion') || title.includes('potato') ||
-             title.includes('tomato') || title.includes('sabzi') ||
+      const matchesVegKeywords = tags.some(t => ['vegetable', 'vegetables', 'sabzi', ...vegKeywords].includes(t)) ||
+             vegKeywords.some(kw => title.includes(kw)) ||
              pType.includes('vegetable');
+             
+      const isFruitsAndVegType = pType.includes('fruits & vegetables') || pType.includes('fruits and vegetables') || pType.includes('produce') || pType.includes('fruits & vegetable');
+      const matchesFruitKeywords = fruitKeywords.some(kw => title.includes(kw)) || tags.some(t => ['fruit', 'fruits', ...fruitKeywords].includes(t));
+      
+      return matchesVegKeywords || (isFruitsAndVegType && !matchesFruitKeywords);
     }
     if (activeCategory === 'fruits') {
-      return tags.some(t => ['fruit', 'fruits', 'banana', 'apple', 'mango', 'orange'].includes(t)) ||
-             title.includes('banana') || title.includes('apple') || title.includes('mango') ||
-             title.includes('orange') || title.includes('fruit') ||
+      return tags.some(t => ['fruit', 'fruits', ...fruitKeywords].includes(t)) ||
+             fruitKeywords.some(kw => title.includes(kw)) ||
              pType.includes('fruit');
     }
     if (activeCategory === 'frozen') {

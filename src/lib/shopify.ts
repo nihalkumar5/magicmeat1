@@ -243,6 +243,104 @@ export const mockProducts: Product[] = [
       { id: "gid://shopify/ProductVariant/1201", title: "200ml Jar", price: { amount: "179", currencyCode: "INR" }, availableForSale: true, selectedOptions: [] }
     ],
     tags: ["dairy", "ghee", "grocery", "essentials"]
+  },
+  {
+    id: "gid://shopify/Product/13",
+    title: "Premium Red Onion (Pyaj) - 1kg",
+    handle: "premium-red-onion-1kg",
+    descriptionHtml: "<p>Fresh, crisp, and high-quality premium red onions sourced directly from selected farms. Perfect for daily cooking, curries, and gourmet salads.</p>",
+    images: [
+      { url: "https://images.unsplash.com/photo-1508747703725-719777637510?auto=format&fit=crop&q=80&w=600", altText: "Premium Red Onion 1kg", width: 600, height: 600 }
+    ],
+    priceRange: { minVariantPrice: { amount: "49", currencyCode: "INR" } },
+    variants: [
+      { id: "gid://shopify/ProductVariant/1301", title: "1kg Pack", price: { amount: "49", currencyCode: "INR" }, availableForSale: true, selectedOptions: [] }
+    ],
+    tags: ["vegetables", "vegetable", "onion", "grocery"]
+  },
+  {
+    id: "gid://shopify/Product/14",
+    title: "Fresh Organic Tomato - 500g",
+    handle: "fresh-organic-tomato-500g",
+    descriptionHtml: "<p>Juicy, vine-ripened organic tomatoes. Hand-picked at peak ripeness for rich color and perfect flavor. Perfect for curries, salads, and soups.</p>",
+    images: [
+      { url: "https://images.unsplash.com/photo-1595855759920-86582396756a?auto=format&fit=crop&q=80&w=600", altText: "Fresh Organic Tomato 500g", width: 600, height: 600 }
+    ],
+    priceRange: { minVariantPrice: { amount: "39", currencyCode: "INR" } },
+    variants: [
+      { id: "gid://shopify/ProductVariant/1401", title: "500g Pack", price: { amount: "39", currencyCode: "INR" }, availableForSale: true, selectedOptions: [] }
+    ],
+    tags: ["vegetables", "vegetable", "tomato", "grocery"]
+  },
+  {
+    id: "gid://shopify/Product/15",
+    title: "Premium New Crop Potato - 1kg",
+    handle: "premium-potato-1kg",
+    descriptionHtml: "<p>Cleaned, sorted, and direct-from-farm premium quality potatoes. Perfect for roasting, frying, boiling, or curry preparation.</p>",
+    images: [
+      { url: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&q=80&w=600", altText: "Premium Potato 1kg", width: 600, height: 600 }
+    ],
+    priceRange: { minVariantPrice: { amount: "35", currencyCode: "INR" } },
+    variants: [
+      { id: "gid://shopify/ProductVariant/1501", title: "1kg Pack", price: { amount: "35", currencyCode: "INR" }, availableForSale: true, selectedOptions: [] }
+    ],
+    tags: ["vegetables", "vegetable", "potato", "grocery"]
+  },
+  {
+    id: "gid://shopify/Product/16",
+    title: "Fresh Green Capsicum - 250g",
+    handle: "fresh-green-capsicum-250g",
+    descriptionHtml: "<p>Crisp, crunchy, and freshly harvested green bell peppers. Packed with antioxidants and high vitamin C content.</p>",
+    images: [
+      { url: "https://images.unsplash.com/photo-1563565038-a441fed7b3c9?auto=format&fit=crop&q=80&w=600", altText: "Fresh Green Capsicum 250g", width: 600, height: 600 }
+    ],
+    priceRange: { minVariantPrice: { amount: "29", currencyCode: "INR" } },
+    variants: [
+      { id: "gid://shopify/ProductVariant/1601", title: "250g Pack", price: { amount: "29", currencyCode: "INR" }, availableForSale: true, selectedOptions: [] }
+    ],
+    tags: ["vegetables", "vegetable", "capsicum", "grocery"]
+  },
+  {
+    id: "gid://shopify/Product/17",
+    title: "Premium Alphonso Mango (Devgad) - 2 pcs",
+    handle: "premium-alphonso-mango-2pcs",
+    descriptionHtml: "<p>The king of mangoes! Hand-selected, rich, sweet, and incredibly aromatic Alphonso mangoes from Devgad orchards. Hand-inspected for pristine quality.</p>",
+    images: [
+      { url: "https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&q=80&w=600", altText: "Premium Alphonso Mango 2pcs", width: 600, height: 600 }
+    ],
+    priceRange: { minVariantPrice: { amount: "199", currencyCode: "INR" } },
+    variants: [
+      { id: "gid://shopify/ProductVariant/1701", title: "2 pcs Pack", price: { amount: "199", currencyCode: "INR" }, availableForSale: true, selectedOptions: [] }
+    ],
+    tags: ["fruits", "fruit", "mango", "fresh"]
+  },
+  {
+    id: "gid://shopify/Product/18",
+    title: "Fresh Royal Gala Apple - 4 pcs",
+    handle: "fresh-royal-gala-apple-4pcs",
+    descriptionHtml: "<p>Sweet, crisp, and refreshing premium imported Royal Gala apples. Direct from orchards, hand-inspected for pristine quality.</p>",
+    images: [
+      { url: "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&q=80&w=600", altText: "Fresh Royal Gala Apple 4pcs", width: 600, height: 600 }
+    ],
+    priceRange: { minVariantPrice: { amount: "149", currencyCode: "INR" } },
+    variants: [
+      { id: "gid://shopify/ProductVariant/1801", title: "4 pcs Pack", price: { amount: "149", currencyCode: "INR" }, availableForSale: true, selectedOptions: [] }
+    ],
+    tags: ["fruits", "fruit", "apple", "fresh"]
+  },
+  {
+    id: "gid://shopify/Product/19",
+    title: "Gourmet Frozen Green Peas - 500g",
+    handle: "gourmet-frozen-green-peas-500g",
+    descriptionHtml: "<p>Sweet, tender green peas, frozen at peak freshness using individual quick freezing (IQF) technology. No added colors or preservatives.</p>",
+    images: [
+      { url: "https://images.unsplash.com/photo-1536484222047-9759ff535c6a?auto=format&fit=crop&q=80&w=600", altText: "Gourmet Frozen Green Peas 500g", width: 600, height: 600 }
+    ],
+    priceRange: { minVariantPrice: { amount: "99", currencyCode: "INR" } },
+    variants: [
+      { id: "gid://shopify/ProductVariant/1901", title: "500g Pack", price: { amount: "99", currencyCode: "INR" }, availableForSale: true, selectedOptions: [] }
+    ],
+    tags: ["frozen", "vegetables", "peas", "grocery"]
   }
 ];
 
@@ -322,7 +420,14 @@ export async function getProducts(): Promise<Product[]> {
   try {
     const response = await shopifyFetch<any>({ query });
     if (response.body?.data?.products?.edges && response.body.data.products.edges.length > 0) {
-      return response.body.data.products.edges.map((edge: any) => transformProduct(edge.node));
+      const shopifyProducts = response.body.data.products.edges.map((edge: any) => transformProduct(edge.node));
+      const allProducts = [...shopifyProducts];
+      mockProducts.forEach(mockProd => {
+        if (!allProducts.some(p => p.handle === mockProd.handle)) {
+          allProducts.push(mockProd);
+        }
+      });
+      return allProducts;
     }
   } catch (error) {
     console.warn('Shopify Storefront API connection failed or empty database. Serving local CSV fallback.', error);

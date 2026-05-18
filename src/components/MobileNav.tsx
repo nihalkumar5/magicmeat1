@@ -4,8 +4,10 @@ import React from 'react';
 import { useCart } from '@/context/CartContext';
 
 export default function MobileNav() {
-  const { cartItems, openCart } = useCart();
+  const { cartItems, openCart, isCartOpen } = useCart();
   const itemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
+  if (isCartOpen) return null;
 
   return (
     <nav className="mobile-bottom-nav">

@@ -3,7 +3,9 @@ import { getProducts } from '@/lib/shopify';
 import ProductCatalog from '@/components/ProductCatalog';
 import FeaturedProducts from '@/components/FeaturedProducts';
 
-// Next.js App Router Server Component
+// Force live real-time Shopify synchronization
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 export default async function HomePage() {
   // Fetch active products from server (with automatic CSV fallback)
   const products = await getProducts();

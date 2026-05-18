@@ -4,6 +4,10 @@ import ProductDetails from '@/components/ProductDetails';
 import Link from 'next/link';
 import { Metadata } from 'next';
 
+// Force live real-time Shopify synchronization
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 interface ProductPageProps {
   params: Promise<{
     handle: string;

@@ -369,7 +369,7 @@ function transformProduct(node: any): Product {
 export async function getProducts(): Promise<Product[]> {
   const query = `
     query getProducts {
-      products(first: 20) {
+      products(first: 250) {
         edges {
           node {
             id

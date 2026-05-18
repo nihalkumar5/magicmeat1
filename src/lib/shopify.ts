@@ -96,7 +96,7 @@ export const mockProducts: Product[] = [
     handle: "boneless-chicken-breast-500g",
     descriptionHtml: "<p>Lean boneless chicken breast, cleaned and packed for grills, curries, salads and meal prep. High protein, tender, and vacuum-sealed for maximum freshness.</p>",
     images: [
-      { url: "https://images.unsplash.com/photo-1598515214211-89d3e73ae83b?auto=format&fit=crop&q=80&w=600", altText: "Boneless Chicken Breast 500g", width: 600, height: 600 }
+      { url: "https://images.unsplash.com/photo-1604503468506-a8da13d82791?auto=format&fit=crop&q=80&w=600", altText: "Boneless Chicken Breast 500g", width: 600, height: 600 }
     ],
     priceRange: { minVariantPrice: { amount: "249", currencyCode: "INR" } },
     variants: [
@@ -110,7 +110,7 @@ export const mockProducts: Product[] = [
     handle: "chicken-drumsticks-500g",
     descriptionHtml: "<p>Juicy chicken drumsticks, perfect for tandoori, frying, roasting and rich, spicy curries. Perfectly portioned and fresh.</p>",
     images: [
-      { url: "https://images.unsplash.com/photo-1598515214211-89d3e73ae83b?auto=format&fit=crop&q=80&w=600", altText: "Chicken Drumsticks 500g", width: 600, height: 600 }
+      { url: "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&q=80&w=600", altText: "Chicken Drumsticks 500g", width: 600, height: 600 }
     ],
     priceRange: { minVariantPrice: { amount: "219", currencyCode: "INR" } },
     variants: [
@@ -124,7 +124,7 @@ export const mockProducts: Product[] = [
     handle: "mutton-curry-cut-500g",
     descriptionHtml: "<p>Tender mutton pieces cleaned and portioned for rich curries, aromatic biryani, and weekend specials. Sourced from grass-fed goats.</p>",
     images: [
-      { url: "https://images.unsplash.com/photo-1603048588665-791ca8aea617?auto=format&fit=crop&q=80&w=600", altText: "Mutton Curry Cut 500g", width: 600, height: 600 }
+      { url: "https://images.unsplash.com/photo-1608228088998-57828365d486?auto=format&fit=crop&q=80&w=600", altText: "Mutton Curry Cut 500g", width: 600, height: 600 }
     ],
     priceRange: { minVariantPrice: { amount: "449", currencyCode: "INR" } },
     variants: [
@@ -152,7 +152,7 @@ export const mockProducts: Product[] = [
     handle: "farm-fresh-eggs-12-pcs",
     descriptionHtml: "<p>Fresh farm eggs packed safely for your breakfast, baking, protein meals and daily family cooking. High nutrition profile.</p>",
     images: [
-      { url: "https://images.unsplash.com/photo-1516448424440-9dbca97779c1?auto=format&fit=crop&q=80&w=600", altText: "Farm Fresh Eggs 12 pieces", width: 600, height: 600 }
+      { url: "https://images.unsplash.com/photo-1506976785307-8732e854ad03?auto=format&fit=crop&q=80&w=600", altText: "Farm Fresh Eggs 12 pieces", width: 600, height: 600 }
     ],
     priceRange: { minVariantPrice: { amount: "119", currencyCode: "INR" } },
     variants: [
@@ -166,7 +166,7 @@ export const mockProducts: Product[] = [
     handle: "whole-wheat-atta-1kg",
     descriptionHtml: "<p>Daily-use whole wheat flour (atta) for soft, warm rotis, parathas and home baking. Ground from premium grains.</p>",
     images: [
-      { url: "https://images.unsplash.com/photo-1574316071802-0d684efa7bf5?auto=format&fit=crop&q=80&w=600", altText: "Whole wheat atta 1kg", width: 600, height: 600 }
+      { url: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=600", altText: "Whole wheat atta 1kg", width: 600, height: 600 }
     ],
     priceRange: { minVariantPrice: { amount: "65", currencyCode: "INR" } },
     variants: [
@@ -180,7 +180,7 @@ export const mockProducts: Product[] = [
     handle: "basmati-rice-1kg",
     descriptionHtml: "<p>Aromatic long-grain basmati rice, aged to perfection. Perfect for biryani, festive pulao, and elegant everyday meals.</p>",
     images: [
-      { url: "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&q=80&w=600", altText: "Basmati rice 1kg", width: 600, height: 600 }
+      { url: "https://images.unsplash.com/photo-1596560548464-f010687ad1e5?auto=format&fit=crop&q=80&w=600", altText: "Basmati rice 1kg", width: 600, height: 600 }
     ],
     priceRange: { minVariantPrice: { amount: "149", currencyCode: "INR" } },
     variants: [
@@ -194,7 +194,7 @@ export const mockProducts: Product[] = [
     handle: "fresh-milk-1l",
     descriptionHtml: "<p>Pure fresh pasteurized milk, packed under hygienic conditions for your daily tea, coffee, breakfast, and family needs.</p>",
     images: [
-      { url: "https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&q=80&w=600", altText: "Fresh milk 1L", width: 600, height: 600 }
+      { url: "https://images.unsplash.com/photo-1563636619-e9143da7973b?auto=format&fit=crop&q=80&w=600", altText: "Fresh milk 1L", width: 600, height: 600 }
     ],
     priceRange: { minVariantPrice: { amount: "45", currencyCode: "INR" } },
     variants: [
@@ -208,7 +208,7 @@ export const mockProducts: Product[] = [
     handle: "chicken-eggs-combo-pack",
     descriptionHtml: "<p>Value-rich meal pack including our signature Fresh Chicken Curry Cut (500g) paired with 6 Farm Fresh Eggs. Perfect family pack.</p>",
     images: [
-      { url: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80&w=600", altText: "Chicken + Eggs Combo Pack", width: 600, height: 600 }
+      { url: "https://images.unsplash.com/photo-1606787366850-de6330128bfc?auto=format&fit=crop&q=80&w=600", altText: "Chicken + Eggs Combo Pack", width: 600, height: 600 }
     ],
     priceRange: { minVariantPrice: { amount: "299", currencyCode: "INR" } },
     variants: [

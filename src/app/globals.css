@@ -227,15 +227,12 @@ button {
 
 @media (max-width: 480px) {
   .call-trigger-text {
-    display: none;
+    font-size: 0.65rem;
   }
   .call-trigger-top {
-    padding: 0.4rem;
-    border-radius: 50%;
-    width: 28px;
-    height: 28px;
-    justify-content: center;
-    align-items: center;
+    padding: 0.3rem 0.6rem;
+    border-radius: 20px;
+    gap: 0.25rem;
   }
 }
 

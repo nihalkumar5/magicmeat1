@@ -1431,6 +1431,10 @@ button {
 
 /* Responsive Media Queries */
 @media (max-width: 1024px) {
+  .nav-links {
+    display: none;
+  }
+  
   .pdp-grid {
     grid-template-columns: 1fr;
     gap: 3rem;
@@ -2151,6 +2155,9 @@ button {
 }
 
 @media (max-width: 1024px) {
+  .nav-links {
+    display: none;
+  }
   .planner-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;

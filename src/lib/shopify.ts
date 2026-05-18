@@ -72,6 +72,11 @@ export interface Product {
   variants: ShopifyVariant[];
   tags: string[];
   productType?: string;
+  collections?: {
+    id: string;
+    title: string;
+    handle: string;
+  }[];
 }
 
 // 10 Premium Products mapped exactly from the magicmeat-products.csv
@@ -361,7 +366,8 @@ function transformProduct(node: any): Product {
       selectedOptions: edge.node.selectedOptions
     })),
     tags: node.tags || [],
-    productType: node.productType || ''
+    productType: node.productType || '',
+    collections: node.collections?.edges.map((edge: any) => edge.node) || []
   };
 }
 
@@ -411,6 +417,15 @@ export async function getProducts(): Promise<Product[]> {
             }
             tags
             productType
+            collections(first: 5) {
+              edges {
+                node {
+                  id
+                  title
+                  handle
+                }
+              }
+            }
           }
         }
       }
@@ -474,6 +489,15 @@ export async function getProductByHandle(handle: string): Promise<Product | null
         }
         tags
         productType
+        collections(first: 5) {
+          edges {
+            node {
+              id
+              title
+              handle
+            }
+          }
+        }
       }
     }
   `;

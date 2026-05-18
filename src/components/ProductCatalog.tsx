@@ -28,27 +28,32 @@ export default function ProductCatalog({ initialProducts }: ProductCatalogProps)
   const filteredProducts = initialProducts.filter((product) => {
     if (activeCategory === 'all') return true;
     
+    const collections = (product.collections || []).map(c => c.title.toLowerCase());
     const tags = product.tags.map(t => t.toLowerCase());
     const title = product.title.toLowerCase();
     const pType = (product.productType || '').toLowerCase();
     
     if (activeCategory === 'chicken') {
-      return tags.some(t => ['chicken'].includes(t)) ||
+      return collections.includes('chicken') ||
+             tags.some(t => ['chicken'].includes(t)) ||
              title.includes('chicken') ||
              pType.includes('chicken');
     }
     if (activeCategory === 'mutton') {
-      return tags.some(t => ['mutton', 'goat', 'lamb'].includes(t)) ||
+      return collections.includes('mutton') ||
+             tags.some(t => ['mutton', 'goat', 'lamb'].includes(t)) ||
              title.includes('mutton') || title.includes('goat') ||
              pType.includes('mutton');
     }
     if (activeCategory === 'seafood') {
-      return tags.some(t => ['fish', 'seafood', 'prawn', 'shrimp', 'rohu', 'katla'].includes(t)) ||
+      return collections.includes('fish') || collections.includes('seafood') ||
+             tags.some(t => ['fish', 'seafood', 'prawn', 'shrimp', 'rohu', 'katla'].includes(t)) ||
              title.includes('fish') || title.includes('prawn') || title.includes('rohu') || title.includes('katla') || title.includes('seafood') ||
              pType.includes('fish') || pType.includes('seafood');
     }
     if (activeCategory === 'grocery') {
-      return tags.some(t => ['grocery', 'atta', 'rice', 'eggs', 'milk', 'essentials', 'dairy', 'ghee', 'spices', 'oil'].includes(t)) ||
+      return collections.includes('egg') || collections.includes('eggs') || collections.includes('grocery') ||
+             tags.some(t => ['grocery', 'atta', 'rice', 'eggs', 'milk', 'essentials', 'dairy', 'ghee', 'spices', 'oil'].includes(t)) ||
              title.includes('egg') || title.includes('atta') || title.includes('rice') ||
              title.includes('milk') || title.includes('ghee') || title.includes('masala') ||
              title.includes('spice') || title.includes('oil') || title.includes('sugar') ||
@@ -56,10 +61,11 @@ export default function ProductCatalog({ initialProducts }: ProductCatalogProps)
     }
     
     const fruitKeywords = ['banana', 'apple', 'mango', 'orange', 'guava', 'grape', 'papaya', 'pomegranate', 'strawberry', 'watermelon', 'melon', 'pear', 'peach', 'plum', 'kiwi', 'pineapple', 'coconut'];
-    const vegKeywords = ['onion', 'potato', 'tomato', 'garlic', 'ginger', 'dhaniya', 'aloo', 'capsicum', 'chilli', 'coriander', 'lemon', 'carrot', 'radish', 'cabbage', 'cauliflower', 'spinach', 'mint', 'pudina', 'sabzi', 'bhindi', 'okra', 'brinjal', 'eggplant', 'lauki', 'karela', 'kaddu'];
+    const vegKeywords = ['onion', 'potato', 'tomato', 'garlic', 'ginger', 'dhaniya', 'aloo', 'capsicum', 'chilli', 'coriander', 'lemon', 'carrot', 'radish', 'cabbage', 'cauliflower', 'spinach', 'mint', 'pudina', 'sabzi', 'bhindi', 'okra', 'brinjal', 'eggplant', 'lauki', 'karela', 'kaddu', 'vagetables', 'vagetable'];
 
     if (activeCategory === 'vegetables') {
-      const matchesVegKeywords = tags.some(t => ['vegetable', 'vegetables', 'sabzi', ...vegKeywords].includes(t)) ||
+      const matchesVegKeywords = collections.includes('vagetables') || collections.includes('vegetables') || collections.includes('vegetable') ||
+             tags.some(t => ['vegetable', 'vegetables', 'sabzi', ...vegKeywords].includes(t)) ||
              vegKeywords.some(kw => title.includes(kw)) ||
              pType.includes('vegetable');
              
@@ -69,12 +75,14 @@ export default function ProductCatalog({ initialProducts }: ProductCatalogProps)
       return matchesVegKeywords || (isFruitsAndVegType && !matchesFruitKeywords);
     }
     if (activeCategory === 'fruits') {
-      return tags.some(t => ['fruit', 'fruits', ...fruitKeywords].includes(t)) ||
+      return collections.includes('fruits') || collections.includes('fruit') ||
+             tags.some(t => ['fruit', 'fruits', ...fruitKeywords].includes(t)) ||
              fruitKeywords.some(kw => title.includes(kw)) ||
              pType.includes('fruit');
     }
     if (activeCategory === 'frozen') {
-      return tags.some(t => ['frozen', 'ice cream', 'frozen food'].includes(t)) ||
+      return collections.includes('frozen') ||
+             tags.some(t => ['frozen', 'ice cream', 'frozen food'].includes(t)) ||
              title.includes('frozen') || title.includes('ice cream') ||
              pType.includes('frozen');
     }

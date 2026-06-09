@@ -58,31 +58,43 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
   };
 
   return (
-    <div className="container pdp-wrapper">
-      <div className="pdp-grid">
+    <div className="container-custom py-6 md:py-12">
+      {/* Brutalist Back Button */}
+      <button 
+        onClick={() => window.history.back()}
+        className="mb-8 inline-flex items-center gap-2 px-4 py-2 bg-white border-[3px] border-black shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:bg-[#D4FF00] hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-[2px_2px_0px_rgba(0,0,0,1)] font-heading font-black text-sm uppercase tracking-widest transition-all"
+      >
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="square" strokeLinejoin="miter">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        BACK TO SHOP
+      </button>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
         {/* Gallery Panel */}
-        <div>
-          <div className="pdp-gallery-main">
+        <div className="flex flex-col gap-6">
+          <div className="w-full relative aspect-[4/3] md:aspect-video bg-white border-[4px] border-black shadow-[8px_8px_0px_rgba(0,0,0,1)] overflow-hidden">
             <img 
               src={activeImageUrl} 
               alt={product.title} 
-              className="pdp-gallery-image"
+              className="absolute inset-0 w-full h-full object-cover object-center scale-[1.7]"
             />
           </div>
           
-          {/* Scrollable Thumbnails (if multiple exist) */}
+          {/* Scrollable Thumbnails */}
           {product.images.length > 1 && (
-            <div className="pdp-gallery-thumbs">
+            <div className="flex gap-4 overflow-x-auto pb-4 px-1 hide-scrollbar">
               {product.images.map((image, index) => (
                 <div 
                   key={index} 
-                  className={`pdp-gallery-thumb ${activeImageUrl === image.url ? 'active' : ''}`}
+                  className={`w-28 h-20 flex-shrink-0 cursor-pointer border-[3px] border-black overflow-hidden transition-all duration-200 ${activeImageUrl === image.url ? 'shadow-[4px_4px_0px_rgba(0,0,0,1)] translate-y-[-4px] translate-x-[-4px]' : 'opacity-80 hover:opacity-100 hover:shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:translate-y-[-2px] hover:translate-x-[-2px]'}`}
                   onClick={() => setActiveImageUrl(image.url)}
                 >
                   <img 
-                    src={image.url} 
-                    alt={`${product.title} thumbnail ${index + 1}`} 
-                    className="pdp-gallery-thumb-img"
+                     src={image.url} 
+                     alt={`${product.title} thumbnail ${index + 1}`} 
+                     className="w-full h-full object-cover object-center bg-white scale-[1.7]"
                   />
                 </div>
               ))}
@@ -91,35 +103,43 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
         </div>
 
         {/* Product Details Info Panel */}
-        <div className="pdp-info">
+        <div className="flex flex-col justify-center max-w-lg mx-auto md:mx-0 w-full">
           {/* Tag Badges */}
-          <div className="pdp-meta-row">
-            <span className="pdp-badge">
+          <div className="mb-6 text-center md:text-left">
+            <span className="inline-block bg-[#D4FF00] border-[3px] border-black shadow-[4px_4px_0px_rgba(0,0,0,1)] text-black px-4 py-1.5 text-sm font-heading font-bold uppercase tracking-widest">
               {isAvailable ? 'In Stock' : 'Out of Stock'}
             </span>
           </div>
 
-          <h1 className="pdp-title">{product.title}</h1>
+          <h1 className="font-heading text-5xl md:text-7xl uppercase tracking-widest mb-6 text-black text-center md:text-left leading-none">
+            {product.title}
+          </h1>
           
-          <div className="pdp-price" style={{ margin: '1rem 0 2rem 0' }}>
-            {currentPrice.toLocaleString('en-IN')}
+          <div className="mb-8 text-center md:text-left">
+            <span className="font-heading text-4xl md:text-5xl font-bold text-black bg-brand-primary border-[3px] border-black shadow-[4px_4px_0px_rgba(0,0,0,1)] inline-block px-6 py-2">
+               ₹{currentPrice.toFixed(0)}
+            </span>
           </div>
 
           {/* Description */}
-          <div 
-            className="pdp-description"
-            dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
-          />
+          {product.descriptionHtml && product.descriptionHtml.trim() !== '' && (
+            <div className="bg-white border-[3px] border-black shadow-[6px_6px_0px_rgba(0,0,0,1)] p-5 mb-10 text-base text-black font-medium">
+               <div 
+                 className="prose prose-p:mb-2 leading-snug"
+                 dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
+               />
+            </div>
+          )}
 
           {/* Variant Selector Button Grid */}
           {product.variants.length > 1 && (
-            <div className="pdp-variants-wrapper">
-              <div className="pdp-variants-title">Select Pack Size</div>
-              <div className="pdp-variants-grid">
+            <div className="mb-10">
+              <div className="font-heading font-bold text-black mb-4 text-xl tracking-widest uppercase text-center md:text-left border-b-[3px] border-black pb-2 inline-block">Select Size</div>
+              <div className="flex flex-wrap gap-4 justify-center md:justify-start">
                 {product.variants.map((variant) => (
                   <button
                     key={variant.id}
-                    className={`pdp-variant-btn ${selectedVariant.id === variant.id ? 'active' : ''}`}
+                    className={`px-6 py-3 font-heading text-lg uppercase tracking-widest transition-all duration-200 border-[3px] border-black ${selectedVariant.id === variant.id ? 'bg-black text-white shadow-none translate-y-[2px] translate-x-[2px]' : 'bg-white text-black shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-[2px_2px_0px_rgba(0,0,0,1)] hover:bg-[#D4FF00]'}`}
                     onClick={() => setSelectedVariant(variant)}
                     disabled={!variant.availableForSale}
                   >
@@ -132,38 +152,37 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
 
           {/* Active CTA Button */}
           <button 
-            className="cart-checkout-btn"
-            style={{ width: '100%', maxWidth: '320px', padding: '1.2rem 2rem', marginTop: '1rem' }}
+            className={`w-full mb-12 py-5 border-[4px] border-black font-heading text-2xl uppercase tracking-widest transition-all duration-200 ${!isAvailable ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : 'bg-[#15C213] text-white shadow-[6px_6px_0px_rgba(0,0,0,1)] active:translate-y-[4px] active:translate-x-[4px] active:shadow-[2px_2px_0px_rgba(0,0,0,1)] hover:bg-[#12a110]'}`}
             onClick={() => isAvailable && addToCart(product, selectedVariant)}
             disabled={!isAvailable}
           >
-            {isAvailable ? 'Add Selection to Cart' : 'Temporarily Out of Stock'}
+            {isAvailable ? 'Add to Cart' : 'Out of Stock'}
           </button>
 
-          {/* Sourcing details Tabs */}
-          <div className="pdp-tabs">
-            <div className="pdp-tab-headers">
-              <span 
-                className={`pdp-tab-header ${activeTab === 'sourcing' ? 'active' : ''}`}
+          {/* Brutalist Tabs */}
+          <div className="bg-white border-[4px] border-black shadow-[8px_8px_0px_rgba(0,0,0,1)] mb-10">
+            <div className="flex border-b-[4px] border-black">
+              <button 
+                className={`flex-1 py-4 px-2 font-heading text-lg uppercase tracking-widest transition-colors border-r-[4px] border-black last:border-r-0 ${activeTab === 'sourcing' ? 'bg-[#D4FF00] text-black' : 'bg-white text-gray-600 hover:bg-gray-100'}`}
                 onClick={() => setActiveTab('sourcing')}
               >
-                Purity & Sourcing
-              </span>
-              <span 
-                className={`pdp-tab-header ${activeTab === 'cooking' ? 'active' : ''}`}
+                Purity
+              </button>
+              <button 
+                className={`flex-1 py-4 px-2 font-heading text-lg uppercase tracking-widest transition-colors border-r-[4px] border-black last:border-r-0 ${activeTab === 'cooking' ? 'bg-[#D4FF00] text-black' : 'bg-white text-gray-600 hover:bg-gray-100'}`}
                 onClick={() => setActiveTab('cooking')}
               >
-                Preparation Guide
-              </span>
-              <span 
-                className={`pdp-tab-header ${activeTab === 'delivery' ? 'active' : ''}`}
+                Guide
+              </button>
+              <button 
+                className={`flex-1 py-4 px-2 font-heading text-lg uppercase tracking-widest transition-colors ${activeTab === 'delivery' ? 'bg-[#D4FF00] text-black' : 'bg-white text-gray-600 hover:bg-gray-100'}`}
                 onClick={() => setActiveTab('delivery')}
               >
-                Insulated Shipping
-              </span>
+                Shipping
+              </button>
             </div>
             
-            <div className="pdp-tab-content">
+            <div className="p-6 text-sm md:text-base font-bold text-black leading-relaxed bg-white">
               {getTabContent()}
             </div>
           </div>

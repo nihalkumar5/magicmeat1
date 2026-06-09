@@ -1,13 +1,32 @@
 import type { Metadata } from 'next';
+import { Bebas_Neue, Quicksand, Permanent_Marker } from 'next/font/google';
 import './globals.css';
 import { CartProvider } from '@/context/CartContext';
 import Header from '@/components/Header';
 import CartDrawer from '@/components/CartDrawer';
 import MobileNav from '@/components/MobileNav';
+import Footer from '@/components/Footer';
+
+const bebas = Bebas_Neue({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-heading',
+});
+
+const quicksand = Quicksand({
+  subsets: ['latin'],
+  variable: '--font-body',
+});
+
+const script = Permanent_Marker({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-script',
+});
 
 export const metadata: Metadata = {
-  title: 'Magicmeat | Premium Headless Storefront',
-  description: 'Farm-fresh meats, cleaned seafood, high-quality eggs, and daily grocery staples delivered directly to your doorstep. Experience the Magicmeat standard of quality.',
+  title: 'Magic Meat | Fresh Chicken Delivered Daily',
+  description: 'Clean Cuts. Honest Prices. Farm Fresh Quality.',
 };
 
 export default function RootLayout({
@@ -17,15 +36,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body suppressHydrationWarning>
+      <body className={`${bebas.variable} ${quicksand.variable} ${script.variable} font-body antialiased text-text-color bg-bg-color min-h-screen flex flex-col`} suppressHydrationWarning>
         <CartProvider>
           {/* Global Sticky Navigation Header */}
           <Header />
           
           {/* Main Page Routing Node */}
-          <main style={{ minHeight: 'calc(100vh - 80px)' }}>
+          <main className="min-h-screen">
             {children}
           </main>
+          
+          {/* Global Footer */}
+          <Footer />
           
           {/* Global Sliding Cart Drawer */}
           <CartDrawer />

@@ -123,20 +123,7 @@ export const mockProducts: Product[] = [
     ],
     tags: ["chicken", "drumsticks", "fresh meat"]
   },
-  {
-    id: "gid://shopify/Product/4",
-    title: "Mutton Curry Cut - 500g",
-    handle: "mutton-curry-cut-500g",
-    descriptionHtml: "<p>Tender mutton pieces cleaned and portioned for rich curries, aromatic biryani, and weekend specials. Sourced from grass-fed goats.</p>",
-    images: [
-      { url: "https://images.unsplash.com/photo-1608228088998-57828365d486?auto=format&fit=crop&q=80&w=600", altText: "Mutton Curry Cut 500g", width: 600, height: 600 }
-    ],
-    priceRange: { minVariantPrice: { amount: "449", currencyCode: "INR" } },
-    variants: [
-      { id: "gid://shopify/ProductVariant/401", title: "500g Pack", price: { amount: "449", currencyCode: "INR" }, availableForSale: true, selectedOptions: [] }
-    ],
-    tags: ["mutton", "curry cut", "fresh meat"]
-  },
+
   {
     id: "gid://shopify/Product/5",
     title: "Rohu Fish Cleaned - 500g",
@@ -277,20 +264,7 @@ export const mockProducts: Product[] = [
     ],
     tags: ["vegetables", "vegetable", "potato", "grocery"]
   },
-  {
-    id: "gid://shopify/Product/16",
-    title: "Fresh Green Capsicum - 250g",
-    handle: "fresh-green-capsicum-250g",
-    descriptionHtml: "<p>Crisp, crunchy, and freshly harvested green bell peppers. Packed with antioxidants and high vitamin C content.</p>",
-    images: [
-      { url: "https://images.unsplash.com/photo-1563565038-a441fed7b3c9?auto=format&fit=crop&q=80&w=600", altText: "Fresh Green Capsicum 250g", width: 600, height: 600 }
-    ],
-    priceRange: { minVariantPrice: { amount: "29", currencyCode: "INR" } },
-    variants: [
-      { id: "gid://shopify/ProductVariant/1601", title: "250g Pack", price: { amount: "29", currencyCode: "INR" }, availableForSale: true, selectedOptions: [] }
-    ],
-    tags: ["vegetables", "vegetable", "capsicum", "grocery"]
-  },
+
   {
     id: "gid://shopify/Product/17",
     title: "Premium Alphonso Mango (Devgad) - 2 pcs",
@@ -319,20 +293,7 @@ export const mockProducts: Product[] = [
     ],
     tags: ["fruits", "fruit", "apple", "fresh"]
   },
-  {
-    id: "gid://shopify/Product/19",
-    title: "Gourmet Frozen Green Peas - 500g",
-    handle: "gourmet-frozen-green-peas-500g",
-    descriptionHtml: "<p>Sweet, tender green peas, frozen at peak freshness using individual quick freezing (IQF) technology. No added colors or preservatives.</p>",
-    images: [
-      { url: "https://images.unsplash.com/photo-1536484222047-9759ff535c6a?auto=format&fit=crop&q=80&w=600", altText: "Gourmet Frozen Green Peas 500g", width: 600, height: 600 }
-    ],
-    priceRange: { minVariantPrice: { amount: "99", currencyCode: "INR" } },
-    variants: [
-      { id: "gid://shopify/ProductVariant/1901", title: "500g Pack", price: { amount: "99", currencyCode: "INR" }, availableForSale: true, selectedOptions: [] }
-    ],
-    tags: ["frozen", "vegetables", "peas", "grocery"]
-  }
+
 ];
 
 // Transform Shopify API nesting (Edges & Nodes) into clean, flat arrays
@@ -434,7 +395,12 @@ export async function getProducts(): Promise<Product[]> {
         return true;
       });
       
-      return uniqueProducts;
+      // Merge mock products that are not present in the Shopify store
+      const missingMocks = mockProducts.filter((mockProduct) => {
+        return !seenTitles.has(mockProduct.title.toLowerCase().trim());
+      });
+      
+      return [...uniqueProducts, ...missingMocks];
     }
   } catch (error) {
     console.warn('Shopify Storefront API connection failed or empty database. Serving local CSV fallback.', error);

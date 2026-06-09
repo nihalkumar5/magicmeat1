@@ -15,7 +15,7 @@ interface CartContextType {
   checkoutLoading: boolean;
   openCart: () => void;
   closeCart: () => void;
-  addToCart: (product: Product, variant: ShopifyVariant) => void;
+  addToCart: (product: Product, variant: ShopifyVariant, openAfterAdd?: boolean) => void;
   updateQuantity: (variantId: string, quantity: number) => void;
   removeFromCart: (variantId: string) => void;
   handleCheckout: () => Promise<void>;
@@ -55,7 +55,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const closeCart = () => setIsCartOpen(false);
 
   // 3. Add item to cart
-  const addToCart = (product: Product, variant: ShopifyVariant) => {
+  const addToCart = (product: Product, variant: ShopifyVariant, openAfterAdd = true) => {
     const existingIndex = cartItems.findIndex((item) => item.variant.id === variant.id);
 
     if (existingIndex > -1) {
@@ -68,8 +68,10 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       saveCart([...cartItems, { product, variant, quantity: 1 }]);
     }
     
-    // Automatically open the cart drawer for premium tactile feedback
-    openCart();
+    // Automatically open the cart drawer for premium tactile feedback (unless disabled)
+    if (openAfterAdd) {
+      openCart();
+    }
   };
 
   // 4. Update quantity

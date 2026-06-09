@@ -45,7 +45,7 @@ export default function Header() {
         </Link>
         
         {/* Cart Icon (Right) */}
-        <button className="relative p-1 hover:opacity-70 transition-opacity" onClick={openCart}>
+        <button id="header-cart-icon" className="relative p-1 hover:opacity-70 transition-opacity" onClick={openCart}>
            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
              <line x1="3" y1="6" x2="21" y2="6"></line>

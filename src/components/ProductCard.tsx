@@ -23,16 +23,66 @@ export default function ProductCard({ product }: ProductCardProps) {
 
   const handleAdd = (e: React.MouseEvent) => {
     e.preventDefault(); // Prevent navigating to product details
-    if (defaultVariant) addToCart(product, defaultVariant);
+    
+    // Haptic feedback
+    if (typeof window !== 'undefined' && window.navigator && window.navigator.vibrate) {
+      window.navigator.vibrate(50);
+    }
+
+    // Add to cart but DO NOT open drawer
+    if (defaultVariant) addToCart(product, defaultVariant, false);
+
+    // Premium Flying Animation
+    const buttonElement = e.currentTarget as HTMLElement;
+    const cartIconElement = document.getElementById('header-cart-icon') || document.querySelector('.cart-icon-mobile');
+    
+    if (buttonElement && cartIconElement) {
+      const buttonRect = buttonElement.getBoundingClientRect();
+      const cartRect = cartIconElement.getBoundingClientRect();
+
+      const flyingDot = document.createElement('div');
+      flyingDot.style.position = 'fixed';
+      flyingDot.style.left = `${buttonRect.left + buttonRect.width / 2 - 8}px`;
+      flyingDot.style.top = `${buttonRect.top + buttonRect.height / 2 - 8}px`;
+      flyingDot.style.width = '16px';
+      flyingDot.style.height = '16px';
+      flyingDot.style.backgroundColor = '#D4FF00';
+      flyingDot.style.borderRadius = '50%';
+      flyingDot.style.zIndex = '9999';
+      flyingDot.style.transition = 'all 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
+      flyingDot.style.boxShadow = '0 0 10px rgba(212,255,0,0.8)';
+      
+      document.body.appendChild(flyingDot);
+
+      // Trigger reflow
+      void flyingDot.offsetWidth;
+
+      // Animate to target
+      flyingDot.style.left = `${cartRect.left + cartRect.width / 2 - 8}px`;
+      flyingDot.style.top = `${cartRect.top + cartRect.height / 2 - 8}px`;
+      flyingDot.style.transform = 'scale(0.3)';
+      flyingDot.style.opacity = '0.2';
+
+      setTimeout(() => {
+        if (document.body.contains(flyingDot)) {
+          document.body.removeChild(flyingDot);
+        }
+        // Small cart bounce effect
+        cartIconElement.style.transform = 'scale(1.2)';
+        setTimeout(() => { cartIconElement.style.transform = 'scale(1)'; }, 150);
+      }, 600);
+    }
   };
 
   const handleIncrement = (e: React.MouseEvent) => {
     e.preventDefault();
+    if (typeof window !== 'undefined' && window.navigator && window.navigator.vibrate) window.navigator.vibrate(30);
     if (defaultVariant) updateQuantity(defaultVariant.id, quantity + 1);
   };
 
   const handleDecrement = (e: React.MouseEvent) => {
     e.preventDefault();
+    if (typeof window !== 'undefined' && window.navigator && window.navigator.vibrate) window.navigator.vibrate(30);
     if (defaultVariant) updateQuantity(defaultVariant.id, quantity - 1);
   };
 

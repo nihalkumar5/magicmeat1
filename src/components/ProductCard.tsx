@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Product } from '@/lib/shopify';
+import { useCart } from '@/context/CartContext';
 
 interface ProductCardProps {
   product: Product;
@@ -10,9 +11,30 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   const { title, handle, images, priceRange } = product;
+  const { cartItems, addToCart, updateQuantity } = useCart();
   
   // Format price
   const price = `${parseFloat(priceRange.minVariantPrice.amount).toFixed(0)}`;
+
+  // Find if product is already in cart
+  const defaultVariant = product.variants[0];
+  const cartItem = cartItems.find((item) => item.variant.id === defaultVariant?.id);
+  const quantity = cartItem ? cartItem.quantity : 0;
+
+  const handleAdd = (e: React.MouseEvent) => {
+    e.preventDefault(); // Prevent navigating to product details
+    if (defaultVariant) addToCart(product, defaultVariant);
+  };
+
+  const handleIncrement = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (defaultVariant) updateQuantity(defaultVariant.id, quantity + 1);
+  };
+
+  const handleDecrement = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (defaultVariant) updateQuantity(defaultVariant.id, quantity - 1);
+  };
 
   const tags = product.tags?.map(t => t.toLowerCase()) || [];
   const collections = product.collections?.map(c => c.title.toLowerCase()) || [];
@@ -82,9 +104,33 @@ export default function ProductCard({ product }: ProductCardProps) {
                <span className="text-gray-500 font-semibold text-sm">₹</span>{price}
             </div>
             
-            <button className="bg-[#D4FF00] text-black w-9 h-9 rounded-full flex items-center justify-center hover:bg-[#bce600] transition-colors shadow-[0_2px_10px_rgba(212,255,0,0.4)]">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-            </button>
+            {quantity === 0 ? (
+              <button 
+                onClick={handleAdd}
+                className="bg-[#D4FF00] text-black w-9 h-9 rounded-full flex items-center justify-center hover:bg-[#bce600] transition-colors shadow-[0_2px_10px_rgba(212,255,0,0.4)]"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              </button>
+            ) : (
+              <div 
+                className="flex items-center bg-[#D4FF00] shadow-[0_2px_10px_rgba(212,255,0,0.4)] rounded-full h-9"
+                onClick={(e) => e.preventDefault()}
+              >
+                <button 
+                  onClick={handleDecrement}
+                  className="w-8 h-full flex items-center justify-center text-black hover:bg-black/10 rounded-l-full transition-colors"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                </button>
+                <span className="font-bold text-sm w-5 text-center text-black">{quantity}</span>
+                <button 
+                  onClick={handleIncrement}
+                  className="w-8 h-full flex items-center justify-center text-black hover:bg-black/10 rounded-r-full transition-colors"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </Link>

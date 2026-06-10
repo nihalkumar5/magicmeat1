@@ -6,6 +6,11 @@ import LiveGoogleReviews from '@/components/LiveGoogleReviews';
 import { getProducts } from '@/lib/shopify';
 import ProductCard from '@/components/ProductCard';
 
+export const metadata = {
+  title: 'Shop Premium Meats',
+  description: 'Browse our full catalog of premium fresh chicken, mutton, and seafood. Order online and get it delivered fresh to your door in Hazaribagh.',
+};
+
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 

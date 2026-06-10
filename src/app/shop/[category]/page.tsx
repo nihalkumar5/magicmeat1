@@ -3,6 +3,17 @@ import Link from 'next/link';
 import { getProducts } from '@/lib/shopify';
 import ProductCard from '@/components/ProductCard';
 import CategoryScroller from '@/components/CategoryScroller';
+import { Metadata } from 'next';
+
+export async function generateMetadata(props: { params: Promise<{ category: string }> }): Promise<Metadata> {
+  const params = await props.params;
+  const category = params.category;
+  const capitalizedCategory = category.charAt(0).toUpperCase() + category.slice(1);
+  return {
+    title: `${capitalizedCategory === 'All' ? 'All Products' : `Fresh ${capitalizedCategory}`}`,
+    description: `Order the best quality fresh ${category} in Hazaribagh online. Premium cuts, expertly cleaned, and delivered to your doorstep.`,
+  };
+}
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;

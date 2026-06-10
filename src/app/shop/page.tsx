@@ -58,14 +58,14 @@ export default async function Shop() {
       </div>
 
       {/* ORDER ON CALL SECTION (MOVED TO TOP) */}
-      <section className="bg-[#D4FF00] py-6 px-4 border-b-[4px] border-black text-center shadow-[0_8px_0px_rgba(0,0,0,1)] relative z-20">
-        <div className="max-w-2xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <section className="px-4 mt-6 relative z-20">
+        <div className="max-w-2xl mx-auto bg-white/40 backdrop-blur-lg border border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.04)] rounded-[24px] py-5 px-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="text-center md:text-left flex-1">
             <h2 className="font-heading font-black text-2xl md:text-3xl uppercase tracking-widest text-black mb-1 leading-none">ORDER ON CALL</h2>
-            <p className="font-body font-bold text-gray-800 text-sm md:text-base">Skip the app. Speak directly to our butcher!</p>
+            <p className="font-body text-gray-600 text-sm md:text-base font-medium">Skip the app. Speak directly to our butcher.</p>
           </div>
-          <a href="tel:+918271663388" className="bg-black text-[#D4FF00] font-heading font-black text-xl px-6 py-3 uppercase tracking-widest border-[3px] border-black shadow-[4px_4px_0px_rgba(255,255,255,1)] hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-[0px_0px_0px_rgba(255,255,255,1)] transition-all flex items-center justify-center gap-2 w-full md:w-auto">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <a href="tel:+918271663388" className="bg-[#FF5A00] hover:bg-[#FF7A30] text-black font-heading font-bold text-xl px-6 py-3 rounded-[16px] transition-all flex items-center justify-center gap-2 w-full md:w-auto border border-white/40 shadow-md">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
             +91 82716 63388
           </a>
         </div>

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Bebas_Neue, Quicksand, Permanent_Marker } from 'next/font/google';
 import './globals.css';
 import { CartProvider } from '@/context/CartContext';
+import { WishlistProvider } from '@/context/WishlistContext';
 import Header from '@/components/Header';
 import CartDrawer from '@/components/CartDrawer';
 import MobileNav from '@/components/MobileNav';
@@ -38,22 +39,24 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${bebas.variable} ${quicksand.variable} ${script.variable} font-body antialiased text-text-color bg-bg-color min-h-screen flex flex-col`} suppressHydrationWarning>
         <CartProvider>
-          {/* Global Sticky Navigation Header */}
-          <Header />
-          
-          {/* Main Page Routing Node */}
-          <main className="min-h-screen">
-            {children}
-          </main>
-          
-          {/* Global Footer */}
-          <Footer />
-          
-          {/* Global Sliding Cart Drawer */}
-          <CartDrawer />
+          <WishlistProvider>
+            {/* Global Sticky Navigation Header */}
+            <Header />
+            
+            {/* Main Page Routing Node */}
+            <main className="min-h-screen">
+              {children}
+            </main>
+            
+            {/* Global Footer */}
+            <Footer />
+            
+            {/* Global Sliding Cart Drawer */}
+            <CartDrawer />
 
-          {/* Mobile Bottom Navigation */}
-          <MobileNav />
+            {/* Mobile Bottom Navigation */}
+            <MobileNav />
+          </WishlistProvider>
         </CartProvider>
       </body>
     </html>

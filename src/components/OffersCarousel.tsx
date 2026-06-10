@@ -7,29 +7,32 @@ const FEATURES = [
   {
     id: 1,
     title: 'FARM FRESH',
-    subtitle: 'PREMIUM MEAT',
+    subtitle: 'PREMIUM',
     desc: 'Straight from local farms',
     btnText: 'SHOP NOW',
     href: '/shop',
-    img: 'https://images.unsplash.com/photo-1604503468506-a8da13d82791?auto=format&fit=crop&w=600&q=80',
+    img: '/offers/farm_fresh.png',
+    bgColor: 'bg-[#D4FF00]', // Lime Green
   },
   {
     id: 2,
     title: 'ANTIBIOTIC',
-    subtitle: 'FREE CUTS',
+    subtitle: 'FREE',
     desc: '100% chemical free',
-    btnText: 'VIEW QUALITY',
+    btnText: 'QUALITY',
     href: '/shop/chicken',
-    img: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80',
+    img: '/offers/chicken.png',
+    bgColor: 'bg-brand-primary', // Orange
   },
   {
     id: 3,
     title: '30 MIN',
-    subtitle: 'FAST DELIVERY',
+    subtitle: 'DELIVERY',
     desc: 'Lightning fast to your door',
     btnText: 'ORDER NOW',
     href: '/shop/mutton',
-    img: 'https://images.unsplash.com/photo-1526367790999-0150786686a2?auto=format&fit=crop&w=600&q=80',
+    img: '/offers/mutton.png',
+    bgColor: 'bg-white', // White
   }
 ];
 
@@ -72,33 +75,34 @@ export default function OffersCarousel() {
       <div 
         ref={scrollRef}
         onScroll={handleScroll}
-        className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar rounded-3xl pb-4"
+        className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-6"
       >
         {FEATURES.map((feature) => (
           <div 
             key={feature.id} 
             className="w-full min-w-full snap-center px-1"
           >
-            <div className="relative w-full h-[180px] sm:h-[200px] rounded-3xl overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.1)] border border-white/40">
+            <div className={`relative w-full h-[220px] ${feature.bgColor} border-[4px] border-black shadow-[6px_6px_0px_rgba(0,0,0,1)] flex flex-col group cursor-pointer hover:-translate-y-1 transition-transform`}>
               
-              {/* Full Background Image */}
-              <img 
-                src={feature.img} 
-                alt={feature.title} 
-                className="absolute inset-0 w-full h-full object-cover"
-              />
+              {/* Top Half: Image */}
+              <div className="w-full h-[65%] relative border-b-[4px] border-black overflow-hidden">
+                <img 
+                  src={feature.img} 
+                  alt={feature.title} 
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+              </div>
               
-              {/* Subtle Dark Overlay to ensure image isn't too bright overall */}
-              <div className="absolute inset-0 bg-black/10"></div>
-
-              {/* Glassmorphism Text Box */}
-              <div className="absolute top-1/2 -translate-y-1/2 left-4 w-[60%] sm:w-[45%] bg-white/75 backdrop-blur-lg border border-white/60 rounded-2xl p-4 flex flex-col justify-center shadow-[0_8px_32px_rgba(0,0,0,0.1)]">
-                <h2 className="font-heading text-black text-xl sm:text-3xl font-black uppercase tracking-widest leading-none mb-1">
-                  {feature.title}<br/>
-                  <span className="text-gray-800 text-base sm:text-xl">{feature.subtitle}</span>
-                </h2>
-                <p className="font-body text-gray-700 font-bold text-[10px] sm:text-xs uppercase tracking-widest mb-3">{feature.desc}</p>
-                <Link href={feature.href} className="bg-[#D4FF00] text-black text-[10px] sm:text-sm font-heading font-black px-4 py-1.5 rounded-full uppercase tracking-widest hover:bg-white transition-all shadow-sm border border-transparent hover:border-black w-max">
+              {/* Bottom Half: Solid Color & Text */}
+              <div className="w-full h-[35%] px-3 flex justify-between items-center relative">
+                <div className="flex flex-col z-10 truncate pr-2">
+                  <h2 className="font-heading text-black text-[22px] sm:text-3xl font-black uppercase tracking-widest leading-none mb-0.5 truncate">
+                    {feature.title} <span className="opacity-60">{feature.subtitle}</span>
+                  </h2>
+                  <p className="font-body text-black font-bold text-[10px] sm:text-xs uppercase tracking-widest truncate">{feature.desc}</p>
+                </div>
+                
+                <Link href={feature.href} className="bg-black text-white text-[11px] sm:text-sm font-heading font-black px-4 py-2 uppercase tracking-widest border-[3px] border-black hover:bg-white hover:text-black hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[4px_4px_0px_rgba(0,0,0,1)] transition-all z-10 whitespace-nowrap">
                   {feature.btnText}
                 </Link>
               </div>

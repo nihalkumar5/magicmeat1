@@ -68,9 +68,9 @@ export default function Header() {
       <div className={`fixed top-0 left-0 h-full w-[80%] max-w-[320px] bg-brand-beige z-[70] border-r-[4px] border-black transition-transform duration-300 ease-in-out flex flex-col ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         
         {/* Drawer Header */}
-        <div className="flex justify-between items-center p-6 border-b-[3px] border-black bg-[#D4FF00]">
+        <div className="flex justify-between items-center p-6 border-b-[3px] border-black bg-brand-primary">
           <h2 className="font-heading font-black text-2xl uppercase tracking-widest text-black">MENU</h2>
-          <button onClick={() => setIsMenuOpen(false)} className="p-1 hover:opacity-70 bg-black text-[#D4FF00] rounded-full">
+          <button onClick={() => setIsMenuOpen(false)} className="p-1 hover:opacity-70 bg-black text-brand-primary rounded-full">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
           </button>
         </div>

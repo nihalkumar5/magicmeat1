@@ -14,8 +14,8 @@ export default function MobileNav() {
   if (isCartOpen) return null;
 
   const getActiveTab = () => {
-    if (pathname === '/') return 'home';
-    if (pathname.startsWith('/shop') || pathname.startsWith('/search')) return 'categories';
+    if (pathname === '/' || pathname === '/shop') return 'home';
+    if (pathname.startsWith('/shop/') || pathname.startsWith('/search')) return 'categories';
     if (pathname.startsWith('/wishlist')) return 'wishlist';
     if (pathname.startsWith('/profile')) return 'profile';
     return '';
@@ -25,11 +25,11 @@ export default function MobileNav() {
 
   return (
     <div className="md:hidden fixed bottom-6 left-0 right-0 z-50 flex justify-center pointer-events-none px-4">
-      <nav className="bg-white/70 backdrop-blur-lg border border-white/50 shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-full flex justify-between items-center py-2 px-4 w-full max-w-[400px] pointer-events-auto">
+      <nav className="bg-white/30 backdrop-blur-2xl border border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.08)] rounded-[24px] flex justify-between items-center py-2 px-4 w-full max-w-[400px] pointer-events-auto">
         
         {/* Home */}
         <Link 
-          href="/"
+          href="/shop"
           className={`flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 ${activeTab === 'home' ? 'bg-[#FF5A00] text-black shadow-[0_4px_12px_rgba(255,90,0,0.4)] scale-105' : 'text-gray-600 hover:text-black hover:bg-white/50'}`}
         >
           <svg width="22" height="22" viewBox="0 0 24 24" fill={activeTab === 'home' ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -39,7 +39,7 @@ export default function MobileNav() {
 
         {/* Wishlist */}
         <Link 
-          href="/#wishlist"
+          href="/wishlist"
           className={`flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 ${activeTab === 'wishlist' ? 'bg-[#FF5A00] text-black shadow-[0_4px_12px_rgba(255,90,0,0.4)] scale-105' : 'text-gray-600 hover:text-black hover:bg-white/50'}`}
         >
           <svg width="22" height="22" viewBox="0 0 24 24" fill={activeTab === 'wishlist' ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -49,7 +49,7 @@ export default function MobileNav() {
 
         {/* Categories (Grid) */}
         <Link 
-          href="/shop"
+          href="/shop/all"
           className={`flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 ${activeTab === 'categories' ? 'bg-[#FF5A00] text-black shadow-[0_4px_12px_rgba(255,90,0,0.4)] scale-105' : 'text-gray-600 hover:text-black hover:bg-white/50'}`}
         >
           <svg width="22" height="22" viewBox="0 0 24 24" fill={activeTab === 'categories' ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

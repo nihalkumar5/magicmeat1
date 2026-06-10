@@ -96,20 +96,7 @@ export const mockProducts: Product[] = [
     tags: ["chicken", "fresh meat", "curry cut", "non veg"]
   },
 
-  {
-    id: "gid://shopify/Product/5",
-    title: "Rohu Fish Cleaned - 500g",
-    handle: "rohu-fish-cleaned-500g",
-    descriptionHtml: "<p>Cleaned Rohu fish cuts, scaled and ready for curry, fry and home-style seafood dishes. Hand-selected for ultimate quality.</p>",
-    images: [
-      { url: "https://images.unsplash.com/photo-1534604973900-c43ab4c2e0ab?auto=format&fit=crop&q=80&w=600", altText: "Rohu Fish Cleaned 500g", width: 600, height: 600 }
-    ],
-    priceRange: { minVariantPrice: { amount: "199", currencyCode: "INR" } },
-    variants: [
-      { id: "gid://shopify/ProductVariant/501", title: "500g Pack", price: { amount: "199", currencyCode: "INR" }, availableForSale: true, selectedOptions: [] }
-    ],
-    tags: ["fish", "rohu", "seafood", "fresh"]
-  },
+
   {
     id: "gid://shopify/Product/6",
     title: "Farm Fresh Eggs - 12 pcs",

@@ -81,22 +81,27 @@ export default async function Shop() {
       <OffersCarousel />
 
       {/* Shop Categories Glass Scroll */}
-      <div className="pt-12 px-4 pb-8 bg-white relative border-b-[4px] border-black">
-         <h2 className="font-heading text-4xl uppercase tracking-widest text-center border-b-[4px] border-black pb-4 mb-8">SHOP CATEGORIES</h2>
-         <div className="flex overflow-x-auto gap-4 pb-6 pt-2 px-2 snap-x snap-mandatory hide-scrollbar">
-            {categories.map((cat) => (
-               <Link href={cat.href} key={cat.name} className="flex flex-col group min-w-[150px] sm:min-w-[180px] snap-center">
-                  <div className="w-full aspect-square border-[4px] border-black bg-white shadow-[4px_4px_0px_rgba(0,0,0,1)] relative overflow-hidden active:translate-y-1 active:translate-x-1 active:shadow-none transition-all cursor-pointer">
-                     <img src={cat.img} alt={cat.name} className="absolute inset-0 w-full h-full object-contain p-8 group-hover:scale-110 transition-transform duration-300 drop-shadow-md" />
-                     <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-all"></div>
-                     <div className="absolute bottom-3 left-3 right-3 flex justify-center">
-                        <div className="bg-brand-primary text-black font-heading font-black text-sm sm:text-base uppercase tracking-widest px-3 py-1.5 border-[3px] border-black shadow-[2px_2px_0px_rgba(0,0,0,1)] rotate-[-2deg] group-hover:rotate-0 group-hover:scale-105 transition-all w-max max-w-full text-center">
-                          {cat.name}
+      <div className="pt-12 px-0 md:px-4 pb-8 bg-white relative border-b-[4px] border-black overflow-hidden">
+         <h2 className="font-heading text-4xl uppercase tracking-widest text-center border-b-[4px] border-black pb-4 mb-8 px-4">SHOP CATEGORIES</h2>
+         <div className="relative">
+            {/* Background Line (Neo-Brutalism Rail) */}
+            <div className="absolute top-[45%] left-0 right-0 h-[12px] bg-[#FF5A00] border-y-[3px] border-black z-0 shadow-[0_4px_0px_rgba(0,0,0,0.2)] w-[200vw] -translate-x-10"></div>
+            
+            <div className="flex overflow-x-auto gap-4 pb-6 pt-2 px-6 snap-x snap-mandatory hide-scrollbar relative z-10">
+               {categories.map((cat) => (
+                  <Link href={cat.href} key={cat.name} className="flex flex-col group min-w-[150px] sm:min-w-[180px] snap-center">
+                     <div className="w-full aspect-square border-[4px] border-black bg-white shadow-[4px_4px_0px_rgba(0,0,0,1)] relative overflow-hidden active:translate-y-1 active:translate-x-1 active:shadow-none transition-all cursor-pointer">
+                        <img src={cat.img} alt={cat.name} className="absolute inset-0 w-full h-full object-contain p-8 group-hover:scale-110 transition-transform duration-300 drop-shadow-md bg-white" />
+                        <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-all pointer-events-none"></div>
+                        <div className="absolute bottom-3 left-3 right-3 flex justify-center">
+                           <div className="bg-[#D4FF00] text-black font-heading font-black text-sm sm:text-base uppercase tracking-widest px-3 py-1.5 border-[3px] border-black shadow-[2px_2px_0px_rgba(0,0,0,1)] rotate-[-2deg] group-hover:rotate-0 group-hover:scale-105 transition-all w-max max-w-full text-center">
+                             {cat.name}
+                           </div>
                         </div>
                      </div>
-                  </div>
-               </Link>
-            ))}
+                  </Link>
+               ))}
+            </div>
          </div>
       </div>
 

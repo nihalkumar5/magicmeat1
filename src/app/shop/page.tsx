@@ -60,12 +60,12 @@ export default async function Shop() {
 
       {/* ORDER ON CALL SECTION (MOVED TO TOP) */}
       <section className="px-4 mt-6 relative z-20">
-        <div className="max-w-2xl mx-auto bg-white/40 backdrop-blur-lg border border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.04)] rounded-[24px] py-5 px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="max-w-2xl mx-auto bg-white/40 backdrop-blur-lg border border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.04)] rounded-[24px] py-6 px-6 flex flex-col md:flex-row items-center justify-between gap-5 md:gap-6">
           <div className="text-center md:text-left flex-1">
-            <h2 className="font-heading font-black text-2xl md:text-3xl uppercase tracking-widest text-black mb-1 leading-none">ORDER ON CALL</h2>
-            <p className="font-body text-gray-600 text-sm md:text-base font-medium">Skip the app. Speak directly to our butcher.</p>
+            <h2 className="font-heading font-black text-2xl md:text-3xl uppercase tracking-widest text-black mb-2 leading-none">SKIP THE APP, ORDER ON CALL</h2>
+            <p className="font-body text-gray-600 text-sm md:text-base font-medium max-w-sm mx-auto md:mx-0 leading-relaxed">Talk directly to the owner—who also personally delivers your fresh meat!</p>
           </div>
-          <a href="tel:+918271663388" className="bg-[#FF5A00] hover:bg-[#FF7A30] text-black font-heading font-bold text-xl px-6 py-3 rounded-[16px] transition-all flex items-center justify-center gap-2 w-full md:w-auto border border-white/40 shadow-md">
+          <a href="tel:+918271663388" className="bg-[#FF5A00] hover:bg-[#FF7A30] text-black font-heading font-bold text-xl px-6 py-3 rounded-[16px] transition-all flex items-center justify-center gap-2 w-full md:w-auto border border-white/40 shadow-md shrink-0">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
             +91 82716 63388
           </a>
@@ -131,8 +131,8 @@ export default async function Shop() {
             
             <div className="bg-white border-[4px] border-black p-6 shadow-[6px_6px_0px_rgba(0,0,0,1)] hover:-translate-y-2 transition-transform">
               <div className="w-16 h-16 bg-brand-primary border-[3px] border-black flex items-center justify-center mx-auto mb-4 shadow-[4px_4px_0px_rgba(0,0,0,1)] text-black font-black text-3xl rotate-[3deg]">02</div>
-              <h3 className="font-heading text-2xl uppercase tracking-wider mb-2 font-black">ANTIBIOTIC FREE</h3>
-              <p className="font-body text-black font-bold">100% chemical and antibiotic free meat, handled with utmost care and hygiene.</p>
+              <h3 className="font-heading text-2xl uppercase tracking-wider mb-2 font-black">PREMIUM PACKAGING</h3>
+              <p className="font-body text-black font-bold">Vacuum sealed to ensure utmost hygiene and freshness stays intact during transit.</p>
             </div>
             
             <div className="bg-white border-[4px] border-black p-6 shadow-[6px_6px_0px_rgba(0,0,0,1)] hover:-translate-y-2 transition-transform">

@@ -40,6 +40,14 @@ export default function Footer() {
            <span className="hover:text-black transition-colors cursor-pointer">Privacy</span>
         </div>
 
+        {/* Made with love */}
+        <div 
+          className="text-[#FF5A00] text-xl mb-6 transform -rotate-2"
+          style={{ fontFamily: 'var(--font-script), cursive' }}
+        >
+          Proudly made in Hazaribagh with love ❤️
+        </div>
+
         {/* Copyright */}
         <div className="text-gray-400 font-body text-[10px] uppercase tracking-widest">
           &copy; {new Date().getFullYear()} MAGIC MEAT. ALL RIGHTS RESERVED.

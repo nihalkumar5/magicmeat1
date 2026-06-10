@@ -16,12 +16,12 @@ const FEATURES = [
   },
   {
     id: 2,
-    title: 'ANTIBIOTIC',
-    subtitle: 'FREE',
-    desc: '100% chemical free',
-    btnText: 'QUALITY',
-    href: '/shop/chicken',
-    img: '/offers/chicken.png',
+    title: 'PREMIUM',
+    subtitle: 'PACKING',
+    desc: 'Vacuum sealed for freshness & hygiene',
+    btnText: 'SHOP NOW',
+    href: '/shop/all',
+    img: '/offers/premium_packing.png',
     bgColor: 'bg-brand-primary', // Orange
   },
   {

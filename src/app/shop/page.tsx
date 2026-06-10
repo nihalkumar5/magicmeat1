@@ -81,12 +81,11 @@ export default async function Shop() {
       <OffersCarousel />
 
       {/* Shop Categories Glass Scroll */}
-      <div className="pt-12 px-0 md:px-4 pb-8 bg-white relative border-b-[4px] border-black overflow-hidden">
-         <h2 className="font-heading text-4xl uppercase tracking-widest text-center border-b-[4px] border-black pb-4 mb-8 px-4">SHOP CATEGORIES</h2>
+      <div className="pt-12 px-0 md:px-4 pb-8 bg-white relative border-b-[4px] border-black overflow-hidden bg-[linear-gradient(to_right,#0000000a_1px,transparent_1px),linear-gradient(to_bottom,#0000000a_1px,transparent_1px)] bg-[size:32px_32px]">
+         <div className="bg-white border-y-[4px] border-black mb-8 relative z-10 shadow-[0_4px_0px_rgba(0,0,0,1)]">
+           <h2 className="font-heading text-3xl md:text-4xl uppercase tracking-widest text-center py-4 px-4 bg-[#FF5A00] text-black">SHOP CATEGORIES</h2>
+         </div>
          <div className="relative">
-            {/* Background Line (Neo-Brutalism Rail) */}
-            <div className="absolute top-[45%] left-0 right-0 h-[12px] bg-[#FF5A00] border-y-[3px] border-black z-0 shadow-[0_4px_0px_rgba(0,0,0,0.2)] w-[200vw] -translate-x-10"></div>
-            
             <div className="flex overflow-x-auto gap-4 pb-6 pt-2 px-6 snap-x snap-mandatory hide-scrollbar relative z-10">
                {categories.map((cat) => (
                   <Link href={cat.href} key={cat.name} className="flex flex-col group min-w-[150px] sm:min-w-[180px] snap-center">

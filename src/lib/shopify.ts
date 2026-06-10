@@ -95,34 +95,6 @@ export const mockProducts: Product[] = [
     ],
     tags: ["chicken", "fresh meat", "curry cut", "non veg"]
   },
-  {
-    id: "gid://shopify/Product/2",
-    title: "Boneless Chicken Breast - 500g",
-    handle: "boneless-chicken-breast-500g",
-    descriptionHtml: "<p>Lean boneless chicken breast, cleaned and packed for grills, curries, salads and meal prep. High protein, tender, and vacuum-sealed for maximum freshness.</p>",
-    images: [
-      { url: "https://images.unsplash.com/photo-1604503468506-a8da13d82791?auto=format&fit=crop&q=80&w=600", altText: "Boneless Chicken Breast 500g", width: 600, height: 600 }
-    ],
-    priceRange: { minVariantPrice: { amount: "249", currencyCode: "INR" } },
-    variants: [
-      { id: "gid://shopify/ProductVariant/201", title: "500g Pack", price: { amount: "249", currencyCode: "INR" }, availableForSale: true, selectedOptions: [] }
-    ],
-    tags: ["chicken", "boneless", "breast", "protein"]
-  },
-  {
-    id: "gid://shopify/Product/3",
-    title: "Chicken Drumsticks - 500g",
-    handle: "chicken-drumsticks-500g",
-    descriptionHtml: "<p>Juicy chicken drumsticks, perfect for tandoori, frying, roasting and rich, spicy curries. Perfectly portioned and fresh.</p>",
-    images: [
-      { url: "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&q=80&w=600", altText: "Chicken Drumsticks 500g", width: 600, height: 600 }
-    ],
-    priceRange: { minVariantPrice: { amount: "219", currencyCode: "INR" } },
-    variants: [
-      { id: "gid://shopify/ProductVariant/301", title: "500g Pack", price: { amount: "219", currencyCode: "INR" }, availableForSale: true, selectedOptions: [] }
-    ],
-    tags: ["chicken", "drumsticks", "fresh meat"]
-  },
 
   {
     id: "gid://shopify/Product/5",

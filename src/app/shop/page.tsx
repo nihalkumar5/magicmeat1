@@ -79,7 +79,7 @@ export default async function Shop() {
 
       {/* Search Bar */}
       <div className="px-4 pt-6">
-         <SearchBar />
+         <SearchBar products={products} />
       </div>
 
       {/* Offers Banner */}

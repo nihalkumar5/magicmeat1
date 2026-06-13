@@ -3,9 +3,9 @@
 import { useState, useRef, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import { mockProducts } from '@/lib/shopify';
+import { Product } from '@/lib/shopify';
 
-export default function SearchBar() {
+export default function SearchBar({ products = [] }: { products?: Product[] }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [query, setQuery] = useState(searchParams.get('q') || '');
@@ -23,11 +23,11 @@ export default function SearchBar() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Filter products based on query
-  const searchResults = query.trim() ? mockProducts.filter(p => 
-    p.title.toLowerCase().includes(query.toLowerCase()) || 
-    p.tags.some(t => t.toLowerCase().includes(query.toLowerCase())) ||
-    p.descriptionHtml.toLowerCase().includes(query.toLowerCase())
+  // Filter products based on query using the passed 'products' prop
+  const searchResults = query.trim() ? products.filter(p => 
+    p.title?.toLowerCase().includes(query.toLowerCase()) || 
+    p.tags?.some(t => t.toLowerCase().includes(query.toLowerCase())) ||
+    p.descriptionHtml?.toLowerCase().includes(query.toLowerCase())
   ).slice(0, 5) : []; // Show top 5 matches
 
   const handleSearch = (e: React.FormEvent) => {

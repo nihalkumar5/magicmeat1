@@ -9,14 +9,15 @@ export const dynamic = 'force-dynamic';
 export default async function SearchPage({
   searchParams,
 }: {
-  searchParams: { q?: string };
+  searchParams: Promise<{ q?: string }>;
 }) {
-  const query = searchParams.q || '';
+  const resolvedParams = await searchParams;
+  const query = resolvedParams.q || '';
   const products = await getProducts();
   
   const searchResults = query ? products.filter(p => 
-    p.title.toLowerCase().includes(query.toLowerCase()) || 
-    p.tags.some(t => t.toLowerCase().includes(query.toLowerCase())) ||
+    p.title?.toLowerCase().includes(query.toLowerCase()) || 
+    p.tags?.some(t => t.toLowerCase().includes(query.toLowerCase())) ||
     p.descriptionHtml?.toLowerCase().includes(query.toLowerCase())
   ) : [];
 
@@ -31,7 +32,7 @@ export default async function SearchPage({
       </div>
 
       <div className="p-4 pt-6">
-        <SearchBar />
+        <SearchBar products={products} />
       </div>
 
       <div className="px-4 py-4">

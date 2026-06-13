@@ -80,26 +80,7 @@ export interface Product {
 }
 
 // 10 Premium Products mapped exactly from the magicmeat-products.csv
-export const mockProducts: Product[] = [
-  {
-    id: "gid://shopify/Product/1",
-    title: "Fresh Chicken Curry Cut - 500g",
-    handle: "fresh-chicken-curry-cut-500g",
-    descriptionHtml: "<p>Freshly cut chicken pieces, cleaned and ready for curry. Ideal for family meals and everyday cooking. Antibiotic residue-free and sourced from healthy farms.</p>",
-    images: [
-      { url: "https://images.unsplash.com/photo-1604503468506-a8da13d82791?auto=format&fit=crop&q=80&w=600", altText: "Fresh Chicken Curry Cut 500g", width: 600, height: 600 }
-    ],
-    priceRange: { minVariantPrice: { amount: "189", currencyCode: "INR" } },
-    variants: [
-      { id: "gid://shopify/ProductVariant/101", title: "500g Pack", price: { amount: "189", currencyCode: "INR" }, availableForSale: true, selectedOptions: [] }
-    ],
-    tags: ["chicken", "fresh meat", "curry cut", "non veg"]
-  },
-
-
-
-
-];
+export const mockProducts: Product[] = [];
 
 // Transform Shopify API nesting (Edges & Nodes) into clean, flat arrays
 function transformProduct(node: any): Product {

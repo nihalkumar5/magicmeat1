@@ -68,7 +68,7 @@ export default async function Shop() {
         <div className="max-w-2xl mx-auto bg-white/40 backdrop-blur-lg border border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.04)] rounded-[24px] py-6 px-6 flex flex-col md:flex-row items-center justify-between gap-5 md:gap-6">
           <div className="text-center md:text-left flex-1">
             <h2 className="font-heading font-black text-2xl md:text-3xl uppercase tracking-widest text-black mb-2 leading-none">SKIP THE APP, ORDER ON CALL</h2>
-            <p className="font-body text-gray-600 text-sm md:text-base font-medium max-w-sm mx-auto md:mx-0 leading-relaxed">Talk directly to the owner—who also personally delivers your fresh meat!</p>
+            <p className="font-body text-gray-600 text-sm md:text-base font-medium max-w-sm mx-auto md:mx-0 leading-relaxed">Order the juiciest chicken with just a phone call.</p>
           </div>
           <a href="tel:+918271663388" className="bg-[#FF5A00] hover:bg-[#FF7A30] text-black font-heading font-bold text-xl px-6 py-3 rounded-[16px] transition-all flex items-center justify-center gap-2 w-full md:w-auto border border-white/40 shadow-md shrink-0">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
@@ -251,21 +251,23 @@ export default async function Shop() {
              {[1, 2].map((groupIdx) => (
                 <div key={groupIdx} className="flex gap-6 px-3 shrink-0">
                   {[
-                    { name: "RAHUL SHARMA", text: "The cleanest chicken I have ever ordered online. Zero smell, perfectly cut!" },
-                    { name: "PRIYA PATEL", text: "Magic Meat is actually magic. The mutton pieces were so tender, perfect for my biryani." },
-                    { name: "AMIT KUMAR", text: "Finally a reliable meat delivery app with honest prices. Highly recommended!" },
-                    { name: "SNEHA REDDY", text: "Packaging is premium and delivery is always on time. Love it!" }
+                    { name: "Nihal Kumarr", rating: 5, text: "Best chicken delivery service in Hazaribagh, Jharkhand" },
+                    { name: "Adarsh", rating: 5, text: "Hazaribagh mein aisi service milna honestly unexpected tha. MagicMeat ne kaafi easy bana diya chicken lena, warna market jaana padta hai. Kaafi convenient laga. Highly recommend" },
+                    { name: "Atul Marandi", rating: 4, text: "Fresh and clean with good packaging, best for those who don't want to visit any meat shop nearby Hurhuru, Markham, Mission Side and area next to it within 4-5 km" },
+                    { name: "motivation therapy", rating: 5, text: "Great experience with magicmeat, chicken was fresh and cut as I told them. good service for hazaribagh" },
+                    { name: "CHETAN GOSWAMI", rating: 5, text: "Amazing service, very humble owner , chicken was fresh , near and clean packaging" },
+                    { name: "Swapnil Abhishek", rating: 5, text: "Tender, fresh-cut chicken with fast and reliable delivery." }
                   ].map((review, idx) => (
                     <div key={idx} className="min-w-[300px] max-w-[320px] bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-3xl shadow-[0_8px_32px_rgba(255,255,255,0.05)] flex flex-col justify-between transition-transform duration-300 hover:scale-105 hover:bg-white/15 cursor-pointer">
                       <div>
                         <div className="flex items-center gap-3 mb-4">
-                          <div className="w-12 h-12 bg-white/10 text-white font-bold text-xl flex items-center justify-center rounded-full border border-white/20">
+                          <div className="w-12 h-12 bg-white/10 text-white font-bold text-xl flex items-center justify-center rounded-full border border-white/20 uppercase">
                             {review.name.charAt(0)}
                           </div>
                           <div>
                             <h3 className="font-body font-bold text-gray-100 text-sm">{review.name}</h3>
-                            <div className="flex text-[#D4FF00] text-sm mt-0.5" style={{textShadow: '0 0 5px rgba(212,255,0,0.5)'}}>
-                              ★★★★★
+                            <div className="flex text-[#D4FF00] text-sm mt-0.5 tracking-tight" style={{textShadow: '0 0 5px rgba(212,255,0,0.5)'}}>
+                              {Array.from({ length: 5 }).map((_, i) => i < review.rating ? '★' : '☆').join('')}
                             </div>
                           </div>
                         </div>

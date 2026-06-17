@@ -39,18 +39,18 @@ export default function SearchBar({ products = [] }: { products?: Product[] }) {
   };
 
   return (
-    <form ref={wrapperRef} onSubmit={handleSearch} className="relative w-full max-w-md mx-auto z-50">
-      <div className="relative">
+    <form ref={wrapperRef} onSubmit={handleSearch} className="relative w-full max-w-md mx-auto z-40">
+      <div className="relative group">
         <input
           type="text"
-          placeholder="SEARCH FOR FRESH MEAT..."
+          placeholder="Search for fresh meat..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onFocus={() => setIsFocused(true)}
-          className="w-full bg-white border-[3px] border-black py-4 px-5 pl-14 text-sm font-heading font-bold uppercase tracking-widest text-black shadow-[4px_4px_0px_rgba(0,0,0,1)] focus:outline-none focus:shadow-[2px_2px_0px_rgba(0,0,0,1)] focus:translate-y-[2px] focus:translate-x-[2px] transition-all placeholder:text-gray-400"
+          className="w-full bg-white border border-gray-200 py-3.5 px-5 pl-12 rounded-full text-base font-body text-gray-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary/50 transition-all placeholder:text-gray-400"
         />
-        <button type="submit" className="absolute left-4 top-1/2 -translate-y-1/2 text-black hover:text-[#FF5A00] transition-colors">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="square" strokeLinejoin="miter"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <button type="submit" className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-hover:text-gray-600 transition-colors">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
         </button>
         
         {query && (
@@ -60,43 +60,45 @@ export default function SearchBar({ products = [] }: { products?: Product[] }) {
               setQuery('');
               setIsFocused(true);
             }}
-            className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-black transition-colors"
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors p-1 bg-gray-100 rounded-full"
           >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
           </button>
         )}
       </div>
 
-      {/* Autocomplete Dropdown (Brutalist) */}
+      {/* Autocomplete Dropdown (Clean) */}
       {isFocused && query.trim() && (
-        <div className="absolute top-full left-0 right-0 mt-2 bg-white border-[3px] border-black shadow-[6px_6px_0px_rgba(0,0,0,1)] max-h-[350px] overflow-y-auto">
+        <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-lg border border-gray-100 max-h-[350px] overflow-y-auto overflow-hidden">
           {searchResults.length > 0 ? (
-            <div className="flex flex-col">
+            <div className="flex flex-col py-2">
               {searchResults.map((product) => (
                 <Link 
                   key={product.id} 
                   href={`/product/${product.handle}`}
                   onClick={() => setIsFocused(false)}
-                  className="flex items-center gap-3 p-3 border-b-[2px] border-black/10 hover:bg-[#D4FF00] transition-colors last:border-b-0 group"
+                  className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors"
                 >
-                  <img src={product.images[0]?.url} alt={product.title} className="w-12 h-12 object-cover border-[2px] border-black group-hover:scale-105 transition-transform" />
+                  <img src={product.images[0]?.url} alt={product.title} className="w-10 h-10 object-cover rounded-lg border border-gray-100" />
                   <div className="flex flex-col">
-                    <span className="font-heading font-black text-sm uppercase tracking-widest text-black line-clamp-1">{product.title}</span>
-                    <span className="font-body text-xs font-bold text-[#FF5A00]">₹{product.priceRange.minVariantPrice.amount}</span>
+                    <span className="font-body font-semibold text-sm text-gray-900 line-clamp-1">{product.title}</span>
+                    <span className="font-body text-xs text-brand-primary font-medium">₹{product.priceRange.minVariantPrice.amount}</span>
                   </div>
                 </Link>
               ))}
-              <button 
-                type="submit" 
-                className="w-full p-4 bg-black text-white font-heading font-black uppercase tracking-widest text-sm hover:text-[#D4FF00] transition-colors"
-              >
-                VIEW ALL RESULTS FOR "{query.toUpperCase()}"
-              </button>
+              <div className="px-4 py-3 border-t border-gray-50 mt-1">
+                <button 
+                  type="submit" 
+                  className="w-full py-2 bg-gray-50 rounded-xl text-brand-primary font-body font-semibold text-sm hover:bg-orange-50 transition-colors"
+                >
+                  View all results
+                </button>
+              </div>
             </div>
           ) : (
-             <div className="p-8 text-center font-heading font-bold uppercase tracking-widest text-gray-500 bg-gray-50">
+             <div className="p-8 text-center font-body text-gray-500">
                 <span className="text-2xl mb-2 block">🧐</span>
-                NO MEATS FOUND FOR "{query.toUpperCase()}"
+                No meats found for "{query}"
              </div>
           )}
         </div>

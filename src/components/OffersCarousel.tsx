@@ -6,33 +6,30 @@ import Link from 'next/link';
 const FEATURES = [
   {
     id: 1,
-    title: 'FARM FRESH',
-    subtitle: 'PREMIUM',
-    desc: 'Straight from local farms',
-    btnText: 'SHOP NOW',
+    title: 'Farm Fresh Cuts',
+    subtitle: 'Premium Sourced',
+    desc: 'Straight from local farms to your kitchen',
+    btnText: 'Shop Fresh',
     href: '/shop',
     img: '/offers/farm_fresh.png',
-    bgColor: 'bg-[#D4FF00]', // Lime Green
   },
   {
     id: 2,
-    title: 'PREMIUM',
-    subtitle: 'PACKING',
-    desc: 'Vacuum sealed for freshness & hygiene',
-    btnText: 'SHOP NOW',
+    title: 'Vacuum Sealed',
+    subtitle: 'Hygienic Packaging',
+    desc: 'Locks in freshness, taste, & tenderness',
+    btnText: 'Explore',
     href: '/shop/all',
     img: '/offers/premium_packing.png',
-    bgColor: 'bg-brand-primary', // Orange
   },
   {
     id: 3,
-    title: '30 MIN',
-    subtitle: 'DELIVERY',
-    desc: 'Lightning fast to your door',
-    btnText: 'ORDER NOW',
+    title: '30-Min Delivery',
+    subtitle: 'Lightning Fast',
+    desc: 'Delivered super cold to preserve quality',
+    btnText: 'Order Now',
     href: '/shop/mutton',
     img: '/offers/mutton.png',
-    bgColor: 'bg-white', // White
   }
 ];
 
@@ -52,7 +49,7 @@ export default function OffersCarousel() {
         });
         setActiveIndex(nextIndex);
       }
-    }, 4000); // 4 seconds interval
+    }, 4500); // 4.5 seconds interval
 
     return () => clearInterval(interval);
   }, [activeIndex]);
@@ -70,39 +67,48 @@ export default function OffersCarousel() {
   };
 
   return (
-    <div className="w-full relative px-4 pt-8">
+    <div className="w-full relative px-4 pt-6">
       {/* Scroll Container */}
       <div 
         ref={scrollRef}
         onScroll={handleScroll}
-        className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-6"
+        className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-2"
       >
         {FEATURES.map((feature) => (
           <div 
             key={feature.id} 
             className="w-full min-w-full snap-center px-1"
           >
-            <div className={`relative w-full h-[220px] ${feature.bgColor} border-[4px] border-black shadow-[6px_6px_0px_rgba(0,0,0,1)] flex flex-col group cursor-pointer hover:-translate-y-1 transition-transform`}>
+            <div className="relative w-full h-[220px] rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-500 group cursor-pointer">
               
-              {/* Top Half: Image */}
-              <div className="w-full h-[65%] relative border-b-[4px] border-black overflow-hidden">
-                <img 
-                  src={feature.img} 
-                  alt={feature.title} 
-                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-              </div>
+              {/* Full-bleed Image */}
+              <img 
+                src={feature.img} 
+                alt={feature.title} 
+                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 brightness-[0.75]"
+              />
               
-              {/* Bottom Half: Solid Color & Text */}
-              <div className="w-full h-[35%] px-3 flex justify-between items-center relative">
-                <div className="flex flex-col z-10 truncate pr-2">
-                  <h2 className="font-heading text-black text-[22px] sm:text-3xl font-black uppercase tracking-widest leading-none mb-0.5 truncate">
-                    {feature.title} <span className="opacity-60">{feature.subtitle}</span>
+              {/* Soft vignette/gradient overlay for text legibility */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-black/10 z-10" />
+              
+              {/* Text & Button Overlay */}
+              <div className="absolute inset-x-0 bottom-0 p-6 flex justify-between items-end z-20">
+                <div className="flex flex-col text-white max-w-[65%] truncate">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-brand-secondary mb-1">
+                    {feature.subtitle}
+                  </span>
+                  <h2 className="font-heading text-lg sm:text-xl font-bold leading-tight truncate">
+                    {feature.title}
                   </h2>
-                  <p className="font-body text-black font-bold text-[10px] sm:text-xs uppercase tracking-widest truncate">{feature.desc}</p>
+                  <p className="font-body text-white/75 text-xs sm:text-sm font-light mt-1 truncate">
+                    {feature.desc}
+                  </p>
                 </div>
                 
-                <Link href={feature.href} className="bg-black text-white text-[11px] sm:text-sm font-heading font-black px-4 py-2 uppercase tracking-widest border-[3px] border-black hover:bg-white hover:text-black hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[4px_4px_0px_rgba(0,0,0,1)] transition-all z-10 whitespace-nowrap">
+                <Link 
+                  href={feature.href} 
+                  className="bg-white text-gray-900 text-xs font-body font-semibold px-4.5 py-2.5 rounded-full shadow-sm hover:bg-gray-50 active:scale-95 transition-all z-20 whitespace-nowrap"
+                >
                   {feature.btnText}
                 </Link>
               </div>
@@ -113,7 +119,7 @@ export default function OffersCarousel() {
       </div>
 
       {/* Dots Indicator */}
-      <div className="flex justify-center gap-2 mt-1">
+      <div className="flex justify-center gap-1.5 mt-2">
         {FEATURES.map((_, idx) => (
           <button 
             key={idx}
@@ -126,7 +132,7 @@ export default function OffersCarousel() {
                 setActiveIndex(idx);
               }
             }}
-            className={`h-2 rounded-full transition-all duration-300 ${activeIndex === idx ? 'w-6 bg-black' : 'w-2 bg-black/20'}`}
+            className={`h-1.5 rounded-full transition-all duration-300 ${activeIndex === idx ? 'w-5 bg-brand-primary' : 'w-1.5 bg-gray-200 hover:bg-gray-300'}`}
             aria-label={`Go to slide ${idx + 1}`}
           />
         ))}

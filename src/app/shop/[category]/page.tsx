@@ -58,29 +58,30 @@ export default async function CategoryPage(props: { params: Promise<{ category: 
   });
 
   return (
-    <main className="min-h-screen bg-brand-beige pb-24 font-body">
+    <main className="min-h-screen bg-[#FAF8F5] pb-24 font-body text-[#121212]">
 
-      <div className="p-4 pt-6">
+      <div className="p-4 pt-6 max-w-5xl mx-auto">
         
         {/* Back Button */}
         <div className="mb-6">
-          <Link href="/shop" className="inline-flex items-center gap-2 font-heading font-black uppercase text-sm md:text-base tracking-widest text-black hover:opacity-70 transition-opacity bg-white border-[3px] border-black px-4 py-2 shadow-[2px_2px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-[2px] active:translate-y-[2px]">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5"></path><path d="M12 19l-7-7 7-7"></path></svg>
-            BACK TO SHOP
+          <Link href="/shop" className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-gray-900 transition-colors bg-white border border-gray-200 px-4 py-2.5 rounded-full shadow-sm">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5"></path><path d="M12 19l-7-7 7-7"></path></svg>
+            Back to Shop
           </Link>
         </div>
 
         {/* Categories Glass Scroller */}
         <CategoryScroller activeCategory={category} />
 
-        <h2 className="font-heading text-xl uppercase tracking-widest border-b-[3px] border-black pb-2 mb-6 text-black">
-           SHOWING {filteredProducts.length} ITEMS
+        <h2 className="font-heading text-lg font-bold text-gray-800 mb-6">
+           Showing {filteredProducts.length} items
         </h2>
         
         {filteredProducts.length === 0 ? (
-          <div className="text-center py-20 bg-white/60 backdrop-blur-md border border-white/50 rounded-3xl shadow-[0_8px_32px_rgba(0,0,0,0.04)]">
-            <h2 className="font-heading text-2xl uppercase tracking-widest mb-2 text-gray-800">NOTHING HERE YET</h2>
-            <p className="font-bold text-gray-500">We couldn't find any products in the {category} category.</p>
+          <div className="text-center py-24 bg-white border border-gray-100 rounded-3xl shadow-sm">
+            <span className="text-3xl mb-3 block">🍽️</span>
+            <h2 className="font-heading text-xl font-bold mb-1 text-gray-800">Nothing here yet</h2>
+            <p className="font-body text-gray-400 text-sm">We couldn't find any products in this category.</p>
           </div>
         ) : (
           <div className="grid grid-cols-2 gap-4">

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Bebas_Neue, Quicksand, Permanent_Marker } from 'next/font/google';
+import { Inter, Quicksand } from 'next/font/google';
 import './globals.css';
 import { CartProvider } from '@/context/CartContext';
 import { WishlistProvider } from '@/context/WishlistContext';
@@ -8,8 +8,7 @@ import CartDrawer from '@/components/CartDrawer';
 import MobileNav from '@/components/MobileNav';
 import Footer from '@/components/Footer';
 
-const bebas = Bebas_Neue({
-  weight: '400',
+const inter = Inter({
   subsets: ['latin'],
   variable: '--font-heading',
 });
@@ -17,12 +16,6 @@ const bebas = Bebas_Neue({
 const quicksand = Quicksand({
   subsets: ['latin'],
   variable: '--font-body',
-});
-
-const script = Permanent_Marker({
-  weight: '400',
-  subsets: ['latin'],
-  variable: '--font-script',
 });
 
 export const metadata: Metadata = {
@@ -99,7 +92,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${bebas.variable} ${quicksand.variable} ${script.variable} font-body antialiased text-text-color bg-bg-color min-h-screen flex flex-col`} suppressHydrationWarning>
+      <body className={`${inter.variable} ${quicksand.variable} font-body antialiased text-text-color bg-bg-color min-h-screen flex flex-col`} suppressHydrationWarning>
         <CartProvider>
           <WishlistProvider>
             {/* Global Sticky Navigation Header */}

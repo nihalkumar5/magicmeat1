@@ -7,7 +7,7 @@ import { getProducts } from '@/lib/shopify';
 import ProductCard from '@/components/ProductCard';
 
 export const metadata = {
-  title: 'Shop Premium Meats',
+  title: 'Shop Premium Fresh Meats | Magic Meat',
   description: 'Browse our full catalog of premium fresh chicken, mutton, and seafood. Order online and get it delivered fresh to your door in Hazaribagh.',
 };
 
@@ -18,149 +18,174 @@ export default async function Shop() {
   const products = await getProducts();
   const bestSellers = products.slice(0, 8);
   const freshArrivals = products.slice(8, 16);
+  
   const categories = [
-     { name: 'All Products', href: '/shop/all', img: '/icons/open-box-svgrepo-com.svg' },
-     { name: 'Chicken', href: '/shop/chicken', img: '/icons/chicken-svgrepo-com.svg' },
-     { name: 'Mutton', href: '/shop/mutton', img: '/icons/goat-svgrepo-com.svg' },
-     { name: 'Sea Food', href: '/shop/seafood', img: '/icons/fish-svgrepo-com.svg' },
-     { name: 'Daily Grocery', href: '/shop/grocery', img: '/icons/shopping-bag-svgrepo-com.svg' },
-     { name: 'Vegetables', href: '/shop/vegetables', img: '/icons/vegetables-salad-svgrepo-com.svg' },
-     { name: 'Fruits', href: '/shop/fruits', img: '/icons/fruits-svgrepo-com.svg' },
-     { name: 'Frozen Items', href: '/shop/frozen', img: '/icons/ice-svgrepo-com.svg' },
+     { name: 'All Products', href: '/shop/all', img: '/gourmet_hero_background.png' },
+     { name: 'Chicken', href: '/shop/chicken', img: '/cat-chicken.png' },
+     { name: 'Mutton', href: '/shop/mutton', img: '/cat-mutton.png' },
+     { name: 'Sea Food', href: '/shop/seafood', img: '/cat-seafood.png' },
+     { name: 'Daily Grocery', href: '/shop/grocery', img: '/cat-grocery.png' },
+     { name: 'Vegetables', href: '/shop/vegetables', img: '/cat-vegetables.png' },
+     { name: 'Fruits', href: '/shop/fruits', img: '/cat-fruits.png' },
+     { name: 'Frozen Items', href: '/shop/frozen', img: '/cat-frozen.png' },
   ];
+
   return (
-    <main className="min-h-screen bg-brand-beige pb-32 font-body">
+    <main className="min-h-screen bg-[#FAF8F5] pb-32 font-body text-[#121212]">
 
-      <style>{`
-        @keyframes scroll-left {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        .animate-scroll-infinite {
-          animation: scroll-left 15s linear infinite;
-          display: flex;
-          width: max-content;
-        }
-        .animate-scroll-infinite-cards {
-          animation: scroll-left 30s linear infinite;
-          display: flex;
-          width: max-content;
-        }
-      `}</style>
-
-      {/* TEXT MARQUEE STRIP AT TOP */}
-      <div className="bg-white/40 backdrop-blur-md text-gray-900 py-3 border-b border-white/50 shadow-[0_4px_24px_rgba(0,0,0,0.04)] overflow-hidden relative w-full">
-        <div className="animate-scroll-infinite">
-          {[...Array(2)].map((_, groupIdx) => (
-            <div key={groupIdx} className="flex whitespace-nowrap shrink-0">
-               <span className="font-heading font-black text-xl sm:text-2xl uppercase tracking-widest px-6 sm:px-8 drop-shadow-sm opacity-90">• 100% FRESH CUTS</span>
-               <span className="font-heading font-black text-xl sm:text-2xl uppercase tracking-widest px-6 sm:px-8 drop-shadow-sm opacity-90">• 30 MIN DELIVERY</span>
-               <span className="font-heading font-black text-xl sm:text-2xl uppercase tracking-widest px-6 sm:px-8 drop-shadow-sm opacity-90">• ANTIBIOTIC FREE</span>
-               <span className="font-heading font-black text-xl sm:text-2xl uppercase tracking-widest px-6 sm:px-8 drop-shadow-sm opacity-90">• NO FROZEN MEAT</span>
-               <span className="font-heading font-black text-xl sm:text-2xl uppercase tracking-widest px-6 sm:px-8 drop-shadow-sm opacity-90">• PREMIUM QUALITY</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* ORDER ON CALL SECTION (MOVED TO TOP) */}
-      <section className="px-4 mt-6 relative z-20">
-        <div className="max-w-2xl mx-auto bg-white/40 backdrop-blur-lg border border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.04)] rounded-[24px] py-6 px-6 flex flex-col md:flex-row items-center justify-between gap-5 md:gap-6">
-          <div className="text-center md:text-left flex-1">
-            <h2 className="font-heading font-black text-2xl md:text-3xl uppercase tracking-widest text-black mb-2 leading-none">SKIP THE APP, ORDER ON CALL</h2>
-            <p className="font-body text-gray-600 text-sm md:text-base font-medium max-w-sm mx-auto md:mx-0 leading-relaxed">Order the juiciest chicken with just a phone call.</p>
+      {/* --- HERO BANNER AREA (Apple Styling) --- */}
+      <section className="relative w-full h-[320px] md:h-[420px] overflow-hidden rounded-b-[2.5rem] shadow-sm z-10">
+        <img 
+          src="/hero-premium.png" 
+          alt="Premium Raw Meat Cut" 
+          className="absolute inset-0 w-full h-full object-cover brightness-[0.7]" 
+        />
+        {/* Soft elegant gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/10" />
+        
+        {/* Hero content */}
+        <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-16 max-w-5xl mx-auto z-20">
+          <div className="flex flex-col gap-2 md:gap-3 items-start mb-4 md:mb-6 animate-[fadeInUp_1s_ease-out]">
+            <span className="bg-brand-primary text-white font-bold text-[10px] tracking-[0.2em] uppercase px-3 py-1 rounded-full shadow-sm">
+              100% Farm Fresh
+            </span>
+            <h1 className="font-heading font-bold text-3xl md:text-5xl text-white tracking-[-0.02em] leading-tight max-w-lg">
+              Premium fresh cuts, delivered in 30 minutes.
+            </h1>
+            <p className="font-body text-white/75 text-xs md:text-base max-w-md font-light leading-relaxed">
+              Antibiotic-free, hygienic packaging, and sourced directly from local farms to Hazaribagh.
+            </p>
           </div>
-          <a href="tel:+918271663388" className="bg-[#FF5A00] hover:bg-[#FF7A30] text-black font-heading font-bold text-xl px-6 py-3 rounded-[16px] transition-all flex items-center justify-center gap-2 w-full md:w-auto border border-white/40 shadow-md shrink-0">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-            +91 82716 63388
-          </a>
+          
+          <div className="w-full max-w-md animate-[fadeInUp_1s_ease-out_0.2s_both]">
+            <SearchBar products={products} />
+          </div>
         </div>
       </section>
 
-      {/* Search Bar */}
-      <div className="px-4 pt-6">
-         <SearchBar products={products} />
-      </div>
 
-      {/* Offers Banner */}
+
+      {/* --- OFFERS CAROUSEL --- */}
       <OffersCarousel />
 
-      {/* Shop Categories Glass Scroll */}
-      <div className="pt-12 px-0 md:px-4 pb-8 bg-white relative border-b-[4px] border-black overflow-hidden bg-[linear-gradient(to_right,#0000000a_1px,transparent_1px),linear-gradient(to_bottom,#0000000a_1px,transparent_1px)] bg-[size:32px_32px]">
-         <div className="bg-white border-y-[4px] border-black mb-8 relative z-10 shadow-[0_4px_0px_rgba(0,0,0,1)]">
-           <h2 className="font-heading text-3xl md:text-4xl uppercase tracking-widest text-center py-4 px-4 bg-[#FF5A00] text-black">SHOP CATEGORIES</h2>
-         </div>
-         <div className="relative">
-            <div className="flex overflow-x-auto gap-4 pb-6 pt-2 px-6 snap-x snap-mandatory hide-scrollbar relative z-10">
-               {categories.map((cat) => (
-                  <Link href={cat.href} key={cat.name} className="flex flex-col group min-w-[150px] sm:min-w-[180px] snap-center">
-                     <div className="w-full aspect-square border-[4px] border-black bg-white shadow-[4px_4px_0px_rgba(0,0,0,1)] relative overflow-hidden active:translate-y-1 active:translate-x-1 active:shadow-none transition-all cursor-pointer">
-                        <img src={cat.img} alt={cat.name} className="absolute inset-0 w-full h-full object-contain p-8 group-hover:scale-110 transition-transform duration-300 drop-shadow-md bg-white" />
-                        <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-all pointer-events-none"></div>
-                        <div className="absolute bottom-3 left-3 right-3 flex justify-center">
-                           <div className="bg-[#D4FF00] text-black font-heading font-black text-sm sm:text-base uppercase tracking-widest px-3 py-1.5 border-[3px] border-black shadow-[2px_2px_0px_rgba(0,0,0,1)] rotate-[-2deg] group-hover:rotate-0 group-hover:scale-105 transition-all w-max max-w-full text-center">
-                             {cat.name}
-                           </div>
-                        </div>
-                     </div>
-                  </Link>
-               ))}
-            </div>
-         </div>
-      </div>
-
-      {/* Best Sellers Grid */}
-      <div className="w-full bg-brand-beige pb-10 pt-6 px-4">
-         <h2 className="font-heading text-4xl uppercase tracking-widest text-center border-b-[3px] border-black pb-4 mb-8 text-black">BEST SELLERS</h2>
-         {bestSellers.length > 0 ? (
-           <div className="flex overflow-x-auto gap-4 pb-6 px-2 snap-x snap-mandatory hide-scrollbar">
-             {bestSellers.map(product => (
-               <div key={product.id} className="min-w-[160px] sm:min-w-[180px] w-[160px] sm:w-[180px] snap-center shrink-0 flex">
-                 <ProductCard product={product} />
-               </div>
-             ))}
+      {/* --- APPETIZING SHOP CATEGORIES GRID --- */}
+      <div className="pt-14 px-4 pb-12">
+         <div className="max-w-5xl mx-auto">
+           <div className="mb-8 text-center sm:text-left">
+             <h2 className="font-heading text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">Shop by Category</h2>
+             <p className="font-body text-gray-500 text-xs md:text-sm mt-1">Select from our fresh, raw, and hygienic categories.</p>
            </div>
-         ) : (
-           <p className="text-center text-gray-500 font-medium pb-8">No products found. Please check Shopify connection.</p>
-         )}
+           
+           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-6">
+              {categories.map((cat) => (
+                 <Link 
+                   href={cat.href} 
+                   key={cat.name} 
+                   className="group flex flex-col bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300"
+                 >
+                    {/* Category Image */}
+                    <div className="w-full aspect-[4/3] relative overflow-hidden bg-gray-50">
+                       <img 
+                         src={cat.img} 
+                         alt={cat.name} 
+                         className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                       />
+                       <div className="absolute inset-0 bg-black/10 group-hover:bg-black/5 transition-colors duration-300" />
+                    </div>
+                    {/* Category Text */}
+                    <div className="p-4 flex items-center justify-between">
+                       <span className="font-body font-bold text-sm md:text-base text-gray-800 group-hover:text-brand-primary transition-colors">
+                         {cat.name}
+                       </span>
+                       <span className="text-gray-400 group-hover:text-brand-primary group-hover:translate-x-0.5 transition-all text-sm font-bold">
+                         &rarr;
+                       </span>
+                    </div>
+                 </Link>
+              ))}
+           </div>
+         </div>
       </div>
 
-      {/* WHY CHOOSE US SECTION */}
-      <section className="bg-brand-secondary py-16 px-4 border-b-[6px] border-black text-center relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full opacity-10" style={{ backgroundImage: 'radial-gradient(circle, #000 2px, transparent 2px)', backgroundSize: '16px 16px' }}></div>
+      {/* --- BEST SELLERS GRID --- */}
+      <div className="w-full bg-white pb-14 pt-14 px-4 rounded-[2.5rem] shadow-sm">
+         <div className="max-w-5xl mx-auto">
+           <div className="flex justify-between items-end mb-8 px-2">
+             <div>
+               <h2 className="font-heading text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">Best Sellers</h2>
+               <p className="font-body text-gray-500 text-xs md:text-sm mt-0.5">The most ordered premium cuts in your area.</p>
+             </div>
+             <Link href="/shop/all" className="text-xs md:text-sm font-bold text-brand-primary hover:text-brand-secondary transition-colors mb-1">
+               View All
+             </Link>
+           </div>
+           {bestSellers.length > 0 ? (
+             <div className="flex overflow-x-auto gap-4 pb-4 px-2 snap-x snap-mandatory hide-scrollbar">
+               {bestSellers.map(product => (
+                 <div key={product.id} className="min-w-[165px] sm:min-w-[190px] w-[165px] sm:w-[190px] snap-center shrink-0 flex">
+                   <ProductCard product={product} />
+                 </div>
+               ))}
+             </div>
+           ) : (
+             <p className="text-center text-gray-500 font-medium pb-8">No products found. Please check Shopify connection.</p>
+           )}
+         </div>
+      </div>
+
+      {/* --- WHY CHOOSE US SECTION --- */}
+      <section className="bg-transparent py-20 px-4 text-center relative overflow-hidden">
         <div className="relative z-10 max-w-5xl mx-auto">
-          <h2 className="font-heading text-5xl md:text-6xl text-white uppercase tracking-widest mb-12 drop-shadow-[4px_4px_0px_rgba(0,0,0,1)]">Why Choose Us?</h2>
+          <h2 className="font-heading text-2xl md:text-3xl font-bold text-gray-900 mb-2">Why order from Magic Meat?</h2>
+          <p className="font-body text-gray-500 text-xs md:text-sm mb-12 max-w-md mx-auto">We redefine quality, packaging, and speed to offer you the ultimate cooking experience.</p>
           
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <div className="bg-white border-[4px] border-black p-6 shadow-[6px_6px_0px_rgba(0,0,0,1)] hover:-translate-y-2 transition-transform">
-              <div className="w-16 h-16 bg-brand-primary border-[3px] border-black flex items-center justify-center mx-auto mb-4 shadow-[4px_4px_0px_rgba(0,0,0,1)] text-black font-black text-3xl rotate-[-5deg]">01</div>
-              <h3 className="font-heading text-2xl uppercase tracking-wider mb-2 font-black">FARM FRESH</h3>
-              <p className="font-body text-black font-bold">Straight from the farms to your kitchen. No freezing, no preservatives.</p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8">
+            <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100/50 transition-all hover:shadow-md flex flex-col items-center">
+              <div className="w-16 h-16 bg-red-50 text-brand-primary rounded-full flex items-center justify-center mb-6">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <h3 className="font-heading text-lg font-bold text-gray-900 mb-2">100% Farm Fresh</h3>
+              <p className="font-body text-gray-500 text-sm leading-relaxed">
+                Straight from regional farms to your kitchen. Never frozen, no chemical preservatives, no hormones.
+              </p>
             </div>
             
-            <div className="bg-white border-[4px] border-black p-6 shadow-[6px_6px_0px_rgba(0,0,0,1)] hover:-translate-y-2 transition-transform">
-              <div className="w-16 h-16 bg-brand-primary border-[3px] border-black flex items-center justify-center mx-auto mb-4 shadow-[4px_4px_0px_rgba(0,0,0,1)] text-black font-black text-3xl rotate-[3deg]">02</div>
-              <h3 className="font-heading text-2xl uppercase tracking-wider mb-2 font-black">PREMIUM PACKAGING</h3>
-              <p className="font-body text-black font-bold">Vacuum sealed to ensure utmost hygiene and freshness stays intact during transit.</p>
+            <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100/50 transition-all hover:shadow-md flex flex-col items-center">
+              <div className="w-16 h-16 bg-red-50 text-brand-primary rounded-full flex items-center justify-center mb-6">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+              </div>
+              <h3 className="font-heading text-lg font-bold text-gray-900 mb-2">Premium Packaging</h3>
+              <p className="font-body text-gray-500 text-sm leading-relaxed">
+                Vacuum sealed in sterile bags to ensure zero contact with dust, contaminants, or microbes.
+              </p>
             </div>
             
-            <div className="bg-white border-[4px] border-black p-6 shadow-[6px_6px_0px_rgba(0,0,0,1)] hover:-translate-y-2 transition-transform">
-              <div className="w-16 h-16 bg-brand-primary border-[3px] border-black flex items-center justify-center mx-auto mb-4 shadow-[4px_4px_0px_rgba(0,0,0,1)] text-black font-black text-3xl rotate-[-3deg]">03</div>
-              <h3 className="font-heading text-2xl uppercase tracking-wider mb-2 font-black">30 MIN DELIVERY</h3>
-              <p className="font-body text-black font-bold">Lightning fast delivery right to your doorstep, keeping the meat chilled.</p>
+            <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100/50 transition-all hover:shadow-md flex flex-col items-center">
+              <div className="w-16 h-16 bg-red-50 text-brand-primary rounded-full flex items-center justify-center mb-6">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <h3 className="font-heading text-lg font-bold text-gray-900 mb-2">30 Min Delivery</h3>
+              <p className="font-body text-gray-500 text-sm leading-relaxed">
+                Chilled transit boxes preserve optimal cold chain temperature from store straight to your doorstep.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* FRESH ARRIVALS SECTION */}
-      <div className="w-full bg-brand-beige py-12 px-4 border-b-[6px] border-black">
+      {/* --- FRESH ARRIVALS SECTION --- */}
+      <div className="w-full bg-white py-16 px-4 shadow-sm rounded-[2.5rem]">
          <div className="max-w-5xl mx-auto">
-           <h2 className="font-heading text-4xl uppercase tracking-widest text-center border-b-[3px] border-black pb-4 mb-8 text-black">FRESH ARRIVALS</h2>
+           <div className="flex justify-between items-end mb-8 px-2">
+             <div>
+               <h2 className="font-heading text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">Fresh Arrivals</h2>
+               <p className="font-body text-gray-500 text-xs md:text-sm mt-0.5">Explore our daily updated stock of fresh meats.</p>
+             </div>
+           </div>
            {freshArrivals.length > 0 ? (
-             <div className="flex overflow-x-auto gap-4 pb-6 px-2 snap-x snap-mandatory hide-scrollbar">
+             <div className="flex overflow-x-auto gap-4 pb-4 px-2 snap-x snap-mandatory hide-scrollbar">
                {freshArrivals.map(product => (
-                 <div key={product.id} className="min-w-[160px] sm:min-w-[180px] w-[160px] sm:w-[180px] snap-center shrink-0 flex">
+                 <div key={product.id} className="min-w-[165px] sm:min-w-[190px] w-[165px] sm:w-[190px] snap-center shrink-0 flex">
                    <ProductCard product={product} />
                  </div>
                ))}
@@ -171,60 +196,69 @@ export default async function Shop() {
          </div>
       </div>
 
-      {/* THE PROCESS SECTION */}
-      <section className="py-16 px-4 md:px-6 relative overflow-hidden">
-        {/* Glow behind glass */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 max-w-2xl h-3/4 max-h-96 bg-[#D4FF00]/30 blur-[80px] rounded-full pointer-events-none z-0"></div>
-        
-        <div className="max-w-4xl mx-auto bg-white/50 backdrop-blur-xl border border-white/60 shadow-[0_16px_40px_rgba(0,0,0,0.06)] rounded-[32px] p-8 md:p-16 relative z-10">
-          <h2 className="font-heading text-4xl md:text-5xl text-black uppercase tracking-widest text-center mb-12 pb-4 inline-block w-full relative after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-24 after:h-1 after:bg-black/20 after:rounded-full">
-            The Magic Process
+      {/* --- THE MAGIC PROCESS SECTION (Apple Style Infographic) --- */}
+      <section className="py-20 px-4 md:px-6 relative bg-[#FAF8F5]">
+        <div className="max-w-4xl mx-auto bg-white shadow-sm border border-gray-100 rounded-[2.5rem] p-8 md:p-14 relative z-10">
+          <h2 className="font-heading text-2xl md:text-3xl font-bold text-gray-900 text-center mb-16">
+            The Magic Freshness Process
           </h2>
           
-          <div className="relative flex flex-col gap-12">
-            {/* Vertical Line (Mobile & Desktop) */}
-            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-1 bg-gray-200 md:-translate-x-1/2"></div>
+          <div className="relative flex flex-col gap-14">
+            {/* Vertical Line */}
+            <div className="absolute left-[1.35rem] md:left-1/2 top-0 bottom-0 w-px bg-gray-150 md:-translate-x-1/2"></div>
             
             {/* Step 1 */}
-            <div className="relative flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-16">
-              <div className="hidden md:block w-1/2 text-right pt-3">
-                <p className="font-body font-bold text-gray-500 text-lg">We partner with local farms to bring you the healthiest livestock.</p>
+            <div className="relative flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-16">
+              <div className="hidden md:block w-1/2 text-right pt-2">
+                <p className="font-body text-gray-500 text-base leading-relaxed">
+                  We hand-select animals from clean, ethical local farms that prioritize health and high-quality feed.
+                </p>
               </div>
-              <div className="absolute top-0 left-0 md:relative md:left-auto w-16 h-16 rounded-full bg-[#D4FF00] border-[4px] border-black shadow-[4px_4px_0px_rgba(0,0,0,1)] flex items-center justify-center font-heading text-2xl font-black z-10 shrink-0">
+              <div className="absolute top-0 left-0 md:relative md:left-auto w-11 h-11 rounded-full bg-gray-50 border border-gray-150 text-gray-500 flex items-center justify-center font-heading text-sm font-bold z-10 shrink-0 shadow-sm">
                 01
               </div>
-              <div className="w-full pl-24 md:pl-0 md:w-1/2 text-left pt-3">
-                <h3 className="font-heading text-3xl font-black uppercase text-black mb-2">SOURCING</h3>
-                <p className="md:hidden font-body font-bold text-gray-500 text-sm">We partner with local farms to bring you the healthiest livestock.</p>
+              <div className="w-full pl-16 md:pl-0 md:w-1/2 text-left pt-2">
+                <h3 className="font-heading text-lg md:text-xl font-bold text-gray-900 mb-1">Ethical Sourcing</h3>
+                <p className="md:hidden font-body text-gray-500 text-sm leading-relaxed">
+                  We hand-select animals from clean, ethical local farms that prioritize health and high-quality feed.
+                </p>
               </div>
             </div>
 
             {/* Step 2 */}
-            <div className="relative flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-16">
-              <div className="hidden md:block w-1/2 text-right pt-3">
-                <h3 className="font-heading text-3xl font-black uppercase text-black mb-2">CLEANING</h3>
-                <p className="font-body font-bold text-gray-500 text-lg">Premium cuts prepared in our state-of-the-art hygienic facility.</p>
+            <div className="relative flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-16">
+              <div className="hidden md:block w-1/2 text-right pt-2">
+                <h3 className="font-heading text-lg md:text-xl font-bold text-gray-900 mb-1">Hygiene First Cleaning</h3>
+                <p className="font-body text-gray-500 text-base leading-relaxed">
+                  Cleaned in pure water and cut into optimal sizes in an air-conditioned, sanitized butcher facility.
+                </p>
               </div>
-              <div className="absolute top-0 left-0 md:relative md:left-auto w-16 h-16 rounded-full bg-[#FF5A00] border-[4px] border-black shadow-[4px_4px_0px_rgba(0,0,0,1)] flex items-center justify-center font-heading text-2xl text-white font-black z-10 shrink-0">
+              <div className="absolute top-0 left-0 md:relative md:left-auto w-11 h-11 rounded-full bg-brand-primary border border-brand-primary text-white flex items-center justify-center font-heading text-sm font-bold z-10 shrink-0 shadow-md shadow-brand-primary/20">
                 02
               </div>
-              <div className="w-full pl-24 md:pl-0 md:w-1/2 text-left md:hidden pt-3">
-                <h3 className="font-heading text-3xl font-black uppercase text-black mb-2">CLEANING</h3>
-                <p className="font-body font-bold text-gray-500 text-sm">Premium cuts prepared in our state-of-the-art hygienic facility.</p>
+              <div className="w-full pl-16 md:pl-0 md:w-1/2 text-left md:hidden pt-2">
+                <h3 className="font-heading text-lg md:text-xl font-bold text-gray-900 mb-1">Hygiene First Cleaning</h3>
+                <p className="font-body text-gray-500 text-sm leading-relaxed">
+                  Cleaned in pure water and cut into optimal sizes in an air-conditioned, sanitized butcher facility.
+                </p>
               </div>
             </div>
 
             {/* Step 3 */}
-            <div className="relative flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-16">
-              <div className="hidden md:block w-1/2 text-right pt-3">
-                <p className="font-body font-bold text-gray-500 text-lg">Vacuum sealed and delivered in insulated bags to your home.</p>
+            <div className="relative flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-16">
+              <div className="hidden md:block w-1/2 text-right pt-2">
+                <p className="font-body text-gray-500 text-base leading-relaxed">
+                  Vacuum packed instantly to block moisture loss and delivered in insulated ice boxes within 30 minutes.
+                </p>
               </div>
-              <div className="absolute top-0 left-0 md:relative md:left-auto w-16 h-16 rounded-full bg-[#D4FF00] border-[4px] border-black shadow-[4px_4px_0px_rgba(0,0,0,1)] flex items-center justify-center font-heading text-2xl font-black z-10 shrink-0">
+              <div className="absolute top-0 left-0 md:relative md:left-auto w-11 h-11 rounded-full bg-gray-50 border border-gray-150 text-gray-500 flex items-center justify-center font-heading text-sm font-bold z-10 shrink-0 shadow-sm">
                 03
               </div>
-              <div className="w-full pl-24 md:pl-0 md:w-1/2 text-left pt-3">
-                <h3 className="font-heading text-3xl font-black uppercase text-black mb-2">DELIVERY</h3>
-                <p className="md:hidden font-body font-bold text-gray-500 text-sm">Vacuum sealed and delivered in insulated bags to your home.</p>
+              <div className="w-full pl-16 md:pl-0 md:w-1/2 text-left pt-2">
+                <h3 className="font-heading text-lg md:text-xl font-bold text-gray-900 mb-1">Cold Chain Delivery</h3>
+                <p className="md:hidden font-body text-gray-500 text-sm leading-relaxed">
+                  Vacuum packed instantly to block moisture loss and delivered in insulated ice boxes within 30 minutes.
+                </p>
               </div>
             </div>
 
@@ -232,24 +266,23 @@ export default async function Shop() {
         </div>
       </section>
 
-      {/* TESTIMONIALS SECTION */}
-      <section className="bg-black py-16 px-4 border-t-[4px] border-black overflow-hidden relative w-full">
-        {/* Background glow for glass cards */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl h-64 bg-[#D4FF00] rounded-full blur-[150px] opacity-10"></div>
+      {/* --- TESTIMONIALS (WALL OF FAME) --- */}
+      <section className="bg-[#121212] py-20 px-4 overflow-hidden relative w-full rounded-t-[2.5rem]">
         
-        {/* Live Google Reviews Highlight Widget */}
+        {/* Google Reviews Widget */}
         <div className="relative z-20 mt-4 mb-8">
           <LiveGoogleReviews />
         </div>
         
-        <h2 className="font-heading text-5xl md:text-6xl text-white uppercase tracking-widest text-center mb-12 relative z-10">WALL OF FAME</h2>
+        <h2 className="font-heading text-2xl md:text-3xl font-bold text-white text-center mb-10 relative z-10">
+          Wall of Fame
+        </h2>
         
-        {/* Auto Scrolling Marquee Container for Cards */}
+        {/* Scrolling Reviews */}
         <div className="relative z-10 w-full overflow-hidden pb-8">
            <div className="animate-scroll-infinite-cards hover:[animation-play-state:paused]">
-             {/* Duplicate array for seamless infinite scroll */}
              {[1, 2].map((groupIdx) => (
-                <div key={groupIdx} className="flex gap-6 px-3 shrink-0">
+                <div key={groupIdx} className="flex gap-4 px-2 shrink-0">
                   {[
                     { name: "Nihal Kumarr", rating: 5, text: "Best chicken delivery service in Hazaribagh, Jharkhand" },
                     { name: "Adarsh", rating: 5, text: "Hazaribagh mein aisi service milna honestly unexpected tha. MagicMeat ne kaafi easy bana diya chicken lena, warna market jaana padta hai. Kaafi convenient laga. Highly recommend" },
@@ -258,29 +291,29 @@ export default async function Shop() {
                     { name: "CHETAN GOSWAMI", rating: 5, text: "Amazing service, very humble owner , chicken was fresh , near and clean packaging" },
                     { name: "Swapnil Abhishek", rating: 5, text: "Tender, fresh-cut chicken with fast and reliable delivery." }
                   ].map((review, idx) => (
-                    <div key={idx} className="min-w-[300px] max-w-[320px] bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-3xl shadow-[0_8px_32px_rgba(255,255,255,0.05)] flex flex-col justify-between transition-transform duration-300 hover:scale-105 hover:bg-white/15 cursor-pointer">
+                    <div key={idx} className="min-w-[280px] max-w-[300px] bg-[#1d1d1f] p-6 rounded-2xl flex flex-col justify-between border border-white/5 transition-transform duration-300 hover:scale-[1.02] cursor-pointer">
                       <div>
                         <div className="flex items-center gap-3 mb-4">
-                          <div className="w-12 h-12 bg-white/10 text-white font-bold text-xl flex items-center justify-center rounded-full border border-white/20 uppercase">
+                          <div className="w-10 h-10 bg-[#2d2d2f] text-white font-medium text-lg flex items-center justify-center rounded-full uppercase">
                             {review.name.charAt(0)}
                           </div>
                           <div>
-                            <h3 className="font-body font-bold text-gray-100 text-sm">{review.name}</h3>
-                            <div className="flex text-[#D4FF00] text-sm mt-0.5 tracking-tight" style={{textShadow: '0 0 5px rgba(212,255,0,0.5)'}}>
+                            <h3 className="font-body font-semibold text-gray-200 text-sm">{review.name}</h3>
+                            <div className="flex text-yellow-500 text-xs mt-0.5 tracking-tight">
                               {Array.from({ length: 5 }).map((_, i) => i < review.rating ? '★' : '☆').join('')}
                             </div>
                           </div>
                         </div>
-                        <p className="font-body text-gray-300 text-sm leading-relaxed mb-4">"{review.text}"</p>
+                        <p className="font-body text-gray-400 text-sm leading-relaxed mb-4">"{review.text}"</p>
                       </div>
-                      <div className="flex items-center gap-2 pt-3 border-t border-white/20">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <div className="flex items-center gap-2 pt-3 border-t border-white/5">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
                           <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
                           <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
                           <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
                         </svg>
-                        <span className="font-body text-xs text-gray-400 font-medium">Posted on Google</span>
+                        <span className="font-body text-xs text-gray-500 font-medium">Posted on Google</span>
                       </div>
                     </div>
                   ))}

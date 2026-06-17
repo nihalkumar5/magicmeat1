@@ -50,11 +50,11 @@ export default function ProductCard({ product }: ProductCardProps) {
       flyingDot.style.top = `${buttonRect.top + buttonRect.height / 2 - 8}px`;
       flyingDot.style.width = '16px';
       flyingDot.style.height = '16px';
-      flyingDot.style.backgroundColor = '#D4FF00';
+      flyingDot.style.backgroundColor = '#A8201A';
       flyingDot.style.borderRadius = '50%';
       flyingDot.style.zIndex = '9999';
       flyingDot.style.transition = 'all 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
-      flyingDot.style.boxShadow = '0 0 10px rgba(212,255,0,0.8)';
+      flyingDot.style.boxShadow = '0 0 10px rgba(168,32,26,0.4)';
       
       document.body.appendChild(flyingDot);
 
@@ -169,25 +169,25 @@ export default function ProductCard({ product }: ProductCardProps) {
             {quantity === 0 ? (
               <button 
                 onClick={handleAdd}
-                className="bg-[#D4FF00] text-black w-9 h-9 rounded-full flex items-center justify-center hover:bg-[#bce600] transition-colors shadow-[0_2px_10px_rgba(212,255,0,0.4)]"
+                className="bg-brand-primary text-white w-9 h-9 rounded-full flex items-center justify-center hover:bg-brand-secondary transition-colors shadow-sm active:scale-95"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
               </button>
             ) : (
               <div 
-                className="flex items-center bg-[#D4FF00] shadow-[0_2px_10px_rgba(212,255,0,0.4)] rounded-full h-9"
+                className="flex items-center bg-brand-primary text-white shadow-sm rounded-full h-9"
                 onClick={(e) => e.preventDefault()}
               >
                 <button 
                   onClick={handleDecrement}
-                  className="w-8 h-full flex items-center justify-center text-black hover:bg-black/10 rounded-l-full transition-colors"
+                  className="w-8 h-full flex items-center justify-center hover:bg-black/10 rounded-l-full transition-colors"
                 >
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                 </button>
-                <span className="font-bold text-sm w-5 text-center text-black">{quantity}</span>
+                <span className="font-bold text-sm w-5 text-center">{quantity}</span>
                 <button 
                   onClick={handleIncrement}
-                  className="w-8 h-full flex items-center justify-center text-black hover:bg-black/10 rounded-r-full transition-colors"
+                  className="w-8 h-full flex items-center justify-center hover:bg-black/10 rounded-r-full transition-colors"
                 >
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                 </button>

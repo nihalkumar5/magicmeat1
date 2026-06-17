@@ -33,10 +33,10 @@ export default async function Shop() {
   return (
     <main className="min-h-screen bg-[#FAF8F5] pb-32 font-body text-[#121212]">
 
-      {/* --- HERO BANNER AREA (Overlapping Glassmorphic Layout) --- */}
-      <div className="relative w-full z-20 pb-16 md:pb-20 bg-transparent">
+      {/* --- HERO BANNER AREA (Overlapping Glassmorphic Layout - Taller Image) --- */}
+      <div className="relative w-full z-20 pb-12 md:pb-16 bg-transparent">
         {/* Background Image Container */}
-        <div className="relative w-full h-[280px] md:h-[380px] overflow-hidden rounded-b-[2.5rem] bg-[#FAF8F5] shadow-sm">
+        <div className="relative w-full h-[340px] md:h-[480px] overflow-hidden rounded-b-[2.5rem] bg-[#FAF8F5] shadow-sm">
           <img 
             src="/hero-premium.png" 
             alt="Fresh Chicken & Grocery Delivery" 
@@ -46,7 +46,7 @@ export default async function Shop() {
         </div>
 
         {/* Content Wrapper pulling card upwards */}
-        <div className="relative max-w-5xl mx-auto px-4 -mt-36 md:-mt-48 z-30">
+        <div className="relative max-w-5xl mx-auto px-4 -mt-28 md:-mt-36 z-30">
           
           {/* Floating Glassmorphic Container Card with enhanced glass effect */}
           <div className="w-full md:max-w-lg bg-white/70 backdrop-blur-3xl border border-white/85 p-6 md:p-8 rounded-[2rem] shadow-[0_12px_40px_rgba(0,0,0,0.12)] flex flex-col items-start text-left animate-[fadeInUp_0.8s_ease-out]">
@@ -71,7 +71,7 @@ export default async function Shop() {
 
 
       {/* --- APPETIZING SHOP CATEGORIES GRID --- */}
-      <div className="pt-14 px-4 pb-12">
+      <div className="pt-12 md:pt-16 px-4 pb-12">
          <div className="max-w-5xl mx-auto">
            <div className="mb-8 text-center sm:text-left">
              <h2 className="font-heading text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">Shop by Category</h2>

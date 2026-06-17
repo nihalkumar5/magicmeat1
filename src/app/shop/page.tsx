@@ -68,7 +68,7 @@ export default async function Shop() {
       </section>
 
       {/* --- MOBILE HERO BANNER (Hidden on Desktop) --- */}
-      <div className="block md:hidden relative w-full z-20 pb-2 bg-transparent">
+      <div className="block md:hidden relative w-full z-20 pb-6 bg-transparent">
         {/* Background Image Container */}
         <div className="relative w-full h-[280px] overflow-hidden rounded-b-[2rem] bg-[#F4F3F0] shadow-sm">
           <img 
@@ -105,7 +105,7 @@ export default async function Shop() {
 
 
       {/* --- APPETIZING SHOP CATEGORIES GRID --- */}
-      <div className="pt-2 md:pt-16 px-4 pb-12">
+      <div className="pt-8 md:pt-16 px-4 pb-12">
          <div className="max-w-5xl mx-auto">
            <div className="mb-8 text-center sm:text-left">
              <h2 className="font-heading text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">Shop by Category</h2>

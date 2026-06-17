@@ -10,7 +10,7 @@ export default function LiveGoogleReviews() {
       href="https://share.google/elEFPgCEDjH6qSZun" 
       target="_blank" 
       rel="noopener noreferrer"
-      className="block max-w-sm mx-auto bg-white/[0.02] backdrop-blur-xl rounded-[20px] p-5 shadow-[0_12px_40px_rgba(0,0,0,0.3)] mb-12 flex flex-col relative border border-white/[0.08] transform transition-all duration-300 hover:scale-[1.02] hover:bg-white/[0.05] hover:border-white/[0.15] cursor-pointer z-10"
+      className="block max-w-sm mx-auto bg-white/[0.02] backdrop-blur-xl rounded-[20px] p-5 shadow-[0_12px_40px_rgba(0,0,0,0.3)] mb-4 flex flex-col relative border border-white/[0.08] transform transition-all duration-300 hover:scale-[1.02] hover:bg-white/[0.05] hover:border-white/[0.15] cursor-pointer z-10"
     >
       {/* Live Pulsing Dot */}
       <div className="absolute top-5 right-5 flex items-center gap-1.5 bg-green-500/10 border border-green-500/20 px-2 py-0.5 rounded-full">

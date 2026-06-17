@@ -267,24 +267,24 @@ export default async function Shop() {
       </section>
 
       {/* --- TESTIMONIALS (WALL OF FAME) --- */}
-      <section className="bg-[#0B0A0A] py-24 px-4 overflow-hidden relative w-full rounded-t-[2.5rem] border-t border-white/[0.04]">
+      <section className="bg-[#0B0A0A] py-12 px-4 overflow-hidden relative w-full rounded-t-[2.5rem] border-t border-white/[0.04]">
         
         {/* Elegant Ambient Glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-brand-primary/10 blur-[130px] rounded-full pointer-events-none z-0" />
 
         {/* Google Reviews Widget */}
-        <div className="relative z-10 mt-4 mb-8">
+        <div className="relative z-10 mt-2 mb-4">
           <LiveGoogleReviews />
         </div>
         
-        <div className="relative z-10 text-center mb-12">
-          <span className="text-brand-primary text-[10px] uppercase font-bold tracking-[0.2em] mb-2 block">
+        <div className="relative z-10 text-center mb-6">
+          <span className="text-brand-primary text-[10px] uppercase font-bold tracking-[0.2em] mb-1 block">
             Customer Stories
           </span>
           <h2 className="font-heading text-3xl md:text-4xl font-extrabold text-white tracking-tight">
             Wall of Fame
           </h2>
-          <p className="font-body text-gray-400 text-xs md:text-sm mt-2 max-w-md mx-auto font-light">
+          <p className="font-body text-gray-400 text-xs md:text-sm mt-1.5 max-w-md mx-auto font-light">
             Loved by chefs and meat lovers across Hazaribagh.
           </p>
         </div>

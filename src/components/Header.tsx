@@ -86,7 +86,7 @@ export default function Header() {
       )}
 
       {/* Sliding Drawer */}
-      <div className={`fixed top-0 left-0 h-full w-[85%] max-w-[320px] bg-[#0E0D0D]/95 backdrop-blur-2xl border-r border-white/10 z-[70] shadow-[15px_0_40px_rgba(0,0,0,0.4)] transition-transform duration-300 ease-in-out flex flex-col ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+      <div className={`fixed top-0 left-0 h-full w-[85%] max-w-[320px] bg-[#0E0D0D]/95 backdrop-blur-2xl z-[70] transition-transform duration-300 ease-in-out flex flex-col ${isMenuOpen ? 'translate-x-0 border-r border-white/10 shadow-[15px_0_40px_rgba(0,0,0,0.4)]' : '-translate-x-full border-transparent shadow-none'}`}>
         
         {/* Drawer Header */}
         <div className="flex justify-between items-center p-6 border-b border-white/10 bg-[#0E0D0D]/40">

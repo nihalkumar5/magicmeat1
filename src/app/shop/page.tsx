@@ -80,18 +80,18 @@ export default async function Shop() {
         </div>
 
         {/* Content Wrapper pulling card upwards */}
-        <div className="relative max-w-5xl mx-auto px-4 -mt-24 z-30">
+        <div className="relative max-w-5xl mx-auto px-2.5 -mt-24 z-30">
           
           {/* Floating Glassmorphic Container Card with enhanced glass effect */}
-          <div className="w-full bg-white/70 backdrop-blur-3xl border border-white/85 p-6 rounded-[2rem] shadow-[0_12px_40px_rgba(0,0,0,0.12)] flex flex-col items-start text-left animate-[fadeInUp_0.8s_ease-out]">
-            <span className="bg-brand-primary/10 text-brand-primary font-bold text-[10px] tracking-[0.2em] uppercase px-3.5 py-1.5 rounded-full shadow-sm mb-3">
+          <div className="w-full bg-white/70 backdrop-blur-3xl border border-white/85 p-5 rounded-[2rem] shadow-[0_12px_40px_rgba(0,0,0,0.12)] flex flex-col items-start text-left animate-[fadeInUp_0.8s_ease-out]">
+            <span className="bg-brand-primary/10 text-brand-primary font-bold text-[10px] tracking-[0.2em] uppercase px-3.5 py-1.5 rounded-full shadow-sm mb-2">
               Fresh & Fast Delivery
             </span>
-            <h1 className="font-heading font-extrabold text-2xl text-gray-900 tracking-[-0.03em] leading-[1.15] mb-2.5">
+            <h1 className="font-heading font-extrabold text-2xl text-gray-900 tracking-[-0.03em] leading-[1.15] mb-1.5">
               Fresh Chicken, Meats & Daily Groceries.
             </h1>
-            <p className="font-body text-gray-500 text-xs leading-relaxed mb-5">
-              Farm-fresh chicken, tender mutton, vegetables, fruits, and daily essentials delivered clean in Hazaribagh in 30 minutes.
+            <p className="font-body text-gray-500 text-xs leading-relaxed mb-4">
+              Fresh chicken, mutton, vegetables, fruits, and daily essentials delivered in 30 mins.
             </p>
             <div className="w-full">
               <SearchBar products={products} />

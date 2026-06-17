@@ -74,9 +74,8 @@ export default async function Shop() {
           <img 
             src="/hero-premium.png" 
             alt="Fresh Chicken & Grocery Delivery" 
-            className="absolute inset-0 w-full h-full object-cover object-[82%_center] brightness-[0.98]" 
+            className="absolute inset-0 w-full h-full object-cover object-[82%_center]" 
           />
-          <div className="absolute inset-0 bg-black/10 z-10" />
         </div>
 
         {/* Content Wrapper pulling card upwards */}

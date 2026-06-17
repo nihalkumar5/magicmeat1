@@ -58,7 +58,7 @@ export default async function CategoryPage(props: { params: Promise<{ category: 
   });
 
   return (
-    <main className="min-h-screen bg-[#FAF8F5] pb-24 font-body text-[#121212]">
+    <main className="min-h-screen bg-[#F4F3F0] pb-24 font-body text-[#121212]">
 
       <div className="p-4 pt-6 max-w-5xl mx-auto">
         

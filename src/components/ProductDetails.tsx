@@ -58,7 +58,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
   };
 
   return (
-    <div className="container-custom py-8 md:py-16 text-[#121212] bg-[#FAF8F5]">
+    <div className="container-custom py-8 md:py-16 text-[#121212] bg-[#F4F3F0]">
       {/* Clean Back Button */}
       <button 
         onClick={() => window.history.back()}

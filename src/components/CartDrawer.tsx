@@ -28,7 +28,7 @@ export default function CartDrawer() {
       />
 
       {/* Cart Drawer Panel */}
-      <div className="relative w-full max-w-md h-full bg-[#FAF8F5] flex flex-col transform transition-transform duration-300 overflow-hidden shadow-2xl border-l border-gray-150">
+      <div className="relative w-full max-w-md h-full bg-[#F4F3F0] flex flex-col transform transition-transform duration-300 overflow-hidden shadow-2xl border-l border-gray-150">
         {/* Header */}
         <div className="flex justify-between items-center p-6 border-b border-gray-100 bg-white z-20 shadow-sm">
           <h2 className="font-heading font-extrabold text-xl text-gray-900">Your Bag</h2>
@@ -44,7 +44,7 @@ export default function CartDrawer() {
         </div>
 
         {/* Cart Items List */}
-        <div className="flex-1 overflow-y-auto p-6 bg-[#FAF8F5]">
+        <div className="flex-1 overflow-y-auto p-6 bg-[#F4F3F0]">
           {cartItems.length === 0 ? (
             <div className="h-full flex flex-col items-center justify-center text-center p-4">
               <div className="w-20 h-20 bg-white border border-gray-100 rounded-full flex items-center justify-center text-gray-400 mb-6 shadow-sm">

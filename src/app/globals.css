@@ -12,9 +12,9 @@
   /* Custom Brand Colors (Premium Meat Brand Aesthetic) */
   --color-brand-primary: #A8201A; /* Deep butcher crimson */
   --color-brand-secondary: #C8322B; /* Slightly brighter red for hovers */
-  --color-brand-beige: #FAF8F5; /* Refined off-white / light cream */
+  --color-brand-beige: #F4F3F0; /* Premium warm off-white / light cream */
   
-  --color-bg-color: #FAF8F5;
+  --color-bg-color: #F4F3F0;
   --color-text-color: #121212;
 
   /* Custom Animations */
@@ -34,8 +34,8 @@
   :root {
     --brand-primary: #A8201A;
     --brand-secondary: #C8322B;
-    --brand-beige: #FAF8F5;
-    --bg-color: #FAF8F5;
+    --brand-beige: #F4F3F0;
+    --bg-color: #F4F3F0;
     --text-color: #121212;
   }
   

@@ -31,32 +31,66 @@ export default async function Shop() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#FAF8F5] pb-32 font-body text-[#121212]">
+    <main className="min-h-screen bg-[#F4F3F0] pb-32 font-body text-[#121212]">
 
-      {/* --- HERO BANNER AREA (Overlapping Glassmorphic Layout - Taller Image) --- */}
-      <div className="relative w-full z-20 pb-12 md:pb-16 bg-transparent">
+      {/* --- DESKTOP HERO BANNER (Hidden on Mobile) --- */}
+      <section className="hidden md:block bg-white rounded-b-[3rem] shadow-sm py-16 px-6 z-10 relative">
+        <div className="max-w-5xl mx-auto grid grid-cols-2 gap-12 items-center">
+          
+          {/* Left Column: Text & Search */}
+          <div className="flex flex-col items-start text-left animate-[fadeInUp_0.8s_ease-out]">
+            <span className="bg-brand-primary/10 text-brand-primary font-bold text-xs tracking-[0.2em] uppercase px-4 py-1.5 rounded-full shadow-sm mb-4">
+              Fresh & Fast Delivery
+            </span>
+            <h1 className="font-heading font-extrabold text-4xl lg:text-5xl text-gray-900 tracking-[-0.03em] leading-[1.1] mb-4">
+              Fresh Chicken, Meats & Daily Groceries.
+            </h1>
+            <p className="font-body text-gray-500 text-base leading-relaxed mb-8 max-w-md">
+              Farm-fresh chicken, tender mutton, fresh vegetables, fruits, and daily essentials delivered clean in Hazaribagh in 30 minutes.
+            </p>
+            <div className="w-full max-w-md">
+              <SearchBar products={products} />
+            </div>
+          </div>
+
+          {/* Right Column: Premium Showcase Card */}
+          <div className="animate-[fadeInUp_0.8s_ease-out_0.2s_both]">
+            <div className="relative w-full aspect-[1.15] rounded-[2.5rem] overflow-hidden shadow-lg border border-gray-100 bg-gray-50">
+              <img 
+                src="/hero-premium.png" 
+                alt="Fresh Chicken & Grocery Delivery" 
+                className="w-full h-full object-cover object-right" 
+              />
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* --- MOBILE HERO BANNER (Hidden on Desktop) --- */}
+      <div className="block md:hidden relative w-full z-20 pb-12 bg-transparent">
         {/* Background Image Container */}
-        <div className="relative w-full h-[340px] md:h-[480px] overflow-hidden rounded-b-[2.5rem] bg-[#FAF8F5] shadow-sm">
+        <div className="relative w-full h-[280px] overflow-hidden rounded-b-[2rem] bg-[#F4F3F0] shadow-sm">
           <img 
             src="/hero-premium.png" 
             alt="Fresh Chicken & Grocery Delivery" 
             className="absolute inset-0 w-full h-full object-cover object-center brightness-[0.98]" 
           />
-          <div className="absolute inset-0 bg-black/10 md:bg-black/5 z-10" />
+          <div className="absolute inset-0 bg-black/10 z-10" />
         </div>
 
         {/* Content Wrapper pulling card upwards */}
-        <div className="relative max-w-5xl mx-auto px-4 -mt-28 md:-mt-36 z-30">
+        <div className="relative max-w-5xl mx-auto px-4 -mt-24 z-30">
           
           {/* Floating Glassmorphic Container Card with enhanced glass effect */}
-          <div className="w-full md:max-w-lg bg-white/70 backdrop-blur-3xl border border-white/85 p-6 md:p-8 rounded-[2rem] shadow-[0_12px_40px_rgba(0,0,0,0.12)] flex flex-col items-start text-left animate-[fadeInUp_0.8s_ease-out]">
+          <div className="w-full bg-white/70 backdrop-blur-3xl border border-white/85 p-6 rounded-[2rem] shadow-[0_12px_40px_rgba(0,0,0,0.12)] flex flex-col items-start text-left animate-[fadeInUp_0.8s_ease-out]">
             <span className="bg-brand-primary/10 text-brand-primary font-bold text-[10px] tracking-[0.2em] uppercase px-3.5 py-1.5 rounded-full shadow-sm mb-3">
               Fresh & Fast Delivery
             </span>
-            <h1 className="font-heading font-extrabold text-2xl md:text-4xl text-gray-900 tracking-[-0.03em] leading-[1.15] mb-2.5">
+            <h1 className="font-heading font-extrabold text-2xl text-gray-900 tracking-[-0.03em] leading-[1.15] mb-2.5">
               Fresh Chicken, Meats & Daily Groceries.
             </h1>
-            <p className="font-body text-gray-500 text-xs md:text-sm leading-relaxed mb-5">
+            <p className="font-body text-gray-500 text-xs leading-relaxed mb-5">
               Farm-fresh chicken, tender mutton, vegetables, fruits, and daily essentials delivered clean in Hazaribagh in 30 minutes.
             </p>
             <div className="w-full">
@@ -202,7 +236,7 @@ export default async function Shop() {
       </div>
 
       {/* --- THE MAGIC PROCESS SECTION (Apple Style Infographic) --- */}
-      <section className="py-20 px-4 md:px-6 relative bg-[#FAF8F5]">
+      <section className="py-20 px-4 md:px-6 relative bg-[#F4F3F0]">
         <div className="max-w-4xl mx-auto bg-white shadow-sm border border-gray-100 rounded-[2.5rem] p-8 md:p-14 relative z-10">
           <h2 className="font-heading text-2xl md:text-3xl font-bold text-gray-900 text-center mb-16">
             The Magic Freshness Process

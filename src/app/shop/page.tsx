@@ -70,11 +70,11 @@ export default async function Shop() {
       {/* --- MOBILE HERO BANNER (Hidden on Desktop) --- */}
       <div className="block md:hidden relative w-full z-20 pb-6 bg-transparent">
         {/* Background Image Container */}
-        <div className="relative w-full h-[280px] overflow-hidden rounded-b-[2rem] bg-[#F4F3F0] shadow-sm">
+        <div className="relative w-full h-[350px] overflow-hidden rounded-b-[2rem] bg-[#F4F3F0] shadow-sm">
           <img 
             src="/hero-premium.png" 
             alt="Fresh Chicken & Grocery Delivery" 
-            className="absolute inset-0 w-full h-full object-cover object-center brightness-[0.98]" 
+            className="absolute inset-0 w-full h-full object-cover object-[82%_center] brightness-[0.98]" 
           />
           <div className="absolute inset-0 bg-black/10 z-10" />
         </div>

@@ -43,7 +43,7 @@ export default function SearchBar({ products = [] }: { products?: Product[] }) {
       <div className="relative group">
         <input
           type="text"
-          placeholder="Search for fresh meat..."
+          placeholder="Search chicken, fresh meats, groceries..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onFocus={() => setIsFocused(true)}
@@ -98,7 +98,7 @@ export default function SearchBar({ products = [] }: { products?: Product[] }) {
           ) : (
              <div className="p-8 text-center font-body text-gray-500">
                 <span className="text-2xl mb-2 block">🧐</span>
-                No meats found for "{query}"
+                No items found for "{query}"
              </div>
           )}
         </div>

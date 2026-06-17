@@ -33,27 +33,27 @@ export default async function Shop() {
   return (
     <main className="min-h-screen bg-[#FAF8F5] pb-32 font-body text-[#121212]">
 
-      {/* --- HERO BANNER AREA (Apple Styling) --- */}
-      <section className="relative w-full h-[320px] md:h-[420px] overflow-hidden rounded-b-[2.5rem] shadow-sm z-10">
+      {/* --- HERO BANNER AREA (Premium Bright Groceries & Chicken theme) --- */}
+      <section className="relative w-full h-[350px] md:h-[450px] overflow-hidden rounded-b-[2.5rem] bg-[#FAF8F5] shadow-sm z-10">
         <img 
           src="/hero-premium.png" 
-          alt="Premium Raw Meat Cut" 
-          className="absolute inset-0 w-full h-full object-cover brightness-[0.7]" 
+          alt="Fresh Chicken & Grocery Delivery" 
+          className="absolute inset-0 w-full h-full object-cover object-right md:object-center" 
         />
-        {/* Soft elegant gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/10" />
+        {/* Soft horizontal gradient overlay for high contrast text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#FAF8F5]/95 via-[#FAF8F5]/80 to-transparent md:from-[#FAF8F5]/95 md:via-[#FAF8F5]/45 md:to-transparent z-15" />
         
         {/* Hero content */}
-        <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-16 max-w-5xl mx-auto z-20">
+        <div className="absolute inset-0 flex flex-col justify-center p-6 md:p-16 max-w-5xl mx-auto z-20">
           <div className="flex flex-col gap-2 md:gap-3 items-start mb-4 md:mb-6 animate-[fadeInUp_1s_ease-out]">
-            <span className="bg-brand-primary text-white font-bold text-[10px] tracking-[0.2em] uppercase px-3 py-1 rounded-full shadow-sm">
-              100% Farm Fresh
+            <span className="bg-brand-primary text-white font-bold text-[10px] tracking-[0.2em] uppercase px-3.5 py-1 rounded-full shadow-sm">
+              Fresh & Fast Delivery
             </span>
-            <h1 className="font-heading font-bold text-3xl md:text-5xl text-white tracking-[-0.02em] leading-tight max-w-lg">
-              Premium fresh cuts, delivered in 30 minutes.
+            <h1 className="font-heading font-extrabold text-3xl md:text-5xl text-gray-900 tracking-[-0.03em] leading-[1.1] max-w-md">
+              Fresh Chicken, Meats & Daily Groceries.
             </h1>
-            <p className="font-body text-white/75 text-xs md:text-base max-w-md font-light leading-relaxed">
-              Antibiotic-free, hygienic packaging, and sourced directly from local farms to Hazaribagh.
+            <p className="font-body text-gray-600 text-xs md:text-base max-w-sm font-medium leading-relaxed mt-1">
+              Farm-fresh chicken, tender mutton, fresh vegetables, fruits, and daily essentials delivered clean in Hazaribagh in 30 minutes.
             </p>
           </div>
           

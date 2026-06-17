@@ -39,7 +39,7 @@ export default async function Shop() {
           
           {/* Left Column: Text & Search */}
           <div className="flex flex-col items-start text-left animate-[fadeInUp_0.8s_ease-out]">
-            <span className="bg-brand-primary text-white font-bold text-xs tracking-[0.2em] uppercase px-4 py-1.5 rounded-full shadow-[0_4px_12px_rgba(168,32,26,0.15)] mb-4">
+            <span className="bg-brand-primary/10 text-brand-primary border border-brand-primary/15 font-bold text-xs tracking-[0.2em] uppercase px-4 py-1.5 rounded-full shadow-[0_2px_8px_rgba(168,32,26,0.06)] mb-4">
               Fresh & Fast Delivery
             </span>
             <h1 className="font-heading font-extrabold text-4xl lg:text-5xl text-gray-900 tracking-[-0.03em] leading-[1.1] mb-4">
@@ -84,7 +84,7 @@ export default async function Shop() {
           
           {/* Floating Glassmorphic Container Card with enhanced glass effect */}
           <div className="w-full bg-white/70 backdrop-blur-3xl border border-white/85 p-5 rounded-[2rem] shadow-[0_12px_40px_rgba(0,0,0,0.12)] flex flex-col items-start text-left animate-[fadeInUp_0.8s_ease-out]">
-            <span className="bg-brand-primary text-white font-bold text-[10px] tracking-[0.2em] uppercase px-3.5 py-1.5 rounded-full shadow-[0_4px_12px_rgba(168,32,26,0.15)] mb-2">
+            <span className="bg-brand-primary/10 text-brand-primary border border-brand-primary/15 font-bold text-[10px] tracking-[0.2em] uppercase px-3.5 py-1.5 rounded-full shadow-[0_2px_8px_rgba(168,32,26,0.06)] mb-2">
               Fresh & Fast Delivery
             </span>
             <h1 className="font-heading font-extrabold text-2xl text-gray-900 tracking-[-0.03em] leading-[1.15] mb-1.5">

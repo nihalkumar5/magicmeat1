@@ -33,33 +33,37 @@ export default async function Shop() {
   return (
     <main className="min-h-screen bg-[#FAF8F5] pb-32 font-body text-[#121212]">
 
-      {/* --- HERO BANNER AREA (Premium Bright Groceries & Chicken theme) --- */}
-      <section className="relative w-full h-[350px] md:h-[450px] overflow-hidden rounded-b-[2.5rem] bg-[#FAF8F5] shadow-sm z-10">
-        <img 
-          src="/hero-premium.png" 
-          alt="Fresh Chicken & Grocery Delivery" 
-          className="absolute inset-0 w-full h-full object-cover object-right md:object-center" 
-        />
-        {/* Soft horizontal gradient overlay for high contrast text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#FAF8F5]/95 via-[#FAF8F5]/80 to-transparent md:from-[#FAF8F5]/95 md:via-[#FAF8F5]/45 md:to-transparent z-15" />
-        
-        {/* Hero content */}
-        <div className="absolute inset-0 flex flex-col justify-center p-6 md:p-16 max-w-5xl mx-auto z-20">
-          <div className="flex flex-col gap-2 md:gap-3 items-start mb-4 md:mb-6 animate-[fadeInUp_1s_ease-out]">
-            <span className="bg-brand-primary text-white font-bold text-[10px] tracking-[0.2em] uppercase px-3.5 py-1 rounded-full shadow-sm">
+      {/* --- HERO BANNER AREA (Premium Split Layout - No overlap) --- */}
+      <section className="bg-white rounded-b-[2.5rem] shadow-sm pb-12 pt-6 px-4 z-10 relative">
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
+          
+          {/* Left Column: Text & Search */}
+          <div className="w-full md:w-1/2 flex flex-col items-start text-left animate-[fadeInUp_0.8s_ease-out]">
+            <span className="bg-brand-primary/10 text-brand-primary font-bold text-[10px] tracking-[0.2em] uppercase px-3.5 py-1.5 rounded-full shadow-sm mb-4">
               Fresh & Fast Delivery
             </span>
-            <h1 className="font-heading font-extrabold text-3xl md:text-5xl text-gray-900 tracking-[-0.03em] leading-[1.1] max-w-md">
+            <h1 className="font-heading font-extrabold text-3xl md:text-5xl text-gray-900 tracking-[-0.03em] leading-[1.1] mb-3">
               Fresh Chicken, Meats & Daily Groceries.
             </h1>
-            <p className="font-body text-gray-600 text-xs md:text-base max-w-sm font-medium leading-relaxed mt-1">
+            <p className="font-body text-gray-500 text-sm md:text-base leading-relaxed mb-6 max-w-md">
               Farm-fresh chicken, tender mutton, fresh vegetables, fruits, and daily essentials delivered clean in Hazaribagh in 30 minutes.
             </p>
+            <div className="w-full">
+              <SearchBar products={products} />
+            </div>
           </div>
-          
-          <div className="w-full max-w-md animate-[fadeInUp_1s_ease-out_0.2s_both]">
-            <SearchBar products={products} />
+
+          {/* Right Column: Beautiful Showcase Image */}
+          <div className="w-full md:w-1/2 animate-[fadeInUp_0.8s_ease-out_0.2s_both]">
+            <div className="relative w-full aspect-[4/3] rounded-[2rem] overflow-hidden shadow-md border border-gray-100 bg-gray-50">
+              <img 
+                src="/hero-premium.png" 
+                alt="Fresh Chicken & Grocery Delivery" 
+                className="w-full h-full object-cover" 
+              />
+            </div>
           </div>
+
         </div>
       </section>
 

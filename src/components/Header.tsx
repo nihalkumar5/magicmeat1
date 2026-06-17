@@ -86,37 +86,52 @@ export default function Header() {
       )}
 
       {/* Sliding Drawer */}
-      <div className={`fixed top-0 left-0 h-full w-[80%] max-w-[320px] bg-white z-[70] shadow-2xl transition-transform duration-300 ease-in-out flex flex-col ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+      <div className={`fixed top-0 left-0 h-full w-[85%] max-w-[320px] bg-[#0E0D0D]/95 backdrop-blur-2xl border-r border-white/10 z-[70] shadow-[15px_0_40px_rgba(0,0,0,0.4)] transition-transform duration-300 ease-in-out flex flex-col ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         
         {/* Drawer Header */}
-        <div className="flex justify-between items-center p-6 border-b border-gray-100 bg-white">
-          <h2 className="font-heading font-bold text-xl text-gray-900">Menu</h2>
-          <button onClick={() => setIsMenuOpen(false)} className="p-2 hover:bg-gray-100 text-gray-500 hover:text-gray-900 rounded-full transition-colors">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        <div className="flex justify-between items-center p-6 border-b border-white/10 bg-[#0E0D0D]/40">
+          <div className="flex items-center gap-2">
+            <img src="/magicmeat_logo.png" alt="Magic Meat Logo" className="w-7 h-7 object-contain bg-white/10 p-0.5 rounded-lg" />
+            <h2 className="font-heading font-extrabold text-lg text-white tracking-tight">Menu</h2>
+          </div>
+          <button onClick={() => setIsMenuOpen(false)} className="w-8 h-8 flex items-center justify-center bg-white/5 border border-white/10 hover:bg-white/10 text-white/70 hover:text-white rounded-full transition-all cursor-pointer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
           </button>
         </div>
 
         {/* Drawer Links */}
-        <div className="flex-1 overflow-y-auto py-4 px-6 flex flex-col gap-4">
-          <Link href="/shop" onClick={() => setIsMenuOpen(false)} className="font-heading font-bold text-lg text-gray-900 pb-2 border-b border-gray-100 hover:translate-x-1 transition-transform">
-            Home
+        <div className="flex-1 overflow-y-auto py-5 px-5 flex flex-col gap-3 scrollbar-thin">
+          <Link 
+            href="/shop" 
+            onClick={() => setIsMenuOpen(false)} 
+            className="group font-heading font-extrabold text-lg text-white py-3.5 px-4 rounded-2xl bg-white/[0.04] border border-white/[0.08] hover:bg-white/[0.08] hover:border-white/[0.12] transition-all flex items-center justify-between shadow-sm"
+          >
+            <span>Home</span>
+            <span className="text-brand-secondary group-hover:translate-x-1 transition-transform font-bold">&rarr;</span>
           </Link>
+          
+          <div className="h-[1px] bg-white/10 my-1" />
+          
           {categories.map((cat, idx) => (
             <Link 
               key={idx} 
               href={cat.href} 
               onClick={() => setIsMenuOpen(false)}
-              className="font-body font-medium text-base text-gray-600 hover:text-gray-900 hover:translate-x-1 transition-all flex items-center gap-3"
+              className="group font-body font-semibold text-base text-white/70 hover:text-white py-3 px-4 rounded-2xl bg-white/[0.01] border border-white/[0.03] hover:bg-white/[0.06] hover:border-white/[0.08] transition-all flex items-center justify-between"
             >
-              {cat.name}
+              <span className="group-hover:translate-x-0.5 transition-transform">{cat.name}</span>
+              <span className="text-white/20 group-hover:text-brand-secondary group-hover:translate-x-1 transition-all font-bold text-sm">&rarr;</span>
             </Link>
           ))}
         </div>
 
         {/* Drawer Footer */}
-        <div className="p-6 border-t border-gray-100 bg-[#F4F3F0]">
-           <a href="tel:+918271663388" className="flex items-center justify-center gap-2 bg-brand-primary text-white font-body font-semibold py-3 px-4 rounded-full transition-all hover:bg-brand-secondary hover:shadow-md hover:shadow-brand-primary/10 w-full">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        <div className="p-6 border-t border-white/10 bg-[#0E0D0D]/80">
+           <a 
+             href="tel:+918271663388" 
+             className="flex items-center justify-center gap-2 bg-brand-primary text-white font-body font-bold text-sm uppercase tracking-wider py-4 px-4 rounded-full transition-all hover:bg-brand-secondary hover:shadow-[0_4px_16px_rgba(168,32,26,0.35)] active:scale-[0.98] w-full"
+           >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
               Call Now
            </a>
         </div>

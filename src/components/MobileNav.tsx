@@ -79,7 +79,7 @@ export default function MobileNav() {
 
         {/* WhatsApp */}
         <a 
-          href="https://wa.me/918271663388"
+          href="https://wa.me/918271663388?text=Hi%20Magic%20Meat!%20%F0%9F%91%8B%20I%20want%20to%20order%20premium%20fresh%20meats%20%26%20daily%20groceries.%20Please%20share%20today's%20specials.%20Thanks!%20%E2%9C%A8"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 text-white/65 hover:text-white hover:bg-white/10"

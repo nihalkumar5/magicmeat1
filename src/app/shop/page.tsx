@@ -20,7 +20,7 @@ export default async function Shop() {
   const freshArrivals = products.slice(8, 16);
   
   const categories = [
-     { name: 'All Products', href: '/shop/all', img: '/gourmet_hero_background.png' },
+     { name: 'All Products', href: '/shop/all', img: '/cat-all.png' },
      { name: 'Chicken', href: '/shop/chicken', img: '/cat-chicken.png' },
      { name: 'Mutton', href: '/shop/mutton', img: '/cat-mutton.png' },
      { name: 'Sea Food', href: '/shop/seafood', img: '/cat-seafood.png' },

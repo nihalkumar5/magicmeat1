@@ -12,7 +12,7 @@ interface ProductCatalogProps {
 type CategoryType = 'all' | 'chicken' | 'mutton' | 'seafood' | 'grocery' | 'vegetables' | 'fruits' | 'frozen';
 
 const CATEGORIES: { key: CategoryType; label: string; image: string }[] = [
-  { key: 'all',        label: 'All Products',    image: '/cat-chicken.png' },
+  { key: 'all',        label: 'All Products',    image: '/cat-all.png' },
   { key: 'chicken',    label: 'Chicken',          image: '/cat-chicken.png' },
   { key: 'mutton',     label: 'Mutton',           image: '/cat-mutton.png' },
   { key: 'seafood',    label: 'Sea Food',         image: '/cat-seafood.png' },

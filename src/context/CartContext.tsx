@@ -56,6 +56,10 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   // 3. Add item to cart
   const addToCart = (product: Product, variant: ShopifyVariant, openAfterAdd = true) => {
+    if (!variant || !variant.availableForSale) {
+      console.warn('Cannot add out-of-stock item to cart.');
+      return;
+    }
     const existingIndex = cartItems.findIndex((item) => item.variant.id === variant.id);
 
     if (existingIndex > -1) {

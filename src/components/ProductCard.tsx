@@ -22,11 +22,13 @@ export default function ProductCard({ product }: ProductCardProps) {
 
   // Find if product is already in cart
   const defaultVariant = product.variants[0];
+  const isAvailable = defaultVariant ? defaultVariant.availableForSale : false;
   const cartItem = cartItems.find((item) => item.variant.id === defaultVariant?.id);
   const quantity = cartItem ? cartItem.quantity : 0;
 
   const handleAdd = (e: React.MouseEvent) => {
     e.preventDefault(); // Prevent navigating to product details
+    if (!isAvailable) return;
     
     // Haptic feedback
     if (typeof window !== 'undefined' && window.navigator && window.navigator.vibrate) {
@@ -119,14 +121,18 @@ export default function ProductCard({ product }: ProductCardProps) {
   }
 
   return (
-    <div className="group relative flex flex-col h-full bg-white rounded-[24px] shadow-[0_4px_20px_rgba(0,0,0,0.02)] border border-gray-100 hover:shadow-[0_12px_36px_rgba(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+    <div className={`group relative flex flex-col h-full bg-white rounded-[24px] shadow-[0_4px_20px_rgba(0,0,0,0.02)] border border-gray-100 hover:shadow-[0_12px_36px_rgba(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300 overflow-hidden ${
+      !isAvailable ? 'opacity-85' : ''
+    }`}>
       <Link href={`/product/${handle}`} className="flex-grow flex flex-col cursor-pointer">
         {/* Product Image */}
         <div className="relative w-full aspect-[4/3] bg-gray-50 overflow-hidden flex items-center justify-center">
           <img 
             src={images[0]?.url || '/placeholder.png'} 
             alt={images[0]?.altText || title}
-            className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+            className={`w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105 ${
+              !isAvailable ? 'opacity-40 grayscale-[25%]' : ''
+            }`}
             loading="lazy"
             onError={(e) => {
               e.currentTarget.src = '/icons/shopping-bag-svgrepo-com.svg';
@@ -134,9 +140,13 @@ export default function ProductCard({ product }: ProductCardProps) {
             }}
           />
           
-          {/* Glassmorphic Tag */}
-          <div className="absolute top-3 left-3 bg-white/85 backdrop-blur-md border border-white/40 px-2.5 py-1 rounded-lg text-[9px] font-bold text-gray-800 uppercase tracking-widest shadow-sm">
-            {badge}
+          {/* Glassmorphic Tag / Out of Stock Tag */}
+          <div className={`absolute top-3 left-3 px-2.5 py-1 rounded-lg text-[9px] font-bold uppercase tracking-widest shadow-sm ${
+            isAvailable 
+              ? 'bg-white/85 backdrop-blur-md border border-white/40 text-gray-800' 
+              : 'bg-black/90 text-white border border-black/30'
+          }`}>
+            {isAvailable ? badge : 'OUT OF STOCK'}
           </div>
           
           {/* Glassmorphic Heart/Wishlist Button */}
@@ -167,7 +177,11 @@ export default function ProductCard({ product }: ProductCardProps) {
                <span className="text-gray-500 font-semibold text-sm">₹</span>{price}
             </div>
             
-            {quantity === 0 ? (
+            {!isAvailable ? (
+              <span className="text-[10px] font-bold text-gray-400 bg-gray-100/90 border border-gray-200/55 px-3 py-1.5 rounded-full uppercase tracking-wider select-none">
+                Sold Out
+              </span>
+            ) : quantity === 0 ? (
               <button 
                 onClick={handleAdd}
                 className="bg-brand-primary text-white w-9 h-9 rounded-full flex items-center justify-center hover:bg-brand-secondary transition-all shadow-md shadow-brand-primary/20 active:scale-90 duration-200 cursor-pointer"

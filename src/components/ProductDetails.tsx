@@ -58,27 +58,27 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
   };
 
   return (
-    <div className="container-custom py-6 md:py-12">
-      {/* Brutalist Back Button */}
+    <div className="container-custom py-8 md:py-16 text-[#121212] bg-[#FAF8F5]">
+      {/* Clean Back Button */}
       <button 
         onClick={() => window.history.back()}
-        className="mb-8 inline-flex items-center gap-2 px-4 py-2 bg-white border-[3px] border-black shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:bg-[#D4FF00] hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-[2px_2px_0px_rgba(0,0,0,1)] font-heading font-black text-sm uppercase tracking-widest transition-all"
+        className="mb-8 inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-gray-200 shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:bg-gray-50 hover:border-gray-300 rounded-full font-heading font-bold text-xs uppercase tracking-wider transition-all duration-200 cursor-pointer"
       >
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="square" strokeLinejoin="miter">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
           <line x1="19" y1="12" x2="5" y2="12"></line>
           <polyline points="12 19 5 12 12 5"></polyline>
         </svg>
-        BACK TO SHOP
+        Back to Shop
       </button>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
         {/* Gallery Panel */}
         <div className="flex flex-col gap-6">
-          <div className="w-full relative aspect-[4/3] md:aspect-video bg-white border-[4px] border-black shadow-[8px_8px_0px_rgba(0,0,0,1)] overflow-hidden">
+          <div className="w-full relative aspect-[4/3] md:aspect-[1.4] bg-white rounded-3xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.03)] border border-gray-100">
             <img 
               src={activeImageUrl} 
               alt={product.title} 
-              className="absolute inset-0 w-full h-full object-cover object-center scale-[1.7]"
+              className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105"
             />
           </div>
           
@@ -88,13 +88,17 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
               {product.images.map((image, index) => (
                 <div 
                   key={index} 
-                  className={`w-28 h-20 flex-shrink-0 cursor-pointer border-[3px] border-black overflow-hidden transition-all duration-200 ${activeImageUrl === image.url ? 'shadow-[4px_4px_0px_rgba(0,0,0,1)] translate-y-[-4px] translate-x-[-4px]' : 'opacity-80 hover:opacity-100 hover:shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:translate-y-[-2px] hover:translate-x-[-2px]'}`}
+                  className={`w-24 h-18 flex-shrink-0 cursor-pointer border rounded-2xl overflow-hidden transition-all duration-300 ${
+                    activeImageUrl === image.url 
+                      ? 'border-brand-primary ring-2 ring-brand-primary/20 scale-[0.98]' 
+                      : 'border-gray-200 opacity-70 hover:opacity-100'
+                  }`}
                   onClick={() => setActiveImageUrl(image.url)}
                 >
                   <img 
                      src={image.url} 
                      alt={`${product.title} thumbnail ${index + 1}`} 
-                     className="w-full h-full object-cover object-center bg-white scale-[1.7]"
+                     className="w-full h-full object-cover object-center bg-white"
                   />
                 </div>
               ))}
@@ -103,29 +107,34 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
         </div>
 
         {/* Product Details Info Panel */}
-        <div className="flex flex-col justify-center max-w-lg mx-auto md:mx-0 w-full">
-          {/* Tag Badges */}
-          <div className="mb-6 text-center md:text-left">
-            <span className="inline-block bg-[#D4FF00] border-[3px] border-black shadow-[4px_4px_0px_rgba(0,0,0,1)] text-black px-4 py-1.5 text-sm font-heading font-bold uppercase tracking-widest">
-              {isAvailable ? 'In Stock' : 'Out of Stock'}
+        <div className="flex flex-col justify-center w-full">
+          {/* Sourcing / Stock Badge */}
+          <div className="mb-4 text-left">
+            <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold border ${
+              isAvailable 
+                ? 'bg-green-50 text-green-700 border-green-200/50' 
+                : 'bg-red-50 text-red-700 border-red-200/50'
+            }`}>
+              <span className={`w-1.5 h-1.5 rounded-full ${isAvailable ? 'bg-green-500' : 'bg-red-500'}`} />
+              {isAvailable ? 'In Stock (Freshly Cut)' : 'Out of Stock'}
             </span>
           </div>
 
-          <h1 className="font-heading text-5xl md:text-7xl uppercase tracking-widest mb-6 text-black text-center md:text-left leading-none">
+          <h1 className="font-heading text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight mb-4 leading-tight">
             {product.title}
           </h1>
           
-          <div className="mb-8 text-center md:text-left">
-            <span className="font-heading text-4xl md:text-5xl font-bold text-black bg-brand-primary border-[3px] border-black shadow-[4px_4px_0px_rgba(0,0,0,1)] inline-block px-6 py-2">
+          <div className="mb-6 text-left">
+            <span className="font-heading text-3xl font-black text-brand-primary">
                ₹{currentPrice.toFixed(0)}
             </span>
           </div>
 
           {/* Description */}
           {product.descriptionHtml && product.descriptionHtml.trim() !== '' && (
-            <div className="bg-white border-[3px] border-black shadow-[6px_6px_0px_rgba(0,0,0,1)] p-5 mb-10 text-base text-black font-medium">
+            <div className="bg-white border border-gray-100 rounded-2xl p-5 mb-8 shadow-[0_4px_20px_rgba(0,0,0,0.01)] text-gray-600 font-normal leading-relaxed text-sm md:text-base">
                <div 
-                 className="prose prose-p:mb-2 leading-snug"
+                 className="prose prose-p:mb-2 leading-relaxed"
                  dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
                />
             </div>
@@ -133,14 +142,20 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
 
           {/* Variant Selector Button Grid */}
           {product.variants.length > 1 && (
-            <div className="mb-10">
-              <div className="font-heading font-bold text-black mb-4 text-xl tracking-widest uppercase text-center md:text-left border-b-[3px] border-black pb-2 inline-block">Select Size</div>
-              <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+            <div className="mb-8">
+              <div className="font-heading font-bold text-gray-800 mb-3 text-sm uppercase tracking-wider">Select Portion Size</div>
+              <div className="flex flex-wrap gap-3 justify-start">
                 {product.variants.map((variant) => (
                   <button
                     key={variant.id}
-                    className={`px-6 py-3 font-heading text-lg uppercase tracking-widest transition-all duration-200 border-[3px] border-black ${selectedVariant.id === variant.id ? 'bg-black text-white shadow-none translate-y-[2px] translate-x-[2px]' : 'bg-white text-black shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-[2px_2px_0px_rgba(0,0,0,1)] hover:bg-[#D4FF00]'}`}
-                    onClick={() => setSelectedVariant(variant)}
+                    className={`px-5 py-2.5 rounded-xl font-heading font-semibold text-sm transition-all duration-200 border cursor-pointer ${
+                      selectedVariant.id === variant.id 
+                        ? 'bg-[#121212] text-white border-black shadow-sm' 
+                        : variant.availableForSale
+                          ? 'bg-white text-gray-700 border-gray-200 hover:bg-gray-50 hover:border-gray-300'
+                          : 'bg-gray-50 text-gray-400 border-gray-200 cursor-not-allowed opacity-50'
+                    }`}
+                    onClick={() => variant.availableForSale && setSelectedVariant(variant)}
                     disabled={!variant.availableForSale}
                   >
                     {variant.title}
@@ -152,37 +167,47 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
 
           {/* Active CTA Button */}
           <button 
-            className={`w-full mb-12 py-5 border-[4px] border-black font-heading text-2xl uppercase tracking-widest transition-all duration-200 ${!isAvailable ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : 'bg-[#15C213] text-white shadow-[6px_6px_0px_rgba(0,0,0,1)] active:translate-y-[4px] active:translate-x-[4px] active:shadow-[2px_2px_0px_rgba(0,0,0,1)] hover:bg-[#12a110]'}`}
+            className={`w-full mb-8 py-4 rounded-full font-heading text-lg font-bold tracking-wide transition-all duration-200 ${
+              !isAvailable 
+                ? 'bg-gray-100 text-gray-400 border border-gray-200/60 cursor-not-allowed' 
+                : 'bg-brand-primary text-white hover:bg-brand-secondary shadow-md shadow-brand-primary/10 active:scale-[0.98] cursor-pointer'
+            }`}
             onClick={() => isAvailable && addToCart(product, selectedVariant)}
             disabled={!isAvailable}
           >
             {isAvailable ? 'Add to Cart' : 'Out of Stock'}
           </button>
 
-          {/* Brutalist Tabs */}
-          <div className="bg-white border-[4px] border-black shadow-[8px_8px_0px_rgba(0,0,0,1)] mb-10">
-            <div className="flex border-b-[4px] border-black">
+          {/* Elegant Tabs */}
+          <div className="bg-white border border-gray-100 rounded-3xl shadow-[0_4px_25px_rgba(0,0,0,0.01)] overflow-hidden">
+            <div className="flex border-b border-gray-100 bg-gray-50/50">
               <button 
-                className={`flex-1 py-4 px-2 font-heading text-lg uppercase tracking-widest transition-colors border-r-[4px] border-black last:border-r-0 ${activeTab === 'sourcing' ? 'bg-[#D4FF00] text-black' : 'bg-white text-gray-600 hover:bg-gray-100'}`}
+                className={`flex-1 py-3 px-2 font-heading text-sm font-bold uppercase tracking-wider transition-colors border-r border-gray-150/40 last:border-r-0 cursor-pointer ${
+                  activeTab === 'sourcing' ? 'bg-white text-brand-primary' : 'text-gray-500 hover:bg-gray-50'
+                }`}
                 onClick={() => setActiveTab('sourcing')}
               >
                 Purity
               </button>
               <button 
-                className={`flex-1 py-4 px-2 font-heading text-lg uppercase tracking-widest transition-colors border-r-[4px] border-black last:border-r-0 ${activeTab === 'cooking' ? 'bg-[#D4FF00] text-black' : 'bg-white text-gray-600 hover:bg-gray-100'}`}
+                className={`flex-1 py-3 px-2 font-heading text-sm font-bold uppercase tracking-wider transition-colors border-r border-gray-150/40 last:border-r-0 cursor-pointer ${
+                  activeTab === 'cooking' ? 'bg-white text-brand-primary' : 'text-gray-500 hover:bg-gray-50'
+                }`}
                 onClick={() => setActiveTab('cooking')}
               >
                 Guide
               </button>
               <button 
-                className={`flex-1 py-4 px-2 font-heading text-lg uppercase tracking-widest transition-colors ${activeTab === 'delivery' ? 'bg-[#D4FF00] text-black' : 'bg-white text-gray-600 hover:bg-gray-100'}`}
+                className={`flex-1 py-3 px-2 font-heading text-sm font-bold uppercase tracking-wider transition-colors cursor-pointer ${
+                  activeTab === 'delivery' ? 'bg-white text-brand-primary' : 'text-gray-500 hover:bg-gray-50'
+                }`}
                 onClick={() => setActiveTab('delivery')}
               >
                 Shipping
               </button>
             </div>
             
-            <div className="p-6 text-sm md:text-base font-bold text-black leading-relaxed bg-white">
+            <div className="p-6 text-sm text-gray-600 leading-relaxed font-normal bg-white">
               {getTabContent()}
             </div>
           </div>

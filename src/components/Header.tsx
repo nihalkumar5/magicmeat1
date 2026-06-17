@@ -29,30 +29,35 @@ export default function Header() {
   return (
     <>
       <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md flex justify-between items-center px-4 py-4 border-b border-gray-100 relative">
-        {/* Left side: Hamburger Menu */}
-        <button 
-          onClick={() => setIsMenuOpen(true)}
-          className="flex flex-col gap-[5px] w-7 p-1 cursor-pointer hover:opacity-70 transition-opacity"
-        >
-          <span className="w-full h-[2px] bg-gray-900 rounded-full"></span>
-          <span className="w-full h-[2px] bg-gray-900 rounded-full"></span>
-          <span className="w-full h-[2px] bg-gray-900 rounded-full"></span>
-        </button>
-        
-        {/* Logo (Center) */}
-        <Link href="/" className="flex items-center justify-center ml-2">
-          <img 
-            src="/magicmeat_logo.png" 
-            alt="Magic Meat Logo" 
-            className="h-8 w-auto object-contain brightness-105 contrast-105" 
-          />
-        </Link>
+        {/* Left side: Hamburger Menu + Logo */}
+        <div className="flex items-center gap-3">
+          <button 
+            onClick={() => setIsMenuOpen(true)}
+            className="relative z-10 flex items-center justify-center w-8 h-8 text-[#121212] hover:opacity-70 transition-opacity cursor-pointer"
+            aria-label="Open Menu"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+          
+          <Link href="/" className="flex items-center justify-center">
+            <img 
+              src="/magicmeat_logo.png" 
+              alt="Magic Meat Logo" 
+              style={{ height: '36px', width: '36px' }}
+              className="object-contain brightness-105 contrast-105" 
+            />
+          </Link>
+        </div>
         
         {/* Right Actions: Call Now + Cart */}
-        <div className="flex items-center gap-2.5">
+        <div className="relative z-10 flex items-center gap-2.5">
           <a 
             href="tel:+918271663388" 
-            className="flex items-center gap-1.5 bg-[#FAF8F5] border border-gray-200 text-gray-800 text-[9px] sm:text-xs font-bold uppercase tracking-wider px-2.5 py-1.5 rounded-full hover:bg-gray-50 hover:border-gray-300 transition-all duration-200"
+            className="flex items-center gap-1.5 bg-[#FAF8F5] border border-gray-200 text-gray-800 text-[9px] sm:text-xs font-bold uppercase tracking-wider px-2.5 py-1.5 rounded-full hover:bg-gray-50 hover:border-gray-300 transition-all duration-200 whitespace-nowrap"
           >
              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-brand-primary">
                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />

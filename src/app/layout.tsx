@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter, Quicksand } from 'next/font/google';
+import { Inter, Quicksand, Caveat } from 'next/font/google';
 import './globals.css';
 import { CartProvider } from '@/context/CartContext';
 import { WishlistProvider } from '@/context/WishlistContext';
@@ -16,6 +16,11 @@ const inter = Inter({
 const quicksand = Quicksand({
   subsets: ['latin'],
   variable: '--font-body',
+});
+
+const caveat = Caveat({
+  subsets: ['latin'],
+  variable: '--font-script',
 });
 
 export const metadata: Metadata = {
@@ -92,7 +97,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${inter.variable} ${quicksand.variable} font-body antialiased text-text-color bg-bg-color min-h-screen flex flex-col`} suppressHydrationWarning>
+      <body className={`${inter.variable} ${quicksand.variable} ${caveat.variable} font-body antialiased text-text-color bg-bg-color min-h-screen flex flex-col`} suppressHydrationWarning>
         <CartProvider>
           <WishlistProvider>
             {/* Global Sticky Navigation Header */}

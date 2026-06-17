@@ -64,7 +64,7 @@ export default function Footer() {
 
         {/* Made with love */}
         <div 
-          className="text-white/95 text-xl mb-6 transform -rotate-1"
+          className="text-white/95 text-2xl mb-6 transform -rotate-1"
           style={{ fontFamily: 'var(--font-script), cursive' }}
         >
           Proudly made in Hazaribagh with love ❤️

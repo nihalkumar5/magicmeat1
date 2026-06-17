@@ -302,15 +302,15 @@ export default async function Shop() {
                     { name: "CHETAN GOSWAMI", rating: 5, text: "Amazing service, very humble owner , chicken was fresh , near and clean packaging" },
                     { name: "Swapnil Abhishek", rating: 5, text: "Tender, fresh-cut chicken with fast and reliable delivery." }
                   ].map((review, idx) => (
-                    <div key={idx} className="min-w-[280px] sm:min-w-[320px] max-w-[320px] bg-white/[0.02] backdrop-blur-md p-6 rounded-2xl flex flex-col justify-between border border-white/[0.06] transition-all duration-300 hover:scale-[1.02] hover:border-white/[0.12] hover:bg-white/[0.04] cursor-pointer shadow-lg shadow-black/20">
+                    <div key={idx} className="min-w-[280px] sm:min-w-[320px] max-w-[320px] bg-gradient-to-br from-[#1A1414] to-[#0F0B0B] p-6 rounded-2xl flex flex-col justify-between border border-[#2D1A1A] transition-all duration-300 hover:scale-[1.02] hover:border-[#5C2B2B] hover:shadow-[0_8px_30px_rgba(168,32,26,0.15)] cursor-pointer shadow-xl shadow-black/40">
                       <div>
                         <div className="flex items-center gap-3 mb-4">
-                          <div className="w-10 h-10 bg-gradient-to-br from-brand-primary/80 to-brand-secondary/80 text-white font-heading font-extrabold text-sm flex items-center justify-center rounded-full uppercase shadow-inner">
+                          <div className="w-10 h-10 shrink-0 bg-gradient-to-br from-[#A8201A] to-[#E53E3E] text-white font-heading font-extrabold text-sm flex items-center justify-center rounded-full uppercase shadow-inner">
                             {review.name.charAt(0)}
                           </div>
                           <div>
-                            <h3 className="font-heading font-bold text-gray-100 text-sm">{review.name}</h3>
-                            <div className="flex text-[#FFC700] text-xs mt-0.5 tracking-tighter">
+                            <h3 className="font-heading font-bold text-gray-100 text-sm leading-tight">{review.name}</h3>
+                            <div className="flex text-[#FFB800] text-xs mt-0.5 tracking-tighter">
                               {Array.from({ length: 5 }).map((_, i) => i < review.rating ? '★' : '☆').join('')}
                             </div>
                           </div>
@@ -324,7 +324,7 @@ export default async function Shop() {
                           <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
                           <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
                         </svg>
-                        <span className="font-body text-xs text-white/40 font-medium">Verified Customer</span>
+                        <span className="font-body text-xs text-white/40 font-medium">Posted on Google</span>
                       </div>
                     </div>
                   ))}

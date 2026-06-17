@@ -33,12 +33,12 @@ export default async function Shop() {
   return (
     <main className="min-h-screen bg-[#FAF8F5] pb-32 font-body text-[#121212]">
 
-      {/* --- HERO BANNER AREA (Premium Integrated Background with Glassmorphic Card) --- */}
-      <section className="relative w-full h-[360px] md:h-[460px] overflow-hidden rounded-b-[2.5rem] bg-[#FAF8F5] shadow-sm z-10">
+      {/* --- HERO BANNER AREA (Premium Integrated Background with Enhanced Glassmorphic Card) --- */}
+      <section className="relative w-full h-[440px] md:h-[540px] overflow-hidden rounded-b-[2.5rem] bg-[#FAF8F5] shadow-sm z-10">
         <img 
           src="/hero-premium.png" 
           alt="Fresh Chicken & Grocery Delivery" 
-          className="absolute inset-0 w-full h-full object-cover object-center brightness-[0.95]" 
+          className="absolute inset-0 w-full h-full object-cover object-center brightness-[0.98]" 
         />
         
         {/* Subtle dark filter overlay for mobile contrast */}
@@ -47,8 +47,8 @@ export default async function Shop() {
         {/* Hero content */}
         <div className="absolute inset-0 flex items-center p-4 md:p-16 max-w-5xl mx-auto z-20">
           
-          {/* Floating Glassmorphic Container Card */}
-          <div className="w-full md:max-w-lg bg-white/90 backdrop-blur-xl border border-white/60 p-6 md:p-8 rounded-[2rem] shadow-[0_12px_40px_rgba(0,0,0,0.08)] flex flex-col items-start text-left animate-[fadeInUp_0.8s_ease-out]">
+          {/* Floating Glassmorphic Container Card with enhanced glass effect */}
+          <div className="w-full md:max-w-lg bg-white/70 backdrop-blur-3xl border border-white/85 p-6 md:p-8 rounded-[2rem] shadow-[0_12px_40px_rgba(0,0,0,0.1)] flex flex-col items-start text-left animate-[fadeInUp_0.8s_ease-out]">
             <span className="bg-brand-primary/10 text-brand-primary font-bold text-[10px] tracking-[0.2em] uppercase px-3.5 py-1.5 rounded-full shadow-sm mb-3">
               Fresh & Fast Delivery
             </span>

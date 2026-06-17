@@ -10,7 +10,7 @@ export default function LiveGoogleReviews() {
       href="https://share.google/elEFPgCEDjH6qSZun" 
       target="_blank" 
       rel="noopener noreferrer"
-      className="block max-w-sm mx-auto bg-white/5 backdrop-blur-md rounded-2xl p-5 shadow-[0_8px_32px_rgba(0,0,0,0.2)] mb-12 flex flex-col relative border border-white/5 transform transition-all duration-300 hover:scale-[1.01] hover:bg-white/10 cursor-pointer"
+      className="block max-w-sm mx-auto bg-white/[0.02] backdrop-blur-xl rounded-[20px] p-5 shadow-[0_12px_40px_rgba(0,0,0,0.3)] mb-12 flex flex-col relative border border-white/[0.08] transform transition-all duration-300 hover:scale-[1.02] hover:bg-white/[0.05] hover:border-white/[0.15] cursor-pointer z-10"
     >
       {/* Live Pulsing Dot */}
       <div className="absolute top-5 right-5 flex items-center gap-1.5 bg-green-500/10 border border-green-500/20 px-2 py-0.5 rounded-full">
@@ -26,16 +26,16 @@ export default function LiveGoogleReviews() {
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="text-brand-primary">
           <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
         </svg>
-        <span className="text-xs font-semibold uppercase tracking-wider text-white/55">Google Maps Listing</span>
+        <span className="text-[10px] font-bold uppercase tracking-wider text-white/40">Google Maps Listing</span>
       </div>
 
-      <h3 className="font-heading font-bold text-xl text-white mb-2 leading-none">Magic Meat</h3>
+      <h3 className="font-heading font-extrabold text-xl text-white mb-2 leading-none">Magic Meat</h3>
       
       <div className="flex items-center gap-2.5 mb-3">
         <span className="font-body font-bold text-white text-base">
           {rating}
         </span>
-        <div className="flex text-yellow-500 text-lg tracking-tight">
+        <div className="flex text-[#FFC700] text-base tracking-tighter">
           ★★★★★
         </div>
         <span className="font-body text-brand-secondary text-xs font-semibold hover:underline">
@@ -43,8 +43,8 @@ export default function LiveGoogleReviews() {
         </span>
       </div>
       
-      <div className="flex items-center justify-between pt-3 border-t border-white/5">
-        <p className="font-body text-white/45 text-xs">Fresh meat delivery in Hazaribagh</p>
+      <div className="flex items-center justify-between pt-3 border-t border-white/[0.06]">
+        <p className="font-body text-white/40 text-xs">Fresh meat delivery in Hazaribagh</p>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
           <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>

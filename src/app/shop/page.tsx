@@ -267,53 +267,64 @@ export default async function Shop() {
       </section>
 
       {/* --- TESTIMONIALS (WALL OF FAME) --- */}
-      <section className="bg-[#121212] py-20 px-4 overflow-hidden relative w-full rounded-t-[2.5rem]">
+      <section className="bg-[#0B0A0A] py-24 px-4 overflow-hidden relative w-full rounded-t-[2.5rem] border-t border-white/[0.04]">
         
+        {/* Elegant Ambient Glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-brand-primary/10 blur-[130px] rounded-full pointer-events-none z-0" />
+
         {/* Google Reviews Widget */}
-        <div className="relative z-20 mt-4 mb-8">
+        <div className="relative z-10 mt-4 mb-8">
           <LiveGoogleReviews />
         </div>
         
-        <h2 className="font-heading text-2xl md:text-3xl font-bold text-white text-center mb-10 relative z-10">
-          Wall of Fame
-        </h2>
+        <div className="relative z-10 text-center mb-12">
+          <span className="text-brand-primary text-[10px] uppercase font-bold tracking-[0.2em] mb-2 block">
+            Customer Stories
+          </span>
+          <h2 className="font-heading text-3xl md:text-4xl font-extrabold text-white tracking-tight">
+            Wall of Fame
+          </h2>
+          <p className="font-body text-gray-400 text-xs md:text-sm mt-2 max-w-md mx-auto font-light">
+            Loved by chefs and meat lovers across Hazaribagh.
+          </p>
+        </div>
         
         {/* Scrolling Reviews */}
-        <div className="relative z-10 w-full overflow-hidden pb-8">
-           <div className="animate-scroll-infinite-cards hover:[animation-play-state:paused]">
+        <div className="relative z-10 w-full overflow-hidden pb-8 flex">
+           <div className="flex gap-4 w-max animate-scroll-infinite-cards hover:[animation-play-state:paused] py-2">
              {[1, 2].map((groupIdx) => (
                 <div key={groupIdx} className="flex gap-4 px-2 shrink-0">
                   {[
                     { name: "Nihal Kumarr", rating: 5, text: "Best chicken delivery service in Hazaribagh, Jharkhand" },
-                    { name: "Adarsh", rating: 5, text: "Hazaribagh mein aisi service milna honestly unexpected tha. MagicMeat ne kaafi easy bana diya chicken lena, warna market jaana padta hai. Kaafi convenient laga. Highly recommend" },
+                    { name: "Adarsh", rating: 5, text: "Hazaribagh mein aisi service milna honestly unexpected tha. MagicMeat ne kaafi easy bana diya chicken lena, warna market jaana pdta hai. Kaafi convenient laga. Highly recommend" },
                     { name: "Atul Marandi", rating: 4, text: "Fresh and clean with good packaging, best for those who don't want to visit any meat shop nearby Hurhuru, Markham, Mission Side and area next to it within 4-5 km" },
                     { name: "motivation therapy", rating: 5, text: "Great experience with magicmeat, chicken was fresh and cut as I told them. good service for hazaribagh" },
                     { name: "CHETAN GOSWAMI", rating: 5, text: "Amazing service, very humble owner , chicken was fresh , near and clean packaging" },
                     { name: "Swapnil Abhishek", rating: 5, text: "Tender, fresh-cut chicken with fast and reliable delivery." }
                   ].map((review, idx) => (
-                    <div key={idx} className="min-w-[280px] max-w-[300px] bg-[#1d1d1f] p-6 rounded-2xl flex flex-col justify-between border border-white/5 transition-transform duration-300 hover:scale-[1.02] cursor-pointer">
+                    <div key={idx} className="min-w-[280px] sm:min-w-[320px] max-w-[320px] bg-white/[0.02] backdrop-blur-md p-6 rounded-2xl flex flex-col justify-between border border-white/[0.06] transition-all duration-300 hover:scale-[1.02] hover:border-white/[0.12] hover:bg-white/[0.04] cursor-pointer shadow-lg shadow-black/20">
                       <div>
                         <div className="flex items-center gap-3 mb-4">
-                          <div className="w-10 h-10 bg-[#2d2d2f] text-white font-medium text-lg flex items-center justify-center rounded-full uppercase">
+                          <div className="w-10 h-10 bg-gradient-to-br from-brand-primary/80 to-brand-secondary/80 text-white font-heading font-extrabold text-sm flex items-center justify-center rounded-full uppercase shadow-inner">
                             {review.name.charAt(0)}
                           </div>
                           <div>
-                            <h3 className="font-body font-semibold text-gray-200 text-sm">{review.name}</h3>
-                            <div className="flex text-yellow-500 text-xs mt-0.5 tracking-tight">
+                            <h3 className="font-heading font-bold text-gray-100 text-sm">{review.name}</h3>
+                            <div className="flex text-[#FFC700] text-xs mt-0.5 tracking-tighter">
                               {Array.from({ length: 5 }).map((_, i) => i < review.rating ? '★' : '☆').join('')}
                             </div>
                           </div>
                         </div>
-                        <p className="font-body text-gray-400 text-sm leading-relaxed mb-4">"{review.text}"</p>
+                        <p className="font-body text-gray-300 text-sm leading-relaxed mb-4 font-light">"{review.text}"</p>
                       </div>
-                      <div className="flex items-center gap-2 pt-3 border-t border-white/5">
+                      <div className="flex items-center gap-2 pt-4 border-t border-white/[0.06]">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
                           <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
                           <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
                           <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
                         </svg>
-                        <span className="font-body text-xs text-gray-500 font-medium">Posted on Google</span>
+                        <span className="font-body text-xs text-white/40 font-medium">Verified Customer</span>
                       </div>
                     </div>
                   ))}

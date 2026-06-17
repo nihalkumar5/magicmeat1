@@ -16,6 +16,18 @@
   
   --color-bg-color: #FAF8F5;
   --color-text-color: #121212;
+
+  /* Custom Animations */
+  --animate-scroll-infinite-cards: scroll-infinite-cards 30s linear infinite;
+
+  @keyframes scroll-infinite-cards {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
 }
 
 @layer base {

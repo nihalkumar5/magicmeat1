@@ -24,10 +24,10 @@ export default function SplashPage() {
   }, [router]);
 
   return (
-    <div className={`bg-[#F4F3F0] min-h-screen font-body overflow-hidden select-none transition-opacity duration-500 ease-in-out ${isFadingOut ? 'opacity-0' : 'opacity-100'}`}>
+    <div className={`relative h-screen h-dvh w-full bg-[#F4F3F0] font-body overflow-hidden select-none transition-opacity duration-500 ease-in-out ${isFadingOut ? 'opacity-0' : 'opacity-100'}`}>
       
       {/* Cinematic Full Screen Image Background */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <img 
           src="/gourmet_hero_background.png" 
           alt="Premium Raw Meat Background" 
@@ -38,7 +38,7 @@ export default function SplashPage() {
       </div>
 
       {/* Splash Screen Content Container */}
-      <section className="relative z-20 min-h-screen flex flex-col justify-between items-center max-w-[480px] mx-auto px-6 py-16 text-gray-900">
+      <section className="relative z-20 h-full w-full flex flex-col justify-between items-center max-w-[480px] mx-auto px-6 py-12 text-gray-900">
         
         {/* Top Section: Elegant Subtle Branding */}
         <div className="mt-8 flex flex-col items-center gap-2 animate-[fadeInDown_1.2s_ease-out]">

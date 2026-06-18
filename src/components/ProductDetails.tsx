@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { Product, ShopifyVariant } from '@/lib/shopify';
 import { useCart } from '@/context/CartContext';
+import { triggerHaptic } from '@/utils/haptics';
 
 interface ProductDetailsProps {
   product: Product;
@@ -172,7 +173,12 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
                 ? 'bg-gray-100 text-gray-400 border border-gray-200/60 cursor-not-allowed' 
                 : 'bg-brand-primary text-white hover:bg-brand-secondary shadow-md shadow-brand-primary/10 active:scale-[0.98] cursor-pointer'
             }`}
-            onClick={() => isAvailable && addToCart(product, selectedVariant)}
+            onClick={() => {
+              if (isAvailable) {
+                triggerHaptic(50);
+                addToCart(product, selectedVariant);
+              }
+            }}
             disabled={!isAvailable}
           >
             {isAvailable ? 'Add to Cart' : 'Out of Stock'}

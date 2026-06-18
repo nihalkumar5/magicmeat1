@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { Product } from '@/lib/shopify';
+import { triggerHaptic } from '@/utils/haptics';
 
 interface WishlistContextType {
   wishlistItems: Product[];
@@ -47,9 +48,7 @@ export function WishlistProvider({ children }: { children: React.ReactNode }) {
     saveWishlist(newItems);
     
     // Haptic feedback
-    if (typeof window !== 'undefined' && window.navigator && window.navigator.vibrate) {
-      window.navigator.vibrate(isExisting ? 20 : [30, 50, 30]); // Distinct vibration for adding
-    }
+    triggerHaptic(isExisting ? 20 : [30, 50, 30]); // Distinct vibration for adding
   };
 
   const isInWishlist = (productId: string) => {

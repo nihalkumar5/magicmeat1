@@ -61,6 +61,10 @@ export default async function Shop() {
                 alt="Fresh Chicken & Grocery Delivery" 
                 className="w-full h-full object-cover object-right" 
               />
+              {/* Handwritten signature on the empty left space */}
+              <div className="absolute top-12 left-10 z-10 text-gray-800 text-[32px] font-script font-bold transform -rotate-6 select-none max-w-[220px] leading-tight">
+                Proudly made in Hazaribagh with love ❤️
+              </div>
             </div>
           </div>
 
@@ -76,6 +80,10 @@ export default async function Shop() {
             alt="Fresh Chicken & Grocery Delivery" 
             className="absolute inset-0 w-full h-full object-cover object-[82%_center]" 
           />
+          {/* Handwritten signature on the empty left space */}
+          <div className="absolute top-10 left-6 z-10 text-gray-800 text-[28px] font-script font-bold transform -rotate-6 select-none max-w-[180px] leading-tight">
+            Proudly made in Hazaribagh with love ❤️
+          </div>
         </div>
 
         {/* Content Wrapper pulling card upwards */}

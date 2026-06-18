@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Product } from '@/lib/shopify';
 import { useCart } from '@/context/CartContext';
 import { useWishlist } from '@/context/WishlistContext';
+import { triggerHaptic } from '@/utils/haptics';
 
 interface ProductCardProps {
   product: Product;
@@ -31,9 +32,7 @@ export default function ProductCard({ product }: ProductCardProps) {
     if (!isAvailable) return;
     
     // Haptic feedback
-    if (typeof window !== 'undefined' && window.navigator && window.navigator.vibrate) {
-      window.navigator.vibrate(50);
-    }
+    triggerHaptic(50);
 
     // Add to cart but DO NOT open drawer
     if (defaultVariant) addToCart(product, defaultVariant, false);
@@ -82,13 +81,13 @@ export default function ProductCard({ product }: ProductCardProps) {
 
   const handleIncrement = (e: React.MouseEvent) => {
     e.preventDefault();
-    if (typeof window !== 'undefined' && window.navigator && window.navigator.vibrate) window.navigator.vibrate(30);
+    triggerHaptic(30);
     if (defaultVariant) updateQuantity(defaultVariant.id, quantity + 1);
   };
 
   const handleDecrement = (e: React.MouseEvent) => {
     e.preventDefault();
-    if (typeof window !== 'undefined' && window.navigator && window.navigator.vibrate) window.navigator.vibrate(30);
+    triggerHaptic(30);
     if (defaultVariant) updateQuantity(defaultVariant.id, quantity - 1);
   };
 

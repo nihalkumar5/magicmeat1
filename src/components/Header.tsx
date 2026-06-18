@@ -134,22 +134,22 @@ export default function Header() {
           </button>
         </div>
 
-        {/* Drawer Links in a 3-Column Square Grid */}
+        {/* Drawer Links in a 3-Column Grid */}
         <div className="flex-1 overflow-y-auto py-5 px-6 flex flex-col gap-4 scrollbar-thin">
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-cols-3 gap-x-4 gap-y-7 py-3">
             {/* Home Card */}
             <Link 
               href="/shop" 
               onClick={() => setIsMenuOpen(false)} 
-              className="group flex flex-col items-center justify-center text-center p-3 aspect-square rounded-[1.5rem] bg-white/75 border border-white/80 hover:bg-white hover:border-brand-primary/15 hover:shadow-sm transition-all"
+              className="group flex flex-col items-center justify-center text-center p-2 transition-all cursor-pointer"
             >
-              <span className="text-brand-primary group-hover:scale-105 transition-transform flex items-center justify-center w-10 h-10">
-                <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <span className="text-brand-primary group-hover:scale-110 transition-transform flex items-center justify-center w-12 h-12">
+                <svg className="w-9 h-9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
                   <polyline points="9 22 9 12 15 12 15 22" />
                 </svg>
               </span>
-              <span className="font-heading font-extrabold text-[11px] text-gray-850 group-hover:text-brand-primary mt-1.5 transition-colors">Home</span>
+              <span className="font-heading font-extrabold text-[11.5px] text-gray-800 group-hover:text-brand-primary mt-2 transition-colors">Home</span>
             </Link>
 
             {/* Category Cards */}
@@ -158,12 +158,12 @@ export default function Header() {
                 key={idx} 
                 href={cat.href} 
                 onClick={() => setIsMenuOpen(false)}
-                className="group flex flex-col items-center justify-center text-center p-3 aspect-square rounded-[1.5rem] bg-white/75 border border-white/80 hover:bg-white hover:border-brand-primary/15 hover:shadow-sm transition-all"
+                className="group flex flex-col items-center justify-center text-center p-2 transition-all cursor-pointer"
               >
-                <span className="group-hover:scale-105 transition-all flex items-center justify-center w-10 h-10">
-                  <img src={cat.icon} alt={cat.name} className="w-9 h-9 object-contain" />
+                <span className="group-hover:scale-110 transition-all flex items-center justify-center w-12 h-12">
+                  <img src={cat.icon} alt={cat.name} className="w-11 h-11 object-contain" />
                 </span>
-                <span className="font-heading font-extrabold text-[11px] text-gray-850 group-hover:text-brand-primary mt-1.5 transition-colors line-clamp-1 leading-none">{cat.name}</span>
+                <span className="font-heading font-extrabold text-[11.5px] text-gray-800 group-hover:text-brand-primary mt-2 transition-colors line-clamp-1 leading-none">{cat.name}</span>
               </Link>
             ))}
           </div>

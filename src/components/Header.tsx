@@ -118,18 +118,18 @@ export default function Header() {
       )}
 
       {/* Sliding Bottom Sheet Drawer */}
-      <div className={`fixed bottom-0 left-0 w-full h-[70%] bg-[#FAF8F5]/35 backdrop-blur-2xl z-[70] rounded-t-[2.5rem] transition-transform duration-300 ease-in-out flex flex-col ${isMenuOpen ? 'translate-y-0 border-t border-white/30 shadow-[0_-10px_40px_rgba(0,0,0,0.08)]' : 'translate-y-full border-transparent shadow-none'}`}>
+      <div className={`fixed bottom-0 left-0 w-full h-[70%] bg-brand-primary/95 backdrop-blur-2xl z-[70] rounded-t-[2.5rem] transition-transform duration-300 ease-in-out flex flex-col ${isMenuOpen ? 'translate-y-0 border-t border-white/10 shadow-[0_-10px_40px_rgba(0,0,0,0.15)]' : 'translate-y-full border-transparent shadow-none'}`}>
         
         {/* iOS Drag Handle indicator */}
-        <div className="w-12 h-1 bg-gray-400/35 rounded-full mx-auto mt-3.5 mb-1 shrink-0" />
+        <div className="w-12 h-1 bg-white/20 rounded-full mx-auto mt-3.5 mb-1 shrink-0" />
 
         {/* Drawer Header */}
-        <div className="flex justify-between items-center px-6 py-3.5 border-b border-white/20 bg-white/5 shrink-0">
+        <div className="flex justify-between items-center px-6 py-3.5 border-b border-white/10 bg-white/5 shrink-0">
           <div className="flex items-center gap-2">
-            <img src="/magicmeat_logo.png" alt="Magic Meat Logo" className="w-7 h-7 object-contain bg-white/40 p-0.5 rounded-lg border border-white/80" />
-            <h2 className="font-heading font-extrabold text-base text-gray-900 tracking-tight">Menu</h2>
+            <img src="/magicmeat_logo.png" alt="Magic Meat Logo" className="w-7 h-7 object-contain bg-white/90 p-0.5 rounded-lg border border-white" />
+            <h2 className="font-heading font-extrabold text-base text-white tracking-tight">Menu</h2>
           </div>
-          <button onClick={() => setIsMenuOpen(false)} className="w-8 h-8 flex items-center justify-center bg-black/5 border border-black/[0.06] hover:bg-black/10 text-gray-600 hover:text-gray-900 rounded-full transition-all cursor-pointer">
+          <button onClick={() => setIsMenuOpen(false)} className="w-8 h-8 flex items-center justify-center bg-white/10 border border-white/10 hover:bg-white/20 text-white/90 hover:text-white rounded-full transition-all cursor-pointer">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
           </button>
         </div>
@@ -143,13 +143,13 @@ export default function Header() {
               onClick={() => setIsMenuOpen(false)} 
               className="group flex flex-col items-center justify-center text-center p-2 transition-all cursor-pointer"
             >
-              <span className="text-brand-primary group-hover:scale-110 transition-transform flex items-center justify-center w-12 h-12">
+              <span className="text-white group-hover:scale-110 transition-transform flex items-center justify-center w-12 h-12">
                 <svg className="w-9 h-9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
                   <polyline points="9 22 9 12 15 12 15 22" />
                 </svg>
               </span>
-              <span className="font-heading font-extrabold text-[11.5px] text-gray-800 group-hover:text-brand-primary mt-2 transition-colors">Home</span>
+              <span className="font-script text-[18px] text-white/95 group-hover:text-white mt-1.5 transition-colors">Home</span>
             </Link>
 
             {/* Category Cards */}
@@ -163,19 +163,19 @@ export default function Header() {
                 <span className="group-hover:scale-110 transition-all flex items-center justify-center w-12 h-12">
                   <img src={cat.icon} alt={cat.name} className="w-11 h-11 object-contain" />
                 </span>
-                <span className="font-heading font-extrabold text-[11.5px] text-gray-800 group-hover:text-brand-primary mt-2 transition-colors line-clamp-1 leading-none">{cat.name}</span>
+                <span className="font-script text-[18px] text-white/95 group-hover:text-white mt-1.5 transition-colors line-clamp-1 leading-none">{cat.name}</span>
               </Link>
             ))}
           </div>
         </div>
 
         {/* Drawer Footer */}
-        <div className="p-5 border-t border-white/20 bg-white/10 shrink-0">
+        <div className="p-5 border-t border-white/10 bg-white/5 shrink-0">
            <a 
              href="tel:+918271663388" 
-             className="flex items-center justify-center gap-2.5 bg-gradient-to-r from-brand-primary to-brand-secondary text-white font-heading font-extrabold text-[12px] uppercase tracking-widest py-3.5 px-6 rounded-2xl transition-all duration-300 hover:shadow-[0_8px_20px_rgba(168,32,26,0.3)] hover:scale-[1.01] active:scale-[0.98] w-full cursor-pointer"
+             className="flex items-center justify-center gap-2.5 bg-white text-brand-primary font-heading font-extrabold text-[12px] uppercase tracking-widest py-3.5 px-6 rounded-2xl transition-all duration-300 hover:shadow-[0_8px_20px_rgba(0,0,0,0.15)] hover:scale-[1.01] active:scale-[0.98] w-full cursor-pointer"
            >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 text-white">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 text-brand-primary">
                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
               </svg>
               <span>Order on Call</span>

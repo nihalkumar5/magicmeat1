@@ -102,11 +102,19 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
         {/* Gallery Panel */}
         <div className="flex flex-col gap-6">
-          <div className="w-full relative aspect-[4/3] md:aspect-[1.4] bg-white rounded-3xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.03)] border border-gray-100">
+          <div className="w-full relative aspect-[4/3] md:aspect-[1.4] bg-white rounded-3xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.03)] border border-gray-100 flex items-center justify-center">
+            {/* Ambient blurred background halo to fill borders for landscape/portrait images without cropping */}
+            <img 
+              src={activeImageUrl} 
+              alt=""
+              className="absolute inset-0 w-full h-full object-cover filter blur-[30px] opacity-35 scale-110 pointer-events-none"
+              aria-hidden="true"
+            />
+            {/* Sharp foreground image fitted perfectly without cutoff */}
             <img 
               src={activeImageUrl} 
               alt={product.title} 
-              className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105"
+              className="relative z-10 w-full h-full object-contain transition-transform duration-500 hover:scale-[1.02]"
             />
           </div>
           

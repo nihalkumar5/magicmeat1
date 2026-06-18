@@ -126,10 +126,18 @@ export default function ProductCard({ product }: ProductCardProps) {
       <Link href={`/product/${handle}`} className="flex-grow flex flex-col cursor-pointer">
         {/* Product Image Container */}
         <div className="relative w-full aspect-[4/3] bg-gray-50 overflow-hidden flex items-center justify-center border-b border-gray-100/60">
+          {/* Ambient blurred background halo to fill borders for landscape/portrait images without cropping */}
+          <img 
+            src={images[0]?.url || '/placeholder.png'} 
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover filter blur-[20px] opacity-35 scale-110 pointer-events-none"
+            aria-hidden="true"
+          />
+          {/* Sharp foreground image fitted perfectly without cutoff */}
           <img 
             src={images[0]?.url || '/placeholder.png'} 
             alt={images[0]?.altText || title}
-            className={`w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.03] ${
+            className={`w-full h-full object-contain relative z-10 transition-transform duration-700 group-hover:scale-[1.03] ${
               !isAvailable ? 'opacity-40 grayscale-[25%]' : ''
             }`}
             loading="lazy"

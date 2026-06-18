@@ -8,6 +8,9 @@ export default function SplashPage() {
   const [isFadingOut, setIsFadingOut] = useState(false);
 
   useEffect(() => {
+    // Bulletproof scroll lock: disable scrolling on document body
+    document.body.style.overflow = 'hidden';
+
     // Start fading out 500ms before the route transition
     const fadeTimer = setTimeout(() => {
       setIsFadingOut(true);
@@ -18,6 +21,8 @@ export default function SplashPage() {
     }, 3000);
 
     return () => {
+      // Restore normal scrolling on cleanup
+      document.body.style.overflow = '';
       clearTimeout(fadeTimer);
       clearTimeout(routeTimer);
     };

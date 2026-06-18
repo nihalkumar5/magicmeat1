@@ -73,9 +73,9 @@ export default function CategoryScroller({ activeCategory }: { activeCategory: s
                href={cat.href} 
                key={cat.name}
                data-active={isActive}
-               className={`flex items-center gap-2 whitespace-nowrap px-4 py-2.5 rounded-full font-semibold text-sm transition-all shadow-sm border snap-start ${isActive ? 'bg-brand-primary text-white border-transparent shadow-[0_4px_12px_rgba(168,32,26,0.25)]' : 'bg-white text-gray-700 border-gray-150 hover:bg-gray-50 hover:text-black'}`}
+               className={`flex items-center gap-2 shrink-0 whitespace-nowrap px-4 py-2.5 rounded-full font-semibold text-sm transition-all shadow-sm border snap-start ${isActive ? 'bg-brand-primary text-white border-transparent shadow-[0_4px_12px_rgba(168,32,26,0.25)]' : 'bg-white text-gray-700 border-gray-150 hover:bg-gray-50 hover:text-black'}`}
              >
-                <img src={cat.icon} alt={cat.name} className="w-5 h-5 object-contain" />
+                <img src={cat.icon} alt={cat.name} className="w-5 h-5 object-contain shrink-0" />
                 <span>{cat.name}</span>
              </Link>
           );

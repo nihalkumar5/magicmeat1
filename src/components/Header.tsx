@@ -13,6 +13,17 @@ export default function Header() {
   
   const pathname = usePathname();
 
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
+
   if (pathname === '/') return null;
 
   const categories = [

@@ -27,8 +27,23 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
 
   // Custom Editorial Tab Contents based on tags
   const getTabContent = () => {
-    const isMeat = product.tags.includes('chicken') || product.tags.includes('mutton') || product.tags.includes('meat');
-    const isFish = product.tags.includes('fish') || product.tags.includes('seafood');
+    const titleLower = product.title.toLowerCase();
+    const collectionsLower = product.collections?.map(c => c.title.toLowerCase()) || [];
+    const tagsLower = product.tags?.map(t => t.toLowerCase()) || [];
+    
+    const hasKeyword = (keywords: string[]) => {
+      return keywords.some(kw => 
+        titleLower.includes(kw) || 
+        collectionsLower.some(c => c.includes(kw)) || 
+        tagsLower.some(t => t.includes(kw))
+      );
+    };
+
+    const isMeat = hasKeyword(['chicken', 'mutton', 'meat']);
+    const isFish = hasKeyword(['fish', 'seafood', 'katla', 'rohu', 'prawn']);
+    const isVegetable = hasKeyword(['vegetable', 'vagetable', 'veg', 'aloo', 'onion', 'tomato', 'ginger', 'garlic', 'dhaniya']);
+    const isFruit = hasKeyword(['fruit', 'apple', 'orange', 'grapes', 'banana', 'guava']);
+    const isEgg = hasKeyword(['egg']);
     
     if (activeTab === 'sourcing') {
       if (isMeat) {
@@ -37,18 +52,30 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
       if (isFish) {
         return "Sourced daily from sustainable coastal catches and pristine fresh rivers. scaled, cleaned, and portioned by our master fishmongers within hours of harvest. Hand-rinsed in pure water and instantly packed on flake ice.";
       }
+      if (isVegetable || isFruit) {
+        return "Sourced daily from local organic farms. Selected for absolute freshness, washed in clean running water, and packaged immediately under hygienic conditions.";
+      }
+      if (isEgg) {
+        return "Sourced from high-quality poultry farms. Freshly gathered daily, sorted by size, cleaned, and stored under temperature-controlled environments.";
+      }
       return "Sourced from premier organic mills and organic dairy farms. 100% natural, farm-traceable, and strictly free from chemical bleaching, artificial adulteration, or synthetic growth hormones.";
     }
 
     if (activeTab === 'cooking') {
       if (isMeat) {
-        if (product.tags.includes('curry cut')) {
+        if (titleLower.includes('curry cut') || tagsLower.includes('curry cut')) {
           return "Ideal for traditional Indian curries, slow-braised stews, and biryanis. For optimal tenderness, sear meat on high heat for 3-4 minutes to lock in juices, then simmer slowly with your favorite spices for 35-40 minutes.";
         }
         return "Perfect for high-heat grilling, quick pan-searing, or roasting. Marinate for 30 minutes in olive oil, herbs, and lemon, then grill on medium-high heat for 6-8 minutes per side.";
       }
       if (isFish) {
-        return "Excellent for traditional pan-fries, mustard-based fish curries, or oven-baked marinades. Rohu scales crisp up beautifully. Cook for 4-5 minutes on each side until the flesh flakes easily with a fork.";
+        return "Excellent for traditional pan-fries, mustard-based fish curries, or oven-baked marinades. Cook for 4-5 minutes on each side until the flesh flakes easily with a fork.";
+      }
+      if (isVegetable || isFruit) {
+        return "Wash before use. Vegetables are ideal for stir-fries, traditional curries, or fresh salads. Store leafy greens in the refrigerator crisper drawer and root vegetables in a cool, dark place.";
+      }
+      if (isEgg) {
+        return "Perfect for boiling, frying, poaching, or baking. Store eggs in their original carton in the refrigerator. Consume within 3-4 weeks for maximum freshness.";
       }
       return "Store in a cool, dry pantry for staples. Milk should be boiled once and refrigerated instantly. Eggs are best stored in original cartons at 4°C and used within 2 weeks.";
     }

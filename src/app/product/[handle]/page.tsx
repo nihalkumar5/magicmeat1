@@ -109,23 +109,34 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   let categoryName = 'All Products';
   let categorySlug = 'all';
-  const tags = product.tags?.map(t => t.toLowerCase()) || [];
-  if (tags.includes('chicken')) {
+  const titleLower = product.title.toLowerCase();
+  const collectionsLower = product.collections?.map(c => c.title.toLowerCase()) || [];
+  const tagsLower = product.tags?.map(t => t.toLowerCase()) || [];
+  
+  const hasKeyword = (keywords: string[]) => {
+    return keywords.some(kw => 
+      titleLower.includes(kw) || 
+      collectionsLower.some(c => c.includes(kw)) || 
+      tagsLower.some(t => t.includes(kw))
+    );
+  };
+
+  if (hasKeyword(['chicken'])) {
     categoryName = 'Chicken';
     categorySlug = 'chicken';
-  } else if (tags.includes('mutton')) {
+  } else if (hasKeyword(['mutton'])) {
     categoryName = 'Mutton';
     categorySlug = 'mutton';
-  } else if (tags.includes('seafood') || tags.includes('fish')) {
+  } else if (hasKeyword(['seafood', 'fish', 'katla', 'rohu', 'prawn'])) {
     categoryName = 'Seafood';
     categorySlug = 'seafood';
-  } else if (tags.includes('grocery') || tags.includes('egg') || tags.includes('dairy')) {
+  } else if (hasKeyword(['grocery', 'egg', 'dairy'])) {
     categoryName = 'Daily Grocery';
     categorySlug = 'grocery';
-  } else if (tags.includes('vegetables') || tags.includes('vegetable')) {
+  } else if (hasKeyword(['vegetable', 'veg'])) {
     categoryName = 'Vegetables';
     categorySlug = 'vegetables';
-  } else if (tags.includes('fruits') || tags.includes('fruit')) {
+  } else if (hasKeyword(['fruit'])) {
     categoryName = 'Fruits';
     categorySlug = 'fruits';
   }

@@ -104,7 +104,7 @@ export default function ProductCard({ product }: ProductCardProps) {
     subtitle = 'Premium quality fresh cuts';
   } else if (searchSpace.some(t => ['chicken', 'poultry'].some(s => t.includes(s)))) {
     badge = 'CHICKEN';
-    subtitle = 'Antibiotic-free fresh birds';
+    subtitle = 'Premium farm-fresh chicken';
   } else if (searchSpace.some(t => ['fish', 'seafood'].some(s => t.includes(s)))) {
     badge = 'SEAFOOD';
     subtitle = 'Fresh catch of the day';

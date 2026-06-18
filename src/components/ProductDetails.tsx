@@ -47,7 +47,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
     
     if (activeTab === 'sourcing') {
       if (isMeat) {
-        return "Our meats are sourced directly from ISO-certified sustainable local farms. Every batch undergoes strict veterinary health checkups and antibiotic residue screens. We trim meticulously under clinical cold climates to assure 100% bacteriological safety.";
+        return "Our meats are sourced directly from ISO-certified sustainable local farms. Every batch undergoes strict veterinary health checkups and premium quality screens. We trim meticulously under clinical cold climates to assure 100% bacteriological safety.";
       }
       if (isFish) {
         return "Sourced daily from sustainable coastal catches and pristine fresh rivers. scaled, cleaned, and portioned by our master fishmongers within hours of harvest. Hand-rinsed in pure water and instantly packed on flake ice.";

@@ -126,10 +126,10 @@ export default function SterileTrust() {
                   </p>
                 </div>
                 <div className="purity-card" style={{ borderRight: 'none' }}>
-                  <div className="purity-icon">💊</div>
-                  <h4 className="purity-title">No Hormone Accretions</h4>
+                  <div className="purity-icon">🌾</div>
+                  <h4 className="purity-title">100% Organic Feeds</h4>
                   <p className="purity-text">
-                    100% natural, grass-fed feeds, free from antibiotic growth promoters or steroid injections. Clean proteins.
+                    100% natural, grass-fed feeds, free from artificial growth promoters or steroid injections. Clean proteins.
                   </p>
                 </div>
               </div>

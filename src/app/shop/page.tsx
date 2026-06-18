@@ -6,6 +6,7 @@ import LiveGoogleReviews from '@/components/LiveGoogleReviews';
 import { getProducts } from '@/lib/shopify';
 import ProductCard from '@/components/ProductCard';
 import TypingSignature from '@/components/TypingSignature';
+import ScrollReveal from '@/components/ScrollReveal';
 
 export const metadata = {
   title: 'Shop Premium Fresh Meats | Magic Meat',
@@ -108,113 +109,133 @@ export default async function Shop() {
         </div>
       </div>
 
-
-
-
       {/* --- APPETIZING SHOP CATEGORIES GRID --- */}
       <div className="pt-8 md:pt-16 px-4 pb-12">
          <div className="max-w-5xl mx-auto">
-           <div className="mb-8 text-center sm:text-left">
-             <h2 className="font-heading text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">Shop by Category</h2>
-             <p className="font-body text-gray-500 text-xs md:text-sm mt-1">Select from our fresh, raw, and hygienic categories.</p>
-           </div>
-           
-           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-6">
-              {categories.map((cat) => (
-                 <Link 
-                   href={cat.href} 
-                   key={cat.name} 
-                   className="group flex flex-col bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300"
-                 >
-                    {/* Category Image */}
-                    <div className="w-full aspect-[4/3] relative overflow-hidden bg-gray-50">
-                       <img 
-                         src={cat.img} 
-                         alt={cat.name} 
-                         className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-                       />
-                       <div className="absolute inset-0 bg-black/10 group-hover:bg-black/5 transition-colors duration-300" />
-                    </div>
-                    {/* Category Text */}
-                    <div className="p-4 flex items-center justify-between">
-                       <span className="font-body font-bold text-sm md:text-base text-gray-800 group-hover:text-brand-primary transition-colors">
-                         {cat.name}
-                       </span>
-                       <span className="text-gray-400 group-hover:text-brand-primary group-hover:translate-x-0.5 transition-all text-sm font-bold">
-                         &rarr;
-                       </span>
-                    </div>
-                 </Link>
-              ))}
-           </div>
+            <ScrollReveal animation="fade-up">
+              <div className="mb-8 text-center sm:text-left">
+                <h2 className="font-heading text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">Shop by Category</h2>
+                <p className="font-body text-gray-500 text-xs md:text-sm mt-1">Select from our fresh, raw, and hygienic categories.</p>
+              </div>
+            </ScrollReveal>
+            
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-6">
+               {categories.map((cat, idx) => (
+                  <ScrollReveal 
+                    key={cat.name} 
+                    animation="fade-up" 
+                    delay={idx * 60} 
+                    className="flex"
+                  >
+                    <Link 
+                      href={cat.href} 
+                      className="group flex flex-col w-full bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300"
+                    >
+                       {/* Category Image */}
+                       <div className="w-full aspect-[4/3] relative overflow-hidden bg-gray-50">
+                          <img 
+                            src={cat.img} 
+                            alt={cat.name} 
+                            className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                          />
+                          <div className="absolute inset-0 bg-black/10 group-hover:bg-black/5 transition-colors duration-300" />
+                       </div>
+                       {/* Category Text */}
+                       <div className="p-4 flex items-center justify-between">
+                          <span className="font-body font-bold text-sm md:text-base text-gray-800 group-hover:text-brand-primary transition-colors">
+                            {cat.name}
+                          </span>
+                          <span className="text-gray-400 group-hover:text-brand-primary group-hover:translate-x-0.5 transition-all text-sm font-bold">
+                            &rarr;
+                          </span>
+                       </div>
+                    </Link>
+                  </ScrollReveal>
+               ))}
+            </div>
          </div>
       </div>
 
       {/* --- OFFERS CAROUSEL --- */}
-      <OffersCarousel />
+      <ScrollReveal animation="fade-up">
+        <OffersCarousel />
+      </ScrollReveal>
 
       {/* --- BEST SELLERS GRID --- */}
       <div className="w-full bg-white pb-14 pt-14 px-4 rounded-[2.5rem] shadow-sm">
          <div className="max-w-5xl mx-auto">
-           <div className="flex justify-between items-end mb-8 px-2">
-             <div>
-               <h2 className="font-heading text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">Best Sellers</h2>
-               <p className="font-body text-gray-500 text-xs md:text-sm mt-0.5">The most ordered premium cuts in your area.</p>
+           <ScrollReveal animation="fade-up">
+             <div className="flex justify-between items-end mb-8 px-2">
+               <div>
+                 <h2 className="font-heading text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">Best Sellers</h2>
+                 <p className="font-body text-gray-500 text-xs md:text-sm mt-0.5">The most ordered premium cuts in your area.</p>
+               </div>
+               <Link href="/shop/all" className="text-xs md:text-sm font-bold text-brand-primary hover:text-brand-secondary transition-colors mb-1">
+                 View All
+               </Link>
              </div>
-             <Link href="/shop/all" className="text-xs md:text-sm font-bold text-brand-primary hover:text-brand-secondary transition-colors mb-1">
-               View All
-             </Link>
-           </div>
-           {bestSellers.length > 0 ? (
-             <div className="flex overflow-x-auto gap-4 pb-4 px-2 snap-x snap-mandatory hide-scrollbar">
-               {bestSellers.map(product => (
-                 <div key={product.id} className="min-w-[165px] sm:min-w-[190px] w-[165px] sm:w-[190px] snap-center shrink-0 flex">
-                   <ProductCard product={product} />
-                 </div>
-               ))}
-             </div>
-           ) : (
-             <p className="text-center text-gray-500 font-medium pb-8">No products found. Please check Shopify connection.</p>
-           )}
+           </ScrollReveal>
+           
+           <ScrollReveal animation="fade-up" delay={100}>
+             {bestSellers.length > 0 ? (
+               <div className="flex overflow-x-auto gap-4 pb-4 px-2 snap-x snap-mandatory hide-scrollbar">
+                 {bestSellers.map(product => (
+                   <div key={product.id} className="min-w-[165px] sm:min-w-[190px] w-[165px] sm:w-[190px] snap-center shrink-0 flex">
+                     <ProductCard product={product} />
+                   </div>
+                 ))}
+               </div>
+             ) : (
+               <p className="text-center text-gray-500 font-medium pb-8">No products found. Please check Shopify connection.</p>
+             )}
+           </ScrollReveal>
          </div>
       </div>
 
       {/* --- WHY CHOOSE US SECTION --- */}
       <section className="bg-transparent py-20 px-4 text-center relative overflow-hidden">
         <div className="relative z-10 max-w-5xl mx-auto">
-          <h2 className="font-heading text-2xl md:text-3xl font-bold text-gray-900 mb-2">Why order from Magic Meat?</h2>
-          <p className="font-body text-gray-500 text-xs md:text-sm mb-12 max-w-md mx-auto">We redefine quality, packaging, and speed to offer you the ultimate cooking experience.</p>
+          <ScrollReveal animation="fade-up">
+            <h2 className="font-heading text-2xl md:text-3xl font-bold text-gray-900 mb-2">Why order from Magic Meat?</h2>
+            <p className="font-body text-gray-500 text-xs md:text-sm mb-12 max-w-md mx-auto">We redefine quality, packaging, and speed to offer you the ultimate cooking experience.</p>
+          </ScrollReveal>
           
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8">
-            <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100/50 transition-all hover:shadow-md flex flex-col items-center">
-              <div className="w-16 h-16 bg-red-50 text-brand-primary rounded-full flex items-center justify-center mb-6">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <ScrollReveal animation="fade-up" delay={0} className="flex">
+              <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100/50 transition-all hover:shadow-md flex flex-col items-center w-full">
+                <div className="w-16 h-16 bg-red-50 text-brand-primary rounded-full flex items-center justify-center mb-6">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <h3 className="font-heading text-lg font-bold text-gray-900 mb-2">100% Farm Fresh</h3>
+                <p className="font-body text-gray-500 text-sm leading-relaxed">
+                  Straight from regional farms to your kitchen. Never frozen, no chemical preservatives, no hormones.
+                </p>
               </div>
-              <h3 className="font-heading text-lg font-bold text-gray-900 mb-2">100% Farm Fresh</h3>
-              <p className="font-body text-gray-500 text-sm leading-relaxed">
-                Straight from regional farms to your kitchen. Never frozen, no chemical preservatives, no hormones.
-              </p>
-            </div>
+            </ScrollReveal>
             
-            <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100/50 transition-all hover:shadow-md flex flex-col items-center">
-              <div className="w-16 h-16 bg-red-50 text-brand-primary rounded-full flex items-center justify-center mb-6">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            <ScrollReveal animation="fade-up" delay={100} className="flex">
+              <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100/50 transition-all hover:shadow-md flex flex-col items-center w-full">
+                <div className="w-16 h-16 bg-red-50 text-brand-primary rounded-full flex items-center justify-center mb-6">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                </div>
+                <h3 className="font-heading text-lg font-bold text-gray-900 mb-2">Premium Packaging</h3>
+                <p className="font-body text-gray-500 text-sm leading-relaxed">
+                  Vacuum sealed in sterile bags to ensure zero contact with dust, contaminants, or microbes.
+                </p>
               </div>
-              <h3 className="font-heading text-lg font-bold text-gray-900 mb-2">Premium Packaging</h3>
-              <p className="font-body text-gray-500 text-sm leading-relaxed">
-                Vacuum sealed in sterile bags to ensure zero contact with dust, contaminants, or microbes.
-              </p>
-            </div>
+            </ScrollReveal>
             
-            <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100/50 transition-all hover:shadow-md flex flex-col items-center">
-              <div className="w-16 h-16 bg-red-50 text-brand-primary rounded-full flex items-center justify-center mb-6">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <ScrollReveal animation="fade-up" delay={200} className="flex">
+              <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100/50 transition-all hover:shadow-md flex flex-col items-center w-full">
+                <div className="w-16 h-16 bg-red-50 text-brand-primary rounded-full flex items-center justify-center mb-6">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <h3 className="font-heading text-lg font-bold text-gray-900 mb-2">30 Min Delivery</h3>
+                <p className="font-body text-gray-500 text-sm leading-relaxed">
+                  Chilled transit boxes preserve optimal cold chain temperature from store straight to your doorstep.
+                </p>
               </div>
-              <h3 className="font-heading text-lg font-bold text-gray-900 mb-2">30 Min Delivery</h3>
-              <p className="font-body text-gray-500 text-sm leading-relaxed">
-                Chilled transit boxes preserve optimal cold chain temperature from store straight to your doorstep.
-              </p>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -222,92 +243,104 @@ export default async function Shop() {
       {/* --- FRESH ARRIVALS SECTION --- */}
       <div className="w-full bg-white py-16 px-4 shadow-sm rounded-[2.5rem]">
          <div className="max-w-5xl mx-auto">
-           <div className="flex justify-between items-end mb-8 px-2">
-             <div>
-               <h2 className="font-heading text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">Fresh Arrivals</h2>
-               <p className="font-body text-gray-500 text-xs md:text-sm mt-0.5">Explore our daily updated stock of fresh meats.</p>
+           <ScrollReveal animation="fade-up">
+             <div className="flex justify-between items-end mb-8 px-2">
+               <div>
+                 <h2 className="font-heading text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">Fresh Arrivals</h2>
+                 <p className="font-body text-gray-500 text-xs md:text-sm mt-0.5">Explore our daily updated stock of fresh meats.</p>
+               </div>
              </div>
-           </div>
-           {freshArrivals.length > 0 ? (
-             <div className="flex overflow-x-auto gap-4 pb-4 px-2 snap-x snap-mandatory hide-scrollbar">
-               {freshArrivals.map(product => (
-                 <div key={product.id} className="min-w-[165px] sm:min-w-[190px] w-[165px] sm:w-[190px] snap-center shrink-0 flex">
-                   <ProductCard product={product} />
-                 </div>
-               ))}
-             </div>
-           ) : (
-             <p className="text-center text-gray-500 font-medium pb-8">More products coming soon.</p>
-           )}
+           </ScrollReveal>
+           
+           <ScrollReveal animation="fade-up" delay={100}>
+             {freshArrivals.length > 0 ? (
+               <div className="flex overflow-x-auto gap-4 pb-4 px-2 snap-x snap-mandatory hide-scrollbar">
+                 {freshArrivals.map(product => (
+                   <div key={product.id} className="min-w-[165px] sm:min-w-[190px] w-[165px] sm:w-[190px] snap-center shrink-0 flex">
+                     <ProductCard product={product} />
+                   </div>
+                 ))}
+               </div>
+             ) : (
+               <p className="text-center text-gray-500 font-medium pb-8">More products coming soon.</p>
+             )}
+           </ScrollReveal>
          </div>
       </div>
 
       {/* --- THE MAGIC PROCESS SECTION (Apple Style Infographic) --- */}
       <section className="py-20 px-4 md:px-6 relative bg-[#F4F3F0]">
         <div className="max-w-4xl mx-auto bg-white shadow-sm border border-gray-100 rounded-[2.5rem] p-8 md:p-14 relative z-10">
-          <h2 className="font-heading text-2xl md:text-3xl font-bold text-gray-900 text-center mb-16">
-            The Magic Freshness Process
-          </h2>
+          <ScrollReveal animation="fade-up">
+            <h2 className="font-heading text-2xl md:text-3xl font-bold text-gray-900 text-center mb-16">
+              The Magic Freshness Process
+            </h2>
+          </ScrollReveal>
           
           <div className="relative flex flex-col gap-14">
             {/* Vertical Line */}
             <div className="absolute left-[1.35rem] md:left-1/2 top-0 bottom-0 w-px bg-gray-150 md:-translate-x-1/2"></div>
             
             {/* Step 1 */}
-            <div className="relative flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-16">
-              <div className="hidden md:block w-1/2 text-right pt-2">
-                <p className="font-body text-gray-500 text-base leading-relaxed">
-                  We hand-select animals from clean, ethical local farms that prioritize health and high-quality feed.
-                </p>
+            <ScrollReveal animation="fade-up" delay={0}>
+              <div className="relative flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-16">
+                <div className="hidden md:block w-1/2 text-right pt-2">
+                  <p className="font-body text-gray-500 text-base leading-relaxed">
+                    We hand-select animals from clean, ethical local farms that prioritize health and high-quality feed.
+                  </p>
+                </div>
+                <div className="absolute top-0 left-0 md:relative md:left-auto w-11 h-11 rounded-full bg-gray-50 border border-gray-150 text-gray-500 flex items-center justify-center font-heading text-sm font-bold z-10 shrink-0 shadow-sm">
+                  01
+                </div>
+                <div className="w-full pl-16 md:pl-0 md:w-1/2 text-left pt-2">
+                  <h3 className="font-heading text-lg md:text-xl font-bold text-gray-900 mb-1">Ethical Sourcing</h3>
+                  <p className="md:hidden font-body text-gray-500 text-sm leading-relaxed">
+                    We hand-select animals from clean, ethical local farms that prioritize health and high-quality feed.
+                  </p>
+                </div>
               </div>
-              <div className="absolute top-0 left-0 md:relative md:left-auto w-11 h-11 rounded-full bg-gray-50 border border-gray-150 text-gray-500 flex items-center justify-center font-heading text-sm font-bold z-10 shrink-0 shadow-sm">
-                01
-              </div>
-              <div className="w-full pl-16 md:pl-0 md:w-1/2 text-left pt-2">
-                <h3 className="font-heading text-lg md:text-xl font-bold text-gray-900 mb-1">Ethical Sourcing</h3>
-                <p className="md:hidden font-body text-gray-500 text-sm leading-relaxed">
-                  We hand-select animals from clean, ethical local farms that prioritize health and high-quality feed.
-                </p>
-              </div>
-            </div>
+            </ScrollReveal>
 
             {/* Step 2 */}
-            <div className="relative flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-16">
-              <div className="hidden md:block w-1/2 text-right pt-2">
-                <h3 className="font-heading text-lg md:text-xl font-bold text-gray-900 mb-1">Hygiene First Cleaning</h3>
-                <p className="font-body text-gray-500 text-base leading-relaxed">
-                  Cleaned in pure water and cut into optimal sizes in an air-conditioned, sanitized butcher facility.
-                </p>
+            <ScrollReveal animation="fade-up" delay={100}>
+              <div className="relative flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-16">
+                <div className="hidden md:block w-1/2 text-right pt-2">
+                  <h3 className="font-heading text-lg md:text-xl font-bold text-gray-900 mb-1">Hygiene First Cleaning</h3>
+                  <p className="font-body text-gray-500 text-base leading-relaxed">
+                    Cleaned in pure water and cut into optimal sizes in an air-conditioned, sanitized butcher facility.
+                  </p>
+                </div>
+                <div className="absolute top-0 left-0 md:relative md:left-auto w-11 h-11 rounded-full bg-brand-primary border border-brand-primary text-white flex items-center justify-center font-heading text-sm font-bold z-10 shrink-0 shadow-md shadow-brand-primary/20">
+                  02
+                </div>
+                <div className="w-full pl-16 md:pl-0 md:w-1/2 text-left md:hidden pt-2">
+                  <h3 className="font-heading text-lg md:text-xl font-bold text-gray-900 mb-1">Hygiene First Cleaning</h3>
+                  <p className="font-body text-gray-500 text-sm leading-relaxed">
+                    Cleaned in pure water and cut into optimal sizes in an air-conditioned, sanitized butcher facility.
+                  </p>
+                </div>
               </div>
-              <div className="absolute top-0 left-0 md:relative md:left-auto w-11 h-11 rounded-full bg-brand-primary border border-brand-primary text-white flex items-center justify-center font-heading text-sm font-bold z-10 shrink-0 shadow-md shadow-brand-primary/20">
-                02
-              </div>
-              <div className="w-full pl-16 md:pl-0 md:w-1/2 text-left md:hidden pt-2">
-                <h3 className="font-heading text-lg md:text-xl font-bold text-gray-900 mb-1">Hygiene First Cleaning</h3>
-                <p className="font-body text-gray-500 text-sm leading-relaxed">
-                  Cleaned in pure water and cut into optimal sizes in an air-conditioned, sanitized butcher facility.
-                </p>
-              </div>
-            </div>
+            </ScrollReveal>
 
             {/* Step 3 */}
-            <div className="relative flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-16">
-              <div className="hidden md:block w-1/2 text-right pt-2">
-                <p className="font-body text-gray-500 text-base leading-relaxed">
-                  Vacuum packed instantly to block moisture loss and delivered in insulated ice boxes within 30 minutes.
-                </p>
+            <ScrollReveal animation="fade-up" delay={200}>
+              <div className="relative flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-16">
+                <div className="hidden md:block w-1/2 text-right pt-2">
+                  <p className="font-body text-gray-500 text-base leading-relaxed">
+                    Vacuum packed instantly to block moisture loss and delivered in insulated ice boxes within 30 minutes.
+                  </p>
+                </div>
+                <div className="absolute top-0 left-0 md:relative md:left-auto w-11 h-11 rounded-full bg-gray-50 border border-gray-150 text-gray-500 flex items-center justify-center font-heading text-sm font-bold z-10 shrink-0 shadow-sm">
+                  03
+                </div>
+                <div className="w-full pl-16 md:pl-0 md:w-1/2 text-left pt-2">
+                  <h3 className="font-heading text-lg md:text-xl font-bold text-gray-900 mb-1">Cold Chain Delivery</h3>
+                  <p className="md:hidden font-body text-gray-500 text-sm leading-relaxed">
+                    Vacuum packed instantly to block moisture loss and delivered in insulated ice boxes within 30 minutes.
+                  </p>
+                </div>
               </div>
-              <div className="absolute top-0 left-0 md:relative md:left-auto w-11 h-11 rounded-full bg-gray-50 border border-gray-150 text-gray-500 flex items-center justify-center font-heading text-sm font-bold z-10 shrink-0 shadow-sm">
-                03
-              </div>
-              <div className="w-full pl-16 md:pl-0 md:w-1/2 text-left pt-2">
-                <h3 className="font-heading text-lg md:text-xl font-bold text-gray-900 mb-1">Cold Chain Delivery</h3>
-                <p className="md:hidden font-body text-gray-500 text-sm leading-relaxed">
-                  Vacuum packed instantly to block moisture loss and delivered in insulated ice boxes within 30 minutes.
-                </p>
-              </div>
-            </div>
-
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -319,21 +352,25 @@ export default async function Shop() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-brand-primary/10 blur-[130px] rounded-full pointer-events-none z-0" />
 
         {/* Google Reviews Widget */}
-        <div className="relative z-10 mt-2 mb-4">
-          <LiveGoogleReviews />
-        </div>
+        <ScrollReveal animation="fade-in" duration={1000}>
+          <div className="relative z-10 mt-2 mb-4">
+            <LiveGoogleReviews />
+          </div>
+        </ScrollReveal>
         
-        <div className="relative z-10 text-center mb-6">
-          <span className="text-brand-primary text-[10px] uppercase font-bold tracking-[0.2em] mb-1 block">
-            Customer Stories
-          </span>
-          <h2 className="font-heading text-3xl md:text-4xl font-extrabold text-white tracking-tight">
-            Wall of Fame
-          </h2>
-          <p className="font-body text-gray-400 text-xs md:text-sm mt-1.5 max-w-md mx-auto font-light">
-            Loved by chefs and meat lovers across Hazaribagh.
-          </p>
-        </div>
+        <ScrollReveal animation="fade-up">
+          <div className="relative z-10 text-center mb-6">
+            <span className="text-brand-primary text-[10px] uppercase font-bold tracking-[0.2em] mb-1 block">
+              Customer Stories
+            </span>
+            <h2 className="font-heading text-3xl md:text-4xl font-extrabold text-white tracking-tight">
+              Wall of Fame
+            </h2>
+            <p className="font-body text-gray-400 text-xs md:text-sm mt-1.5 max-w-md mx-auto font-light">
+              Loved by chefs and meat lovers across Hazaribagh.
+            </p>
+          </div>
+        </ScrollReveal>
         
         {/* Scrolling Reviews */}
         <div className="relative z-10 w-full overflow-hidden pb-8 flex">

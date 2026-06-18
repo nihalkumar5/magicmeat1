@@ -31,10 +31,10 @@ export default function SplashPage() {
         <img 
           src="/gourmet_hero_background.png" 
           alt="Premium Raw Meat Background" 
-          className="w-full h-full object-cover opacity-25 scale-105 animate-[zoom-out_20s_ease-out_infinite] mix-blend-multiply"
+          className="w-full h-full object-cover scale-105 animate-[zoom-out_20s_ease-out_infinite]"
         />
-        {/* Soft, balanced luxury cream/beige gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#F4F3F0]/65 via-[#F4F3F0]/30 to-[#F4F3F0]/95 z-10" />
+        {/* Full transparent screen overlay with premium frosted glass blur */}
+        <div className="absolute inset-0 bg-[#F4F3F0]/30 backdrop-blur-xl z-10" />
       </div>
 
       {/* Splash Screen Content Container */}

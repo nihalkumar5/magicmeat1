@@ -160,7 +160,7 @@ export default function Header() {
                   <polyline points="9 22 9 12 15 12 15 22" />
                 </svg>
               </span>
-              <span className="font-script font-bold text-[22px] text-gray-850 group-hover:text-brand-primary mt-1 transition-colors">Home</span>
+              <span className="font-script font-bold text-[20px] text-gray-850 group-hover:text-brand-primary mt-1 transition-colors leading-tight">Home</span>
             </Link>
 
             {/* Category Cards */}
@@ -174,7 +174,7 @@ export default function Header() {
                 <span className="group-hover:scale-110 transition-all flex items-center justify-center w-12 h-12">
                   <img src={cat.icon} alt={cat.name} className="w-11 h-11 object-contain" />
                 </span>
-                <span className="font-script font-bold text-[22px] text-gray-850 group-hover:text-brand-primary mt-1 transition-colors line-clamp-1 leading-none">{cat.name}</span>
+                <span className="font-script font-bold text-[20px] text-gray-850 group-hover:text-brand-primary mt-1 transition-colors leading-tight">{cat.name}</span>
               </Link>
             ))}
           </div>

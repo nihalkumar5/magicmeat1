@@ -19,91 +19,42 @@ export default function Header() {
     { 
       name: 'Shop All', 
       href: '/shop/all',
-      icon: (
-        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-          <rect x="3" y="3" width="7" height="9" rx="1"></rect>
-          <rect x="14" y="3" width="7" height="5" rx="1"></rect>
-          <rect x="14" y="12" width="7" height="9" rx="1"></rect>
-          <rect x="3" y="16" width="7" height="5" rx="1"></rect>
-        </svg>
-      )
+      icon: '/icons/open-box-svgrepo-com.svg'
     },
     { 
       name: 'Chicken', 
       href: '/shop/chicken',
-      icon: (
-        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M16 16c0-4.5-3.5-8-8-8s-8 3.5-8 8v4h16v-4z" />
-          <path d="M8 8c1.5-3 4.5-3 5 0" />
-          <path d="M16 14h3l1-2-4-1" />
-          <circle cx="6" cy="12" r="1" />
-        </svg>
-      )
+      icon: '/icons/chicken-svgrepo-com.svg'
     },
     { 
       name: 'Mutton', 
       href: '/shop/mutton',
-      icon: (
-        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M16 3c-1.5 0-3 1.5-3 3v2M8 3c1.5 0 3 1.5 3 3v2" />
-          <path d="M12 8c-2.5 0-4 1.5-4 4.5s1.5 4 4 4.5c2.5-.5 4-1.5 4-4.5S14.5 8 12 8z" />
-          <path d="M10 17.5l2 1.5 2-1.5" />
-        </svg>
-      )
+      icon: '/icons/goat-svgrepo-com.svg'
     },
     { 
       name: 'Sea Food', 
       href: '/shop/seafood',
-      icon: (
-        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M2 12c4-8 16-8 20 0-4 8-16 8-20 0z" />
-          <path d="M19 12a1 1 0 1 0 2 0 1 1 0 1 0-2 0z" />
-          <path d="M2 12L7 7M2 12L7 17" />
-        </svg>
-      )
+      icon: '/icons/fish-svgrepo-com.svg'
     },
     { 
       name: 'Grocery', 
       href: '/shop/grocery',
-      icon: (
-        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
-          <line x1="3" y1="6" x2="21" y2="6" />
-          <path d="M16 10a4 4 0 0 1-8 0" />
-        </svg>
-      )
+      icon: '/icons/shopping-bag-svgrepo-com.svg'
     },
     { 
       name: 'Vegetables', 
       href: '/shop/vegetables',
-      icon: (
-        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 2A5 5 0 0 0 7 7c0 2 1.5 3.5 3 4.5V18a2 2 0 0 0 4 0v-6.5c1.5-1 3-2.5 3-4.5A5 5 0 0 0 12 2z" />
-          <path d="M10 13.5h4" />
-        </svg>
-      )
+      icon: '/icons/vegetables-salad-svgrepo-com.svg'
     },
     { 
       name: 'Fruits', 
       href: '/shop/fruits',
-      icon: (
-        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 22c4.97 0 9-4.03 9-9 0-4.07-2.73-7.5-6.5-8.5C13.73 3.5 12 2 12 2s-.27 2.5-1.5 3.5C6.73 6.5 4 9.93 4 14c0 4.97 4.03 9 9 9z" />
-          <path d="M12 6c.5-2 .5-2 1.5-3" />
-        </svg>
-      )
+      icon: '/icons/fruits-svgrepo-com.svg'
     },
     { 
       name: 'Frozen Items', 
       href: '/shop/frozen',
-      icon: (
-        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-          <line x1="12" y1="2" x2="12" y2="22" />
-          <line x1="2" y1="12" x2="22" y2="12" />
-          <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
-          <line x1="4.93" y1="19.07" x2="19.07" y2="4.93" />
-        </svg>
-      )
+      icon: '/icons/ice-svgrepo-com.svg'
     },
   ];
 
@@ -163,11 +114,11 @@ export default function Header() {
 
       {/* Hamburger Menu Overlay */}
       {isMenuOpen && (
-        <div className="fixed inset-0 z-[60] bg-black/40 backdrop-blur-sm" onClick={() => setIsMenuOpen(false)}></div>
+        <div className="fixed inset-0 z-[60] bg-black/15" onClick={() => setIsMenuOpen(false)}></div>
       )}
 
       {/* Sliding Bottom Sheet Drawer */}
-      <div className={`fixed bottom-0 left-0 w-full h-[60%] bg-white/70 backdrop-blur-3xl z-[70] rounded-t-[2.5rem] transition-transform duration-300 ease-in-out flex flex-col ${isMenuOpen ? 'translate-y-0 border-t border-white/60 shadow-[0_-12px_30px_rgba(0,0,0,0.06)]' : 'translate-y-full border-transparent shadow-none'}`}>
+      <div className={`fixed bottom-0 left-0 w-full h-[70%] bg-white/70 backdrop-blur-3xl z-[70] rounded-t-[2.5rem] transition-transform duration-300 ease-in-out flex flex-col ${isMenuOpen ? 'translate-y-0 border-t border-white/60 shadow-[0_-12px_30px_rgba(0,0,0,0.06)]' : 'translate-y-full border-transparent shadow-none'}`}>
         
         {/* iOS Drag Handle indicator */}
         <div className="w-12 h-1 bg-gray-400/35 rounded-full mx-auto mt-3.5 mb-1 shrink-0" />
@@ -192,8 +143,8 @@ export default function Header() {
               onClick={() => setIsMenuOpen(false)} 
               className="group flex flex-col items-center justify-center text-center p-3 aspect-square rounded-[1.5rem] bg-white/60 border border-white/90 hover:bg-white hover:border-brand-primary/20 hover:shadow-sm transition-all"
             >
-              <span className="text-brand-primary group-hover:scale-105 transition-transform">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <span className="text-brand-primary group-hover:scale-105 transition-transform flex items-center justify-center w-10 h-10">
+                <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
                   <polyline points="9 22 9 12 15 12 15 22" />
                 </svg>
@@ -209,10 +160,10 @@ export default function Header() {
                 onClick={() => setIsMenuOpen(false)}
                 className="group flex flex-col items-center justify-center text-center p-3 aspect-square rounded-[1.5rem] bg-white/60 border border-white/90 hover:bg-white hover:border-brand-primary/20 hover:shadow-sm transition-all"
               >
-                <span className="text-gray-500 group-hover:text-brand-primary group-hover:scale-105 transition-all">
-                  {cat.icon}
+                <span className="group-hover:scale-105 transition-all flex items-center justify-center w-10 h-10">
+                  <img src={cat.icon} alt={cat.name} className="w-9 h-9 object-contain" />
                 </span>
-                <span className="font-body font-bold text-[10px] text-gray-800 group-hover:text-brand-primary mt-1.5 transition-colors line-clamp-1 leading-none">{cat.name}</span>
+                <span className="font-heading font-extrabold text-[11px] text-gray-850 group-hover:text-brand-primary mt-1.5 transition-colors line-clamp-1 leading-none">{cat.name}</span>
               </Link>
             ))}
           </div>

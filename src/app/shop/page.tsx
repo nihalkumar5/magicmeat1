@@ -5,6 +5,7 @@ import OffersCarousel from '@/components/OffersCarousel';
 import LiveGoogleReviews from '@/components/LiveGoogleReviews';
 import { getProducts } from '@/lib/shopify';
 import ProductCard from '@/components/ProductCard';
+import TypingSignature from '@/components/TypingSignature';
 
 export const metadata = {
   title: 'Shop Premium Fresh Meats | Magic Meat',
@@ -65,9 +66,7 @@ export default async function Shop() {
                 className="w-full h-full object-cover object-right" 
               />
               {/* Handwritten signature on the empty left space */}
-              <div className="absolute top-12 left-10 z-10 text-gray-800 text-[32px] font-script font-bold transform -rotate-6 select-none max-w-[220px] leading-tight">
-                Proudly made in Hazaribagh with love ❤️
-              </div>
+              <TypingSignature className="absolute top-12 left-10 z-10 text-gray-800 text-[32px] font-bold transform -rotate-6 select-none max-w-[220px] leading-tight" />
             </div>
           </div>
 
@@ -84,9 +83,7 @@ export default async function Shop() {
             className="absolute inset-0 w-full h-full object-cover object-[82%_center]" 
           />
           {/* Handwritten signature on the empty left space */}
-          <div className="absolute top-10 left-6 z-10 text-gray-800 text-[28px] font-script font-bold transform -rotate-6 select-none max-w-[180px] leading-tight">
-            Proudly made in Hazaribagh with love ❤️
-          </div>
+          <TypingSignature className="absolute top-10 left-6 z-10 text-gray-800 text-[28px] font-bold transform -rotate-6 select-none max-w-[180px] leading-tight" />
         </div>
 
         {/* Content Wrapper pulling card upwards */}

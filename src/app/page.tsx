@@ -33,8 +33,8 @@ export default function SplashPage() {
           alt="Premium Raw Meat Background" 
           className="w-full h-full object-cover scale-105 animate-[zoom-out_20s_ease-out_infinite]"
         />
-        {/* Full transparent screen overlay with premium frosted glass blur */}
-        <div className="absolute inset-0 bg-[#F4F3F0]/30 backdrop-blur-xl z-10" />
+        {/* Full transparent screen overlay with premium frosted look (no blur) */}
+        <div className="absolute inset-0 bg-[#F4F3F0]/45 z-10" />
       </div>
 
       {/* Splash Screen Content Container */}

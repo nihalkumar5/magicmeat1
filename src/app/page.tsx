@@ -43,7 +43,7 @@ export default function SplashPage() {
       </div>
 
       {/* Splash Screen Content Container */}
-      <section className="relative z-20 h-full w-full flex flex-col justify-between items-center max-w-[480px] mx-auto px-6 py-12 text-gray-900">
+      <section className="relative z-20 h-full w-full flex flex-col justify-between items-center max-w-[480px] mx-auto px-6 pt-12 pb-24 text-gray-900">
         
         {/* Top Spacer to keep things balanced */}
         <div className="mt-4"></div>

@@ -1,6 +1,7 @@
-import { MetadataRoute } from 'next'
+import { MetadataRoute } from 'next';
+import { getProducts } from '@/lib/shopify';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://magicmeat.in';
 
   // These are the static routes
@@ -9,7 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: baseUrl,
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
-      priority: 1,
+      priority: 1.0,
     },
     {
       url: `${baseUrl}/shop`,
@@ -20,7 +21,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   // Dynamic category routes
-  const categories = ['chicken', 'mutton', 'seafood', 'combos', 'spices'];
+  const categories = [
+    'all',
+    'chicken',
+    'mutton',
+    'seafood',
+    'grocery',
+    'vegetables',
+    'fruits',
+    'frozen',
+    'combos',
+    'spices'
+  ];
   const categoryRoutes = categories.map((cat) => ({
     url: `${baseUrl}/shop/${cat}`,
     lastModified: new Date(),
@@ -28,5 +40,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticRoutes, ...categoryRoutes];
+  // Dynamic product routes
+  let productRoutes: MetadataRoute.Sitemap = [];
+  try {
+    const products = await getProducts();
+    productRoutes = products.map((product) => ({
+      url: `${baseUrl}/product/${product.handle}`,
+      lastModified: new Date(),
+      changeFrequency: 'daily' as const,
+      priority: 0.7,
+    }));
+  } catch (error) {
+    console.error('Error generating product routes for sitemap:', error);
+  }
+
+  return [...staticRoutes, ...categoryRoutes, ...productRoutes];
 }
+

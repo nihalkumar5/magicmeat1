@@ -24,7 +24,7 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://magicmeat.in'), // Placeholder URL
+  metadataBase: new URL('https://magicmeat.in'),
   title: {
     template: '%s | Magic Meat',
     default: 'Magic Meat | Premium Fresh Chicken & Meat Delivery in Hazaribagh',
@@ -32,6 +32,9 @@ export const metadata: Metadata = {
   description: 'Clean Cuts. Honest Prices. Farm Fresh Quality. Order premium chicken, mutton, and seafood online in Hazaribagh with fast doorstep delivery.',
   keywords: ['fresh chicken Hazaribagh', 'raw meat delivery', 'online chicken shop', 'fresh mutton Hazaribagh', 'Magic Meat', 'seafood delivery'],
   authors: [{ name: 'Magic Meat' }],
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_IN',
@@ -41,7 +44,7 @@ export const metadata: Metadata = {
     siteName: 'Magic Meat',
     images: [
       {
-        url: '/og-image.jpg', // You can add a default OG image here later
+        url: '/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'Magic Meat - Savor Every Last Bite',
@@ -68,20 +71,53 @@ export const metadata: Metadata = {
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": "FoodEstablishment",
   "name": "Magic Meat",
-  "image": "https://magicmeat.in/og-image.jpg",
-  "description": "Premium fresh chicken, mutton, and seafood delivery service in Hazaribagh.",
+  "image": [
+    "https://magicmeat.in/og-image.jpg",
+    "https://magicmeat.in/magicmeat_logo.png"
+  ],
+  "logo": "https://magicmeat.in/magicmeat_logo.png",
+  "description": "Clean Cuts. Honest Prices. Farm Fresh Quality. Premium fresh chicken, mutton, and seafood delivery service in Hazaribagh.",
   "address": {
     "@type": "PostalAddress",
+    "streetAddress": "Hurhuru Road",
     "addressLocality": "Hazaribagh",
     "addressRegion": "Jharkhand",
+    "postalCode": "825301",
     "addressCountry": "IN"
   },
   "telephone": "+918271663388",
   "url": "https://magicmeat.in",
   "priceRange": "₹₹",
-  "paymentAccepted": "Cash, Credit Card, UPI"
+  "paymentAccepted": "Cash, Credit Card, UPI",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "07:00",
+      "closes": "21:00"
+    }
+  ],
+  "areaServed": [
+    {
+      "@type": "AdministrativeArea",
+      "name": "Hazaribagh"
+    }
+  ],
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "23.9961",
+    "longitude": "85.3687"
+  }
 };
 
 export default function RootLayout({

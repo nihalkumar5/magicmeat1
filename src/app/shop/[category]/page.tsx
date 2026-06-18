@@ -12,6 +12,9 @@ export async function generateMetadata(props: { params: Promise<{ category: stri
   return {
     title: `${capitalizedCategory === 'All' ? 'All Products' : `Fresh ${capitalizedCategory}`}`,
     description: `Order the best quality fresh ${category} in Hazaribagh online. Premium cuts, expertly cleaned, and delivered to your doorstep.`,
+    alternates: {
+      canonical: `/shop/${category}`,
+    },
   };
 }
 
@@ -21,6 +24,35 @@ export const revalidate = 0;
 export default async function CategoryPage(props: { params: Promise<{ category: string }> }) {
   const params = await props.params;
   const category = params.category;
+  
+  const capitalizedCategory = category.charAt(0).toUpperCase() + category.slice(1);
+  const categoryName = capitalizedCategory === 'All' ? 'All Products' : `Fresh ${capitalizedCategory}`;
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://magicmeat.in/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Shop",
+        "item": "https://magicmeat.in/shop"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": categoryName,
+        "item": `https://magicmeat.in/shop/${category}`
+      }
+    ]
+  };
+
   
   // Fetch all products
   const products = await getProducts();
@@ -59,6 +91,10 @@ export default async function CategoryPage(props: { params: Promise<{ category: 
 
   return (
     <main className="min-h-screen bg-[#F4F3F0] pb-24 font-body text-[#121212]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
 
       <div className="p-4 pt-6 max-w-5xl mx-auto">
         

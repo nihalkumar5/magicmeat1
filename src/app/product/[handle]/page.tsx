@@ -34,6 +34,9 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
   return {
     title: `${product.title} | Magicmeat Premium`,
     description: cleanDescription,
+    alternates: {
+      canonical: `/product/${resolvedParams.handle}`,
+    },
     openGraph: {
       title: `${product.title} | Magicmeat Premium`,
       description: cleanDescription,
@@ -73,6 +76,103 @@ export default async function ProductPage({ params }: ProductPageProps) {
     );
   }
 
-  // Render fully interactive client details layout
-  return <ProductDetails product={product} />;
+  // Clean HTML tags from description for short SEO snippet
+  const cleanDescription = product.descriptionHtml
+    .replace(/<[^>]*>/g, '')
+    .slice(0, 155) + '...';
+
+  const defaultVariant = product.variants[0];
+  const price = defaultVariant ? defaultVariant.price.amount : product.priceRange.minVariantPrice.amount;
+  const isAvailable = defaultVariant ? defaultVariant.availableForSale : false;
+
+  const productJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": product.title,
+    "image": product.images.map((img) => img.url),
+    "description": cleanDescription,
+    "sku": product.id.split('/').pop() || product.id,
+    "brand": {
+      "@type": "Brand",
+      "name": "Magic Meat"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": `https://magicmeat.in/product/${product.handle}`,
+      "priceCurrency": "INR",
+      "price": price,
+      "priceValidUntil": "2027-12-31",
+      "itemCondition": "https://schema.org/NewCondition",
+      "availability": isAvailable ? "https://schema.org/InStock" : "https://schema.org/OutOfStock"
+    }
+  };
+
+  let categoryName = 'All Products';
+  let categorySlug = 'all';
+  const tags = product.tags?.map(t => t.toLowerCase()) || [];
+  if (tags.includes('chicken')) {
+    categoryName = 'Chicken';
+    categorySlug = 'chicken';
+  } else if (tags.includes('mutton')) {
+    categoryName = 'Mutton';
+    categorySlug = 'mutton';
+  } else if (tags.includes('seafood') || tags.includes('fish')) {
+    categoryName = 'Seafood';
+    categorySlug = 'seafood';
+  } else if (tags.includes('grocery') || tags.includes('egg') || tags.includes('dairy')) {
+    categoryName = 'Daily Grocery';
+    categorySlug = 'grocery';
+  } else if (tags.includes('vegetables') || tags.includes('vegetable')) {
+    categoryName = 'Vegetables';
+    categorySlug = 'vegetables';
+  } else if (tags.includes('fruits') || tags.includes('fruit')) {
+    categoryName = 'Fruits';
+    categorySlug = 'fruits';
+  }
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://magicmeat.in/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Shop",
+        "item": "https://magicmeat.in/shop"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": categoryName,
+        "item": `https://magicmeat.in/shop/${categorySlug}`
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": product.title,
+        "item": `https://magicmeat.in/product/${product.handle}`
+      }
+    ]
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <ProductDetails product={product} />
+    </>
+  );
 }
+

@@ -9,6 +9,9 @@ import ProductCard from '@/components/ProductCard';
 export const metadata = {
   title: 'Shop Premium Fresh Meats | Magic Meat',
   description: 'Browse our full catalog of premium fresh chicken, mutton, and seafood. Order online and get it delivered fresh to your door in Hazaribagh.',
+  alternates: {
+    canonical: '/shop',
+  },
 };
 
 export const dynamic = 'force-dynamic';

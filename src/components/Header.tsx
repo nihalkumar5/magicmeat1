@@ -118,13 +118,13 @@ export default function Header() {
       )}
 
       {/* Sliding Bottom Sheet Drawer */}
-      <div className={`fixed bottom-0 left-0 w-full h-[70%] bg-white/70 backdrop-blur-3xl z-[70] rounded-t-[2.5rem] transition-transform duration-300 ease-in-out flex flex-col ${isMenuOpen ? 'translate-y-0 border-t border-white/60 shadow-[0_-12px_30px_rgba(0,0,0,0.06)]' : 'translate-y-full border-transparent shadow-none'}`}>
+      <div className={`fixed bottom-0 left-0 w-full h-[70%] bg-[#FAF8F5]/35 backdrop-blur-2xl z-[70] rounded-t-[2.5rem] transition-transform duration-300 ease-in-out flex flex-col ${isMenuOpen ? 'translate-y-0 border-t border-white/30 shadow-[0_-10px_40px_rgba(0,0,0,0.08)]' : 'translate-y-full border-transparent shadow-none'}`}>
         
         {/* iOS Drag Handle indicator */}
         <div className="w-12 h-1 bg-gray-400/35 rounded-full mx-auto mt-3.5 mb-1 shrink-0" />
 
         {/* Drawer Header */}
-        <div className="flex justify-between items-center px-6 py-3.5 border-b border-white/50 bg-white/10 shrink-0">
+        <div className="flex justify-between items-center px-6 py-3.5 border-b border-white/20 bg-white/5 shrink-0">
           <div className="flex items-center gap-2">
             <img src="/magicmeat_logo.png" alt="Magic Meat Logo" className="w-7 h-7 object-contain bg-white/40 p-0.5 rounded-lg border border-white/80" />
             <h2 className="font-heading font-extrabold text-base text-gray-900 tracking-tight">Menu</h2>
@@ -141,7 +141,7 @@ export default function Header() {
             <Link 
               href="/shop" 
               onClick={() => setIsMenuOpen(false)} 
-              className="group flex flex-col items-center justify-center text-center p-3 aspect-square rounded-[1.5rem] bg-white/60 border border-white/90 hover:bg-white hover:border-brand-primary/20 hover:shadow-sm transition-all"
+              className="group flex flex-col items-center justify-center text-center p-3 aspect-square rounded-[1.5rem] bg-white/75 border border-white/80 hover:bg-white hover:border-brand-primary/15 hover:shadow-sm transition-all"
             >
               <span className="text-brand-primary group-hover:scale-105 transition-transform flex items-center justify-center w-10 h-10">
                 <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
@@ -158,7 +158,7 @@ export default function Header() {
                 key={idx} 
                 href={cat.href} 
                 onClick={() => setIsMenuOpen(false)}
-                className="group flex flex-col items-center justify-center text-center p-3 aspect-square rounded-[1.5rem] bg-white/60 border border-white/90 hover:bg-white hover:border-brand-primary/20 hover:shadow-sm transition-all"
+                className="group flex flex-col items-center justify-center text-center p-3 aspect-square rounded-[1.5rem] bg-white/75 border border-white/80 hover:bg-white hover:border-brand-primary/15 hover:shadow-sm transition-all"
               >
                 <span className="group-hover:scale-105 transition-all flex items-center justify-center w-10 h-10">
                   <img src={cat.icon} alt={cat.name} className="w-9 h-9 object-contain" />
@@ -170,7 +170,7 @@ export default function Header() {
         </div>
 
         {/* Drawer Footer */}
-        <div className="p-5 border-t border-white/50 bg-white/20 shrink-0">
+        <div className="p-5 border-t border-white/20 bg-white/10 shrink-0">
            <a 
              href="tel:+918271663388" 
              className="flex items-center justify-center gap-2.5 bg-gradient-to-r from-brand-primary to-brand-secondary text-white font-heading font-extrabold text-[12px] uppercase tracking-widest py-3.5 px-6 rounded-2xl transition-all duration-300 hover:shadow-[0_8px_20px_rgba(168,32,26,0.3)] hover:scale-[1.01] active:scale-[0.98] w-full cursor-pointer"

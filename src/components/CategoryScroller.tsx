@@ -10,7 +10,7 @@ export default function CategoryScroller({ activeCategory }: { activeCategory: s
      { 
        name: 'All', 
        href: '/shop/all',
-       icon: '/icons/open-box-svgrepo-com.svg'
+       icon: '/icons/shop-all-cartoon.svg'
      },
      { 
        name: 'Chicken', 

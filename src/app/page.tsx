@@ -49,23 +49,23 @@ export default function SplashPage() {
         <div className="mt-4"></div>
 
         {/* Center Section: Core Branding & Tagline inside a premium glassmorphic card */}
-        <div className="flex flex-col items-center text-center max-w-[340px] gap-5 my-auto bg-white/20 backdrop-blur-md border border-white/45 p-8 rounded-[2.5rem] shadow-[0_15px_35px_rgba(0,0,0,0.05)] animate-[scaleUp_1.4s_cubic-bezier(0.16,1,0.3,1)]">
+        <div className="flex flex-col items-center text-center w-full max-w-[370px] gap-3.5 my-auto translate-y-5 bg-white/20 backdrop-blur-md border border-white/45 py-6 px-8 rounded-[2.5rem] shadow-[0_15px_35px_rgba(0,0,0,0.05)] animate-[scaleUp_1.4s_cubic-bezier(0.16,1,0.3,1)]">
           {/* Circular Glass Logo Container */}
-          <div className="w-22 h-22 rounded-full bg-white/45 backdrop-blur-md border border-white/70 flex items-center justify-center shadow-[0_10px_25px_rgba(0,0,0,0.04)] relative group overflow-hidden mb-2">
+          <div className="w-18 h-18 rounded-full bg-white/45 backdrop-blur-md border border-white/70 flex items-center justify-center shadow-[0_10px_25px_rgba(0,0,0,0.04)] relative group overflow-hidden mb-0.5">
             {/* Ambient Pulsing Glow behind logo */}
             <div className="absolute inset-0 bg-gradient-to-tr from-brand-primary/15 via-transparent to-transparent opacity-40 animate-pulse" />
             <img 
               src="/magicmeat_logo.png" 
               alt="Magic Meat Logo" 
-              className="w-12 h-12 object-contain relative z-10 drop-shadow-[0_2px_8px_rgba(0,0,0,0.08)]" 
+              className="w-10 h-10 object-contain relative z-10 drop-shadow-[0_2px_8px_rgba(0,0,0,0.08)]" 
             />
           </div>
 
-          <div className="flex flex-col gap-2">
-            <h1 className="font-heading font-extrabold text-4xl sm:text-5xl tracking-tight leading-tight text-gray-950 drop-shadow-sm">
+          <div className="flex flex-col gap-1.5">
+            <h1 className="font-heading font-extrabold text-3xl sm:text-4xl tracking-tight leading-tight text-gray-950 drop-shadow-sm">
               Magic Meat
             </h1>
-            <div className="h-[1.5px] w-8 bg-brand-primary mx-auto my-1 rounded-full animate-[scaleWidth_1.2s_ease-out_0.3s_both]"></div>
+            <div className="h-[1.5px] w-8 bg-brand-primary mx-auto my-0.5 rounded-full animate-[scaleWidth_1.2s_ease-out_0.3s_both]"></div>
             <p className="font-body text-gray-800 text-xs sm:text-sm font-semibold leading-relaxed tracking-wider max-w-[280px] mx-auto">
               Premium, fresh raw cuts delivered to your kitchen in 30 minutes.
             </p>

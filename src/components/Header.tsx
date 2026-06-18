@@ -71,6 +71,40 @@ export default function Header() {
 
   return (
     <>
+      {/* Premium Announcement Marquee (Scrolling Ticker) */}
+      <div className="bg-[#121212] text-white py-2 overflow-hidden text-[9px] sm:text-[10px] font-heading font-extrabold uppercase tracking-[0.2em] relative z-50 border-b border-white/5 flex items-center">
+        <div className="flex w-max whitespace-nowrap animate-[marquee_35s_linear_infinite] gap-12 items-center">
+          <span className="flex items-center gap-2">⚡ Free Delivery on orders above ₹499</span>
+          <span className="text-gray-600">•</span>
+          <span className="flex items-center gap-2">🥩 100% Fresh & Halal Meat</span>
+          <span className="text-gray-600">•</span>
+          <span className="flex items-center gap-2">🍗 Antibiotic-Free Birds</span>
+          <span className="text-gray-600">•</span>
+          <span className="flex items-center gap-2">🥬 Hygienically Cleaned & Packed</span>
+          <span className="text-gray-600">•</span>
+          <span className="flex items-center gap-2">🚀 30 Mins Express Delivery in Hazaribagh</span>
+          <span className="text-gray-600">•</span>
+          
+          {/* Duplicate set for seamless loop */}
+          <span className="flex items-center gap-2">⚡ Free Delivery on orders above ₹499</span>
+          <span className="text-gray-600">•</span>
+          <span className="flex items-center gap-2">🥩 100% Fresh & Halal Meat</span>
+          <span className="text-gray-600">•</span>
+          <span className="flex items-center gap-2">🍗 Antibiotic-Free Birds</span>
+          <span className="text-gray-600">•</span>
+          <span className="flex items-center gap-2">🥬 Hygienically Cleaned & Packed</span>
+          <span className="text-gray-600">•</span>
+          <span className="flex items-center gap-2">🚀 30 Mins Express Delivery in Hazaribagh</span>
+          <span className="text-gray-600">•</span>
+        </div>
+        <style dangerouslySetInnerHTML={{ __html: `
+          @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+        ` }} />
+      </div>
+
       <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md flex justify-between items-center px-4 py-4 border-b border-gray-100 relative">
         {/* Left side: Hamburger Menu + Logo */}
         <div className="flex items-center gap-3">

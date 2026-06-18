@@ -16,14 +16,95 @@ export default function Header() {
   if (pathname === '/') return null;
 
   const categories = [
-    { name: 'Shop All', href: '/shop/all' },
-    { name: 'Chicken', href: '/shop/chicken' },
-    { name: 'Mutton', href: '/shop/mutton' },
-    { name: 'Sea Food', href: '/shop/seafood' },
-    { name: 'Grocery', href: '/shop/grocery' },
-    { name: 'Vegetables', href: '/shop/vegetables' },
-    { name: 'Fruits', href: '/shop/fruits' },
-    { name: 'Frozen Items', href: '/shop/frozen' },
+    { 
+      name: 'Shop All', 
+      href: '/shop/all',
+      icon: (
+        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="3" y="3" width="7" height="9" rx="1"></rect>
+          <rect x="14" y="3" width="7" height="5" rx="1"></rect>
+          <rect x="14" y="12" width="7" height="9" rx="1"></rect>
+          <rect x="3" y="16" width="7" height="5" rx="1"></rect>
+        </svg>
+      )
+    },
+    { 
+      name: 'Chicken', 
+      href: '/shop/chicken',
+      icon: (
+        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M16 16c0-4.5-3.5-8-8-8s-8 3.5-8 8v4h16v-4z" />
+          <path d="M8 8c1.5-3 4.5-3 5 0" />
+          <path d="M16 14h3l1-2-4-1" />
+          <circle cx="6" cy="12" r="1" />
+        </svg>
+      )
+    },
+    { 
+      name: 'Mutton', 
+      href: '/shop/mutton',
+      icon: (
+        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M16 3c-1.5 0-3 1.5-3 3v2M8 3c1.5 0 3 1.5 3 3v2" />
+          <path d="M12 8c-2.5 0-4 1.5-4 4.5s1.5 4 4 4.5c2.5-.5 4-1.5 4-4.5S14.5 8 12 8z" />
+          <path d="M10 17.5l2 1.5 2-1.5" />
+        </svg>
+      )
+    },
+    { 
+      name: 'Sea Food', 
+      href: '/shop/seafood',
+      icon: (
+        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M2 12c4-8 16-8 20 0-4 8-16 8-20 0z" />
+          <path d="M19 12a1 1 0 1 0 2 0 1 1 0 1 0-2 0z" />
+          <path d="M2 12L7 7M2 12L7 17" />
+        </svg>
+      )
+    },
+    { 
+      name: 'Grocery', 
+      href: '/shop/grocery',
+      icon: (
+        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <path d="M16 10a4 4 0 0 1-8 0" />
+        </svg>
+      )
+    },
+    { 
+      name: 'Vegetables', 
+      href: '/shop/vegetables',
+      icon: (
+        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M12 2A5 5 0 0 0 7 7c0 2 1.5 3.5 3 4.5V18a2 2 0 0 0 4 0v-6.5c1.5-1 3-2.5 3-4.5A5 5 0 0 0 12 2z" />
+          <path d="M10 13.5h4" />
+        </svg>
+      )
+    },
+    { 
+      name: 'Fruits', 
+      href: '/shop/fruits',
+      icon: (
+        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M12 22c4.97 0 9-4.03 9-9 0-4.07-2.73-7.5-6.5-8.5C13.73 3.5 12 2 12 2s-.27 2.5-1.5 3.5C6.73 6.5 4 9.93 4 14c0 4.97 4.03 9 9 9z" />
+          <path d="M12 6c.5-2 .5-2 1.5-3" />
+        </svg>
+      )
+    },
+    { 
+      name: 'Frozen Items', 
+      href: '/shop/frozen',
+      icon: (
+        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <line x1="12" y1="2" x2="12" y2="22" />
+          <line x1="2" y1="12" x2="22" y2="12" />
+          <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
+          <line x1="4.93" y1="19.07" x2="19.07" y2="4.93" />
+        </svg>
+      )
+    },
   ];
 
   return (
@@ -85,57 +166,70 @@ export default function Header() {
         <div className="fixed inset-0 z-[60] bg-black/40 backdrop-blur-sm" onClick={() => setIsMenuOpen(false)}></div>
       )}
 
-      {/* Sliding Drawer */}
-      <div className={`fixed top-0 left-0 h-full w-[85%] max-w-[320px] bg-[#0E0D0D]/95 backdrop-blur-2xl z-[70] transition-transform duration-300 ease-in-out flex flex-col ${isMenuOpen ? 'translate-x-0 border-r border-white/10 shadow-[15px_0_40px_rgba(0,0,0,0.4)]' : '-translate-x-full border-transparent shadow-none'}`}>
+      {/* Sliding Bottom Sheet Drawer */}
+      <div className={`fixed bottom-0 left-0 w-full h-[60%] bg-[#0E0D0D]/95 backdrop-blur-2xl z-[70] rounded-t-[2.5rem] transition-transform duration-300 ease-in-out flex flex-col ${isMenuOpen ? 'translate-y-0 border-t border-white/10 shadow-[0_-15px_40px_rgba(0,0,0,0.4)]' : 'translate-y-full border-transparent shadow-none'}`}>
         
+        {/* iOS Drag Handle indicator */}
+        <div className="w-12 h-1 bg-white/20 rounded-full mx-auto mt-3 mb-1 shrink-0" />
+
         {/* Drawer Header */}
-        <div className="flex justify-between items-center p-6 border-b border-white/10 bg-[#0E0D0D]/40">
+        <div className="flex justify-between items-center px-6 py-3 border-b border-white/10 bg-[#0E0D0D]/40 shrink-0">
           <div className="flex items-center gap-2">
             <img src="/magicmeat_logo.png" alt="Magic Meat Logo" className="w-7 h-7 object-contain bg-white/10 p-0.5 rounded-lg" />
-            <h2 className="font-heading font-extrabold text-lg text-white tracking-tight">Menu</h2>
+            <h2 className="font-heading font-extrabold text-base text-white tracking-tight">Menu</h2>
           </div>
           <button onClick={() => setIsMenuOpen(false)} className="w-8 h-8 flex items-center justify-center bg-white/5 border border-white/10 hover:bg-white/10 text-white/70 hover:text-white rounded-full transition-all cursor-pointer">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
           </button>
         </div>
 
-        {/* Drawer Links */}
-        <div className="flex-1 overflow-y-auto py-5 px-5 flex flex-col gap-3 scrollbar-thin">
+        {/* Drawer Links in a Grid */}
+        <div className="flex-1 overflow-y-auto py-5 px-6 flex flex-col gap-4 scrollbar-thin">
           <Link 
             href="/shop" 
             onClick={() => setIsMenuOpen(false)} 
-            className="group font-heading font-extrabold text-lg text-white py-3.5 px-4 rounded-2xl bg-white/[0.04] border border-white/[0.08] hover:bg-white/[0.08] hover:border-white/[0.12] transition-all flex items-center justify-between shadow-sm"
+            className="group font-heading font-extrabold text-sm text-white py-3.5 px-4 rounded-xl bg-white/[0.04] border border-white/[0.08] hover:bg-white/[0.08] hover:border-white/[0.12] transition-all flex items-center justify-between shadow-sm shrink-0"
           >
-            <span>Home</span>
-            <span className="text-brand-secondary group-hover:translate-x-1 transition-transform font-bold">&rarr;</span>
+            <div className="flex items-center gap-2.5">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-brand-secondary">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                <polyline points="9 22 9 12 15 12 15 22" />
+              </svg>
+              <span>Home</span>
+            </div>
+            <span className="text-brand-secondary group-hover:translate-x-1 transition-transform font-bold text-sm">&rarr;</span>
           </Link>
           
-          <div className="h-[1px] bg-white/10 my-1" />
-          
-          {categories.map((cat, idx) => (
-            <Link 
-              key={idx} 
-              href={cat.href} 
-              onClick={() => setIsMenuOpen(false)}
-              className="group font-body font-semibold text-base text-white/70 hover:text-white py-3 px-4 rounded-2xl bg-white/[0.01] border border-white/[0.03] hover:bg-white/[0.06] hover:border-white/[0.08] transition-all flex items-center justify-between"
-            >
-              <span className="group-hover:translate-x-0.5 transition-transform">{cat.name}</span>
-              <span className="text-white/20 group-hover:text-brand-secondary group-hover:translate-x-1 transition-all font-bold text-sm">&rarr;</span>
-            </Link>
-          ))}
+          <div className="grid grid-cols-2 gap-3.5">
+            {categories.map((cat, idx) => (
+              <Link 
+                key={idx} 
+                href={cat.href} 
+                onClick={() => setIsMenuOpen(false)}
+                className="group font-body font-semibold text-xs text-white/70 hover:text-white py-3 px-4 rounded-xl bg-white/[0.02] border border-white/[0.04] hover:bg-white/[0.06] hover:border-white/[0.08] transition-all flex items-center justify-between"
+              >
+                <div className="flex items-center gap-2.5">
+                  <span className="text-white/40 group-hover:text-brand-secondary transition-colors">
+                    {cat.icon}
+                  </span>
+                  <span className="group-hover:translate-x-0.5 transition-transform">{cat.name}</span>
+                </div>
+                <span className="text-white/20 group-hover:text-brand-secondary group-hover:translate-x-0.5 transition-all font-bold text-xs">&rarr;</span>
+              </Link>
+            ))}
+          </div>
         </div>
 
         {/* Drawer Footer */}
-        <div className="p-6 border-t border-white/10 bg-[#0E0D0D]/80">
+        <div className="p-5 border-t border-white/10 bg-[#0E0D0D]/80 shrink-0">
            <a 
              href="tel:+918271663388" 
-             className="flex items-center justify-center gap-2 bg-brand-primary text-white font-body font-bold text-sm uppercase tracking-wider py-4 px-4 rounded-full transition-all hover:bg-brand-secondary hover:shadow-[0_4px_16px_rgba(168,32,26,0.35)] active:scale-[0.98] w-full"
+             className="flex items-center justify-center gap-2 bg-brand-primary text-white font-body font-bold text-xs uppercase tracking-wider py-3.5 px-4 rounded-full transition-all hover:bg-brand-secondary hover:shadow-[0_4px_16px_rgba(168,32,26,0.35)] active:scale-[0.98] w-full"
            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
               Call Now
            </a>
         </div>
-
       </div>
     </>
   );

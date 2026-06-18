@@ -120,16 +120,16 @@ export default function ProductCard({ product }: ProductCardProps) {
   }
 
   return (
-    <div className={`group relative flex flex-col h-full bg-white rounded-[24px] shadow-[0_4px_20px_rgba(0,0,0,0.02)] border border-gray-100 hover:shadow-[0_12px_36px_rgba(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300 overflow-hidden ${
-      !isAvailable ? 'opacity-85' : ''
+    <div className={`group relative flex flex-col h-full bg-white rounded-3xl shadow-[0_8px_30px_rgba(0,0,0,0.03)] border border-gray-100 hover:border-brand-primary/15 hover:shadow-[0_18px_38px_rgba(168,32,26,0.06)] hover:-translate-y-1.5 transition-all duration-300 overflow-hidden ${
+      !isAvailable ? 'opacity-90' : ''
     }`}>
       <Link href={`/product/${handle}`} className="flex-grow flex flex-col cursor-pointer">
-        {/* Product Image */}
-        <div className="relative w-full aspect-[4/3] bg-gray-50 overflow-hidden flex items-center justify-center">
+        {/* Product Image Container */}
+        <div className="relative w-full aspect-[4/3] bg-gray-50 overflow-hidden flex items-center justify-center border-b border-gray-100/60">
           <img 
             src={images[0]?.url || '/placeholder.png'} 
             alt={images[0]?.altText || title}
-            className={`w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105 ${
+            className={`w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.03] ${
               !isAvailable ? 'opacity-40 grayscale-[25%]' : ''
             }`}
             loading="lazy"
@@ -163,8 +163,8 @@ export default function ProductCard({ product }: ProductCardProps) {
         </div>
 
         {/* Product Info */}
-        <div className="flex flex-col flex-grow pt-4 px-4 pb-4">
-          <h3 className="font-heading font-bold text-[16px] text-gray-900 mb-1 leading-snug line-clamp-2 group-hover:text-brand-primary transition-colors duration-200">
+        <div className="flex flex-col flex-grow pt-4 px-4 pb-4 bg-gradient-to-b from-transparent to-gray-50/20">
+          <h3 className="font-heading font-extrabold text-[15px] sm:text-[16px] text-gray-900 mb-1 leading-snug line-clamp-2 group-hover:text-brand-primary transition-colors duration-200 min-h-[40px]">
             {title}
           </h3>
           <p className="font-body text-[12px] text-gray-500 mb-3.5 line-clamp-1">
@@ -174,7 +174,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           <div className="mt-auto flex items-center justify-between">
             <div className="font-heading font-extrabold text-2xl text-gray-900 flex items-center gap-0.5">
                <span className="text-gray-500 font-semibold text-sm">₹</span>{price}
-            </div>
+             </div>
             
             {!isAvailable ? (
               <span className="text-[10px] font-bold text-gray-400 bg-gray-100/90 border border-gray-200/55 px-3 py-1.5 rounded-full uppercase tracking-wider select-none">
@@ -183,13 +183,13 @@ export default function ProductCard({ product }: ProductCardProps) {
             ) : quantity === 0 ? (
               <button 
                 onClick={handleAdd}
-                className="bg-brand-primary text-white w-9 h-9 rounded-full flex items-center justify-center hover:bg-brand-secondary transition-all shadow-md shadow-brand-primary/20 active:scale-90 duration-200 cursor-pointer"
+                className="bg-brand-primary text-white w-9 h-9 rounded-full flex items-center justify-center hover:bg-brand-secondary transition-all shadow-md shadow-brand-primary/20 hover:shadow-brand-primary/35 active:scale-90 duration-200 cursor-pointer"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
               </button>
             ) : (
               <div 
-                className="flex items-center bg-brand-primary text-white shadow-md shadow-brand-primary/20 rounded-full h-9 overflow-hidden transition-all"
+                className="flex items-center bg-brand-primary text-white shadow-md shadow-brand-primary/20 rounded-full h-9 overflow-hidden transition-all hover:shadow-brand-primary/35"
                 onClick={(e) => e.preventDefault()}
               >
                 <button 

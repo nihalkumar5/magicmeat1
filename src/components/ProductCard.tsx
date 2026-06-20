@@ -148,7 +148,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           />
           
           {/* Glassmorphic Tag / Out of Stock Tag */}
-          <div className={`absolute top-3 left-3 px-2.5 py-1 rounded-lg text-[9px] font-bold uppercase tracking-widest shadow-sm ${
+          <div className={`absolute top-3 left-3 z-20 px-2.5 py-1 rounded-lg text-[9px] font-bold uppercase tracking-widest shadow-sm ${
             isAvailable 
               ? 'bg-white/85 backdrop-blur-md border border-white/40 text-gray-800' 
               : 'bg-black/90 text-white border border-black/30'
@@ -162,7 +162,7 @@ export default function ProductCard({ product }: ProductCardProps) {
               e.preventDefault();
               toggleWishlist(product);
             }}
-            className={`absolute top-3 right-3 w-8 h-8 bg-white/85 backdrop-blur-md border border-white/40 rounded-full flex items-center justify-center transition-all shadow-sm z-10 hover:scale-105 active:scale-95 ${
+            className={`absolute top-3 right-3 w-8 h-8 bg-white/85 backdrop-blur-md border border-white/40 rounded-full flex items-center justify-center transition-all shadow-sm z-20 hover:scale-105 active:scale-95 ${
               isFavorited ? 'text-brand-primary' : 'text-gray-400 hover:text-brand-primary'
             }`}
           >

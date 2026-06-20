@@ -7,7 +7,7 @@ import Header from '@/components/Header';
 import CartDrawer from '@/components/CartDrawer';
 import MobileNav from '@/components/MobileNav';
 import Footer from '@/components/Footer';
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from '@vercel/analytics/next';
 
 const inter = Inter({
   subsets: ['latin'],

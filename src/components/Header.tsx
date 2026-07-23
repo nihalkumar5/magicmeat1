@@ -13,6 +13,28 @@ export default function Header() {
   
   const pathname = usePathname();
 
+  // Dynamic Date-based Store Closure Notice logic
+  // Target closed date: 2026-07-24 (Friday)
+  const [noticeStatus, setNoticeStatus] = useState<'tomorrow_closed' | 'today_closed' | 'open' | null>(null);
+
+  useEffect(() => {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    const todayStr = `${year}-${month}-${day}`;
+
+    const CLOSED_DATE = '2026-07-24';
+
+    if (todayStr < CLOSED_DATE) {
+      setNoticeStatus('tomorrow_closed');
+    } else if (todayStr === CLOSED_DATE) {
+      setNoticeStatus('today_closed');
+    } else {
+      setNoticeStatus('open');
+    }
+  }, []);
+
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -71,19 +93,40 @@ export default function Header() {
 
   return (
     <>
-      {/* Store Closure Announcement Banner */}
-      <div className="bg-gradient-to-r from-red-700 via-brand-primary to-red-700 text-white py-2.5 px-4 text-center text-xs sm:text-sm font-heading font-bold shadow-md relative z-50 flex items-center justify-center gap-2">
-        <span className="text-base">📢</span>
-        <span>
-          <strong className="underline underline-offset-2">STORE NOTICE:</strong> Dukan kal 1 din ke liye band rahegi. Parso se deliveries wapas shuru ho jayengi! (Store closed tomorrow • Reopens day after tomorrow).
-        </span>
-      </div>
+      {/* Dynamic Store Closure Announcement Banner */}
+      {noticeStatus === 'tomorrow_closed' && (
+        <div className="bg-gradient-to-r from-red-700 via-brand-primary to-red-700 text-white py-2.5 px-4 text-center text-xs sm:text-sm font-heading font-bold shadow-md relative z-50 flex items-center justify-center gap-2">
+          <span className="text-base">📢</span>
+          <span>
+            <strong className="underline underline-offset-2">STORE NOTICE:</strong> Dukan kal 1 din ke liye band rahegi. Parso se deliveries wapas shuru ho jayengi! (Store closed tomorrow • Reopens day after tomorrow).
+          </span>
+        </div>
+      )}
+
+      {noticeStatus === 'today_closed' && (
+        <div className="bg-gradient-to-r from-red-800 via-red-600 to-red-800 text-white py-2.5 px-4 text-center text-xs sm:text-sm font-heading font-bold shadow-md relative z-50 flex items-center justify-center gap-2 animate-pulse">
+          <span className="text-base">🛑</span>
+          <span>
+            <strong className="underline underline-offset-2">STORE CLOSED TODAY:</strong> Aaj dukan 1 din ke liye band hai. Kal se normal deliveries wapas shuru ho jayengi! (Store closed today • Reopens tomorrow).
+          </span>
+        </div>
+      )}
 
       {/* Premium Announcement Marquee (Scrolling Ticker) */}
       <div className="bg-[#121212] text-white py-2 overflow-hidden text-[9px] sm:text-[10px] font-heading font-bold uppercase tracking-[0.2em] relative z-50 border-b border-white/5 flex items-center">
         <div className="flex w-max whitespace-nowrap animate-[marquee_35s_linear_infinite] gap-12 items-center">
-          <span className="flex items-center gap-2 text-amber-400">⚠️ STORE CLOSED TOMORROW • REOPENS DAY AFTER TOMORROW</span>
-          <span className="text-gray-600">•</span>
+          {noticeStatus === 'tomorrow_closed' && (
+            <>
+              <span className="flex items-center gap-2 text-amber-400">⚠️ STORE CLOSED TOMORROW • REOPENS DAY AFTER TOMORROW</span>
+              <span className="text-gray-600">•</span>
+            </>
+          )}
+          {noticeStatus === 'today_closed' && (
+            <>
+              <span className="flex items-center gap-2 text-red-400">🛑 STORE CLOSED TODAY • REOPENS TOMORROW</span>
+              <span className="text-gray-600">•</span>
+            </>
+          )}
           <span className="flex items-center gap-2">⚡ Free Delivery on orders above ₹249</span>
           <span className="text-gray-600">•</span>
           <span className="flex items-center gap-2">🥩 100% Fresh & Premium Meat</span>
@@ -96,8 +139,18 @@ export default function Header() {
           <span className="text-gray-600">•</span>
           
           {/* Duplicate set for seamless loop */}
-          <span className="flex items-center gap-2 text-amber-400">⚠️ STORE CLOSED TOMORROW • REOPENS DAY AFTER TOMORROW</span>
-          <span className="text-gray-600">•</span>
+          {noticeStatus === 'tomorrow_closed' && (
+            <>
+              <span className="flex items-center gap-2 text-amber-400">⚠️ STORE CLOSED TOMORROW • REOPENS DAY AFTER TOMORROW</span>
+              <span className="text-gray-600">•</span>
+            </>
+          )}
+          {noticeStatus === 'today_closed' && (
+            <>
+              <span className="flex items-center gap-2 text-red-400">🛑 STORE CLOSED TODAY • REOPENS TOMORROW</span>
+              <span className="text-gray-600">•</span>
+            </>
+          )}
           <span className="flex items-center gap-2">⚡ Free Delivery on orders above ₹249</span>
           <span className="text-gray-600">•</span>
           <span className="flex items-center gap-2">🥩 100% Fresh & Premium Meat</span>

@@ -1,7 +1,8 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useCart } from '@/context/CartContext';
+import { isStoreClosedToday } from '@/utils/storeStatus';
 
 export default function CartDrawer() {
   const {
@@ -15,6 +16,12 @@ export default function CartDrawer() {
     cartSubtotal,
     checkoutLoading
   } = useCart();
+
+  const [isClosedToday, setIsClosedToday] = useState(false);
+
+  useEffect(() => {
+    setIsClosedToday(isStoreClosedToday());
+  }, []);
 
   if (!isCartOpen) return null;
 
@@ -141,11 +148,17 @@ export default function CartDrawer() {
             
             <button 
               onClick={handleCheckout}
-              disabled={checkoutLoading}
-              className={`w-full bg-brand-primary text-white font-heading font-bold text-lg py-4 rounded-full shadow-md shadow-brand-primary/10 hover:bg-brand-secondary transition-all active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer ${checkoutLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
+              disabled={checkoutLoading || isClosedToday}
+              className={`w-full font-heading font-bold text-lg py-4 rounded-full shadow-md transition-all flex items-center justify-center gap-2 ${
+                isClosedToday 
+                  ? 'bg-red-100 text-red-600 border border-red-200 cursor-not-allowed' 
+                  : checkoutLoading 
+                    ? 'bg-brand-primary/70 text-white cursor-not-allowed' 
+                    : 'bg-brand-primary text-white shadow-brand-primary/10 hover:bg-brand-secondary active:scale-[0.98] cursor-pointer'
+              }`}
             >
-              <span>{checkoutLoading ? 'Processing...' : 'Checkout Safely'}</span>
-              {!checkoutLoading && (
+              <span>{isClosedToday ? 'Store Closed Today (Reopens Tomorrow)' : checkoutLoading ? 'Processing...' : 'Checkout Safely'}</span>
+              {!checkoutLoading && !isClosedToday && (
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
                   <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
@@ -153,7 +166,7 @@ export default function CartDrawer() {
               )}
             </button>
             <p className="text-center text-gray-400 font-semibold text-[9px] mt-4 uppercase tracking-wider">
-              Secure Checkout • Fast Delivery • Premium Quality
+              {isClosedToday ? 'Orders Paused Today • Resuming Tomorrow' : 'Secure Checkout • Fast Delivery • Premium Quality'}
             </p>
           </div>
         )}

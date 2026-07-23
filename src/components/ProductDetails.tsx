@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Product, ShopifyVariant } from '@/lib/shopify';
 import { useCart } from '@/context/CartContext';
 import { triggerHaptic } from '@/utils/haptics';
+import { isStoreClosedToday } from '@/utils/storeStatus';
 
 interface ProductDetailsProps {
   product: Product;
@@ -13,6 +14,11 @@ type TabType = 'sourcing' | 'cooking' | 'delivery';
 
 export default function ProductDetails({ product }: ProductDetailsProps) {
   const { addToCart } = useCart();
+  const [isClosedToday, setIsClosedToday] = useState(false);
+
+  useEffect(() => {
+    setIsClosedToday(isStoreClosedToday());
+  }, []);
 
   // Find the first available variant to select by default
   const defaultVariant = product.variants.find((v) => v.availableForSale) || product.variants[0];
@@ -204,19 +210,21 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
           {/* Active CTA Button */}
           <button 
             className={`w-full mb-8 py-4 rounded-full font-heading text-lg font-bold tracking-wide transition-all duration-200 ${
-              !isAvailable 
-                ? 'bg-gray-100 text-gray-400 border border-gray-200/60 cursor-not-allowed' 
-                : 'bg-brand-primary text-white hover:bg-brand-secondary shadow-md shadow-brand-primary/10 active:scale-[0.98] cursor-pointer'
+              isClosedToday 
+                ? 'bg-red-100 text-red-600 border border-red-200 cursor-not-allowed'
+                : !isAvailable 
+                  ? 'bg-gray-100 text-gray-400 border border-gray-200/60 cursor-not-allowed' 
+                  : 'bg-brand-primary text-white hover:bg-brand-secondary shadow-md shadow-brand-primary/10 active:scale-[0.98] cursor-pointer'
             }`}
             onClick={() => {
-              if (isAvailable) {
+              if (isAvailable && !isClosedToday) {
                 triggerHaptic(50);
                 addToCart(product, selectedVariant);
               }
             }}
-            disabled={!isAvailable}
+            disabled={!isAvailable || isClosedToday}
           >
-            {isAvailable ? 'Add to Cart' : 'Out of Stock'}
+            {isClosedToday ? 'Store Closed Today (Reopens Tomorrow)' : !isAvailable ? 'Out of Stock' : 'Add to Cart'}
           </button>
 
           {/* Elegant Tabs */}

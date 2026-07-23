@@ -1,11 +1,12 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Product } from '@/lib/shopify';
 import { useCart } from '@/context/CartContext';
 import { useWishlist } from '@/context/WishlistContext';
 import { triggerHaptic } from '@/utils/haptics';
+import { isStoreClosedToday } from '@/utils/storeStatus';
 
 interface ProductCardProps {
   product: Product;
@@ -15,6 +16,11 @@ export default function ProductCard({ product }: ProductCardProps) {
   const { title, handle, images, priceRange } = product;
   const { cartItems, addToCart, updateQuantity } = useCart();
   const { isInWishlist, toggleWishlist } = useWishlist();
+  const [isClosedToday, setIsClosedToday] = useState(false);
+
+  useEffect(() => {
+    setIsClosedToday(isStoreClosedToday());
+  }, []);
   
   const isFavorited = isInWishlist(product.id);
   
@@ -29,7 +35,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
   const handleAdd = (e: React.MouseEvent) => {
     e.preventDefault(); // Prevent navigating to product details
-    if (!isAvailable) return;
+    if (!isAvailable || isClosedToday) return;
     
     // Haptic feedback
     triggerHaptic(50);
@@ -184,7 +190,11 @@ export default function ProductCard({ product }: ProductCardProps) {
                <span className="text-gray-500 font-semibold text-sm">₹</span>{price}
              </div>
             
-            {!isAvailable ? (
+            {isClosedToday ? (
+              <span className="text-[10px] font-bold text-red-600 bg-red-50 border border-red-200/80 px-2.5 py-1.5 rounded-full uppercase tracking-wider select-none">
+                Closed Today
+              </span>
+            ) : !isAvailable ? (
               <span className="text-[10px] font-bold text-gray-400 bg-gray-100/90 border border-gray-200/55 px-3 py-1.5 rounded-full uppercase tracking-wider select-none">
                 Sold Out
               </span>

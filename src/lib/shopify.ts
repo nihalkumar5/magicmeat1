@@ -1,5 +1,5 @@
-const domain = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN || '7ws6g0-0t.myshopify.com';
-const storefrontAccessToken = process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN || '6f35d5e03990374a363e0601a81c5085';
+const domain = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN || 'e8uwib-18.myshopify.com';
+const storefrontAccessToken = process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN || 'a574ea30b840a65dd5c318a9d655c816';
 
 // Reusable Shopify Fetch Helper
 async function shopifyFetch<T>({

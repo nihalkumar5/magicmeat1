@@ -1,0 +1,12 @@
+{
+  "appId": "com.magicmeat.app",
+  "appName": "Magic Meat",
+  "webDir": "public",
+  "server": {
+    "url": "https://magicmeat1.vercel.app",
+    "cleartext": true
+  },
+  "android": {
+    "allowMixedContent": true
+  }
+}

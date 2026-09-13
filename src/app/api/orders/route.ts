@@ -29,7 +29,7 @@ export interface Order {
   updatedAt: string;
 }
 
-// In-memory store for orders (with pre-populated initial live orders)
+// In-memory store for orders
 let ordersStore: Order[] = [
   {
     id: 'ORD-9842',
@@ -100,11 +100,69 @@ let ordersStore: Order[] = [
   }
 ];
 
+// Helper to fetch live orders from Shopify if Private Admin Token is present
+async function syncFromShopifyAdmin() {
+  const domain = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN || 'e8uwib-18.myshopify.com';
+  const privateToken = process.env.SHOPIFY_PRIVATE_ACCESS_TOKEN;
+
+  if (!privateToken) return;
+
+  try {
+    const res = await fetch(`https://${domain}/admin/api/2024-04/orders.json?status=any&limit=10`, {
+      headers: {
+        'X-Shopify-Access-Token': privateToken,
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      if (data.orders && Array.isArray(data.orders)) {
+        data.orders.forEach((sOrder: any) => {
+          const exists = ordersStore.find(o => o.shopifyOrderId === String(sOrder.order_number) || o.id === `ORD-${sOrder.order_number}`);
+          if (!exists) {
+            const mappedOrder: Order = {
+              id: `ORD-${sOrder.order_number || Math.floor(1000 + Math.random() * 9000)}`,
+              shopifyOrderId: String(sOrder.order_number || sOrder.id),
+              customerName: sOrder.customer ? `${sOrder.customer.first_name || ''} ${sOrder.customer.last_name || ''}`.trim() : (sOrder.shipping_address?.name || 'Shopify Customer'),
+              customerPhone: sOrder.customer?.phone || sOrder.shipping_address?.phone || '+91 98765 00000',
+              customerEmail: sOrder.email || sOrder.customer?.email || 'customer@shopify.com',
+              deliveryAddress: sOrder.shipping_address ? `${sOrder.shipping_address.address1 || ''}, ${sOrder.shipping_address.city || ''} ${sOrder.shipping_address.zip || ''}` : 'Delivery Address',
+              items: (sOrder.line_items || []).map((li: any) => ({
+                id: String(li.product_id || li.id),
+                title: li.title || 'Fresh Meat Cut',
+                quantity: li.quantity || 1,
+                price: String(li.price || '0.00'),
+                weight: li.grams ? `${li.grams}g` : 'Standard Cut',
+                cutType: 'Farm Fresh Pack'
+              })),
+              totalAmount: parseFloat(sOrder.total_price || '0'),
+              status: sOrder.fulfillment_status === 'fulfilled' ? 'DELIVERED' : 'CONFIRMED',
+              deliverySlot: 'Express 45-Min (Fresh Delivery)',
+              estimatedDeliveryMinutes: 45,
+              createdAt: sOrder.created_at || new Date().toISOString(),
+              updatedAt: sOrder.updated_at || new Date().toISOString()
+            };
+            ordersStore.unshift(mappedOrder);
+          }
+        });
+      }
+    }
+  } catch (err) {
+    console.warn('Shopify Admin Order Sync Notice:', err);
+  }
+}
+
 // GET: List all orders or filter by phone/id
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const orderId = searchParams.get('orderId');
   const phone = searchParams.get('phone');
+  const sync = searchParams.get('sync');
+
+  if (sync === 'true') {
+    await syncFromShopifyAdmin();
+  }
 
   if (orderId) {
     const order = ordersStore.find(o => o.id === orderId || o.shopifyOrderId === orderId);
@@ -119,10 +177,10 @@ export async function GET(request: Request) {
     return NextResponse.json({ orders: userOrders });
   }
 
-  return NextResponse.json({ orders: ordersStore });
+  return NextResponse.json({ orders: ordersStore, lastSynced: new Date().toISOString() });
 }
 
-// POST: Create new order
+// POST: Create new order (called by Storefront checkout or Shopify Webhook)
 export async function POST(request: Request) {
   try {
     const body = await request.json();
@@ -130,8 +188,8 @@ export async function POST(request: Request) {
       id: `ORD-${Math.floor(1000 + Math.random() * 9000)}`,
       shopifyOrderId: body.shopifyOrderId || String(Math.floor(1000 + Math.random() * 9000)),
       customerName: body.customerName || 'Customer',
-      customerPhone: body.customerPhone || '',
-      customerEmail: body.customerEmail || '',
+      customerPhone: body.customerPhone || '+91 98765 43210',
+      customerEmail: body.customerEmail || 'customer@example.com',
       deliveryAddress: body.deliveryAddress || 'Standard Delivery Address',
       items: body.items || [],
       totalAmount: body.totalAmount || 0,

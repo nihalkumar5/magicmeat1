@@ -227,11 +227,15 @@ export default function AdminDashboardPage() {
             </div>
           </div>
 
-          <div className="flex items-center space-x-4">
-            <div className="hidden sm:flex items-center space-x-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-medium">
+          <div className="flex items-center space-x-3">
+            <button
+              onClick={() => { fetchOrders(); }}
+              className="flex items-center space-x-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold hover:bg-emerald-500/20 transition cursor-pointer"
+              title="Click to manually refresh live Shopify orders"
+            >
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-              <span>Shopify Live Sync Active</span>
-            </div>
+              <span>🔄 Live Sync Active</span>
+            </button>
             <Link
               href="/"
               className="text-xs text-gray-300 hover:text-white px-4 py-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition"

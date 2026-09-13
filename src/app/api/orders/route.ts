@@ -180,7 +180,7 @@ export async function GET(request: Request) {
   return NextResponse.json({ orders: ordersStore, lastSynced: new Date().toISOString() });
 }
 
-// POST: Create new order (called by Storefront checkout or Shopify Webhook)
+// POST: Create new order
 export async function POST(request: Request) {
   try {
     const body = await request.json();
@@ -230,4 +230,19 @@ export async function PATCH(request: Request) {
   } catch (error: any) {
     return NextResponse.json({ error: error.message || 'Failed to update order' }, { status: 500 });
   }
+}
+
+// DELETE: Clear all demo/test orders or remove specific order
+export async function DELETE(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const orderId = searchParams.get('orderId');
+
+  if (orderId) {
+    ordersStore = ordersStore.filter(o => o.id !== orderId);
+  } else {
+    // Clear demo orders
+    ordersStore = [];
+  }
+
+  return NextResponse.json({ success: true, message: 'Orders cleared', remaining: ordersStore.length });
 }

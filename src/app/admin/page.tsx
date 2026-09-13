@@ -206,6 +206,17 @@ export default function AdminDashboardPage() {
   const totalRevenue = orders.reduce((acc, curr) => acc + curr.totalAmount, 0);
   const activeOrdersCount = orders.filter(o => o.status !== 'DELIVERED' && o.status !== 'CANCELLED').length;
 
+  const handleClearOrders = async () => {
+    if (confirm('Kya aap saare demo orders clear karna chahte hain?')) {
+      try {
+        await fetch('/api/orders', { method: 'DELETE' });
+        fetchOrders();
+      } catch (err) {
+        console.error('Failed to clear orders:', err);
+      }
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#07080B] text-gray-100 font-sans antialiased selection:bg-rose-500 selection:text-white">
       
@@ -228,6 +239,15 @@ export default function AdminDashboardPage() {
           </div>
 
           <div className="flex items-center space-x-3">
+            {orders.length > 0 && (
+              <button
+                onClick={handleClearOrders}
+                className="px-3 py-1.5 rounded-lg text-xs font-medium text-gray-400 hover:text-rose-400 bg-white/5 border border-white/10 hover:bg-rose-500/10 hover:border-rose-500/30 transition cursor-pointer"
+                title="Clear demo orders from screen"
+              >
+                🗑️ Clear Demo
+              </button>
+            )}
             <button
               onClick={() => { fetchOrders(); }}
               className="flex items-center space-x-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold hover:bg-emerald-500/20 transition cursor-pointer"

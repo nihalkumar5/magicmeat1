@@ -57,36 +57,51 @@ export default async function CategoryPage(props: { params: Promise<{ category: 
   // Fetch all products
   const products = await getProducts();
   
-  // Filter by category tag or collection
+  // Filter by category tag, collection, title, or productType
   const filteredProducts = products.filter(product => {
-    const cat = category.toLowerCase();
+    const cat = category.toLowerCase().trim();
     
     if (cat === 'all') return true;
     
-    const hasMatch = (arr: string[], search: string[]) => 
-      arr.some(item => search.some(s => item.toLowerCase().includes(s)));
-
+    const title = (product.title || '').toLowerCase();
+    const handle = (product.handle || '').toLowerCase();
+    const productType = (product.productType || '').toLowerCase();
     const collections = product.collections?.map(c => c.title.toLowerCase()) || [];
     const tags = product.tags?.map(t => t.toLowerCase()) || [];
-    const searchSpace = [...collections, ...tags];
+    
+    const searchSpace = [title, handle, productType, ...collections, ...tags];
+    const hasMatch = (searchTerms: string[]) => 
+      searchSpace.some(item => searchTerms.some(term => item.includes(term)));
 
-    if (cat === 'grocery') {
-      return hasMatch(searchSpace, ['grocery', 'egg', 'dairy', 'vegetable', 'vagetable', 'fruit']);
+    if (cat === 'chicken') {
+      return hasMatch(['chicken', 'breast', 'drumstick', 'lollipop', 'wings', 'curry cut', 'murga']);
+    }
+
+    if (cat === 'mutton') {
+      return hasMatch(['mutton', 'goat', 'lamb', 'gosht', 'keema', 'chaap']);
     }
     
     if (cat === 'seafood' || cat === 'fish') {
-       return hasMatch(searchSpace, ['seafood', 'fish']);
+      return hasMatch(['seafood', 'fish', 'rohu', 'katla', 'prawn', 'shrimp', 'machli', 'surmai', 'pomfret']);
+    }
+
+    if (cat === 'grocery') {
+      return hasMatch(['grocery', 'egg', 'eggs', 'dairy', 'onion', 'tomato', 'garlic', 'ginger', 'potato', 'masala', 'spice', 'vegetable']);
     }
 
     if (cat === 'vegetables' || cat === 'vegetable') {
-       return hasMatch(searchSpace, ['vegetable', 'vegetables', 'vagetable', 'vagetables', 'veg']);
+      return hasMatch(['vegetable', 'vegetables', 'veg', 'onion', 'tomato', 'garlic', 'ginger', 'potato', 'chilli', 'aloo', 'pyaz', 'tamatar']);
     }
 
     if (cat === 'fruits' || cat === 'fruit') {
-       return hasMatch(searchSpace, ['fruit', 'fruits']);
+      return hasMatch(['fruit', 'fruits', 'apple', 'banana', 'orange', 'mango']);
+    }
+
+    if (cat === 'frozen') {
+      return hasMatch(['frozen', 'nugget', 'sausage', 'kebab', 'patty', 'ready to cook']);
     }
     
-    return hasMatch(searchSpace, [cat]);
+    return hasMatch([cat]);
   });
 
   return (
